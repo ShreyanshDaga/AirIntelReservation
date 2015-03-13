@@ -8,10 +8,14 @@ namespace AIR.Entities
 {
     public class User
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string EmailAddress { get; set; }
-        public int Age { get; set; }
-        public string PassportNumber { get; set; }
+        // Base Properties
+        public int Id { get; set; }                                 // For EF to make this promary key
+        public string Name { get; set; }                            // Name of the user
+        public string EmailAddress { get; set; }                    // Email Address
+        public int Age { get; set; }                                // Age
+        public string PassportNumber { get; set; }                  // Passport number
+
+        // Navigational Properties
+        public virtual ICollection<Booking> Bookings { get; set; }  // User's bookings so far
     }
 }

@@ -9,15 +9,15 @@ namespace AIR.Entities
     public class Flight
     {
         // Base Properties
-        public int Id { get; set; }
-        public string Number { get; set; }
-        public string Destination { get; set; }
-        public string Source { get; set; }
-        public DateTime FlightDT { get; set; }
-        public float BaseFare { get; set; }
-        public int Distance { get; set; }
+        public int Id { get; set; }                     // For EF to make this promary key
+        public string Number { get; set; }              // Flight number
+        public string Destination { get; set; }         // Flight destination
+        public string Source { get; set; }              // Flight source
+        public DateTime FlightDT { get; set; }          // Departure Date Time
+        public float BaseFare { get; set; }             // Base Fare 
+        public int Distance { get; set; }               // Flight's distance
 
         // Navigational Properties
-        public virtual Aircraft Aircraft { get; set; }
+        public virtual Aircraft Aircraft { get; set; }  // Aicraft used by the flight
     }
 }
