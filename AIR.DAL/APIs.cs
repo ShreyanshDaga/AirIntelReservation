@@ -15,15 +15,29 @@ namespace AIR.DAL
         static API()
         {
             // Initialization
-            Context = new DBContext();
+            Context = new DBContext("TestLocal_Con");
         }
 
         // For User/Admin Management
         public static bool UserRegister(User newUser)
         {
+            if(newUser != null)
+            {
+                Context.Users.Add(newUser);
+                return true;
+            }
+
+            return false;
         }
         public static bool AdminRegister(Admin newAdmin)
         {
+            if (newAdmin != null)
+            {
+                Context.Admins.Add(newAdmin);
+                return true;
+            }
+
+            return false;
         }
         public static bool AdminSignIn(Admin admin)
         {
@@ -49,20 +63,16 @@ namespace AIR.DAL
         // Flight Management
         public static List<Flight> GetAllFights()
         {
-
         }
         public static Flight GetFlight(int iFlightId)
         {
-
         }        
         public static bool AddNewFlight(Flight newFlight)
         {
-
         }
         public static bool BookSeatInFlight(int iFlightId, int iUserId)
         {
-
-        }
+        }        
 
         // Booking Management
     }

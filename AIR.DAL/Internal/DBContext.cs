@@ -19,5 +19,15 @@ namespace AIR.DAL.Internal
         public DbSet<Booking> Bookings { get; set; }
 
         // ctors
+        static DBContext()
+        {
+            // Init DB seed method here
+        }
+
+        public DBContext(string strConString)
+            : base(strConString)
+        {
+            // Create DB with some conn string
+        }
     }
 }
