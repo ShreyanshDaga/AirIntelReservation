@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIR.Entities", "AIR.Entities\AIR.Entities.csproj", "{82544272-E918-4BF8-9553-8437F3BB8292}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIR.DAL", "AIR.DAL\AIR.DAL.csproj", "{EACCF02F-5479-4DF7-BAA9-4EED10411032}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIR.Console", "AIR.Console\AIR.Console.csproj", "{FD54B256-FC41-42C0-97EF-793992E82E51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82544272-E918-4BF8-9553-8437F3BB8292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82544272-E918-4BF8-9553-8437F3BB8292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82544272-E918-4BF8-9553-8437F3BB8292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82544272-E918-4BF8-9553-8437F3BB8292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EACCF02F-5479-4DF7-BAA9-4EED10411032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EACCF02F-5479-4DF7-BAA9-4EED10411032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EACCF02F-5479-4DF7-BAA9-4EED10411032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EACCF02F-5479-4DF7-BAA9-4EED10411032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD54B256-FC41-42C0-97EF-793992E82E51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD54B256-FC41-42C0-97EF-793992E82E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD54B256-FC41-42C0-97EF-793992E82E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD54B256-FC41-42C0-97EF-793992E82E51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
