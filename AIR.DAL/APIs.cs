@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AIR.DAL
 {
-    public class Class1
+    public static class APIs
     {
+        public int MyProperty { get; set; }
     }
 }
