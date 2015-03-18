@@ -56,6 +56,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AIR.DAL\AIR.DAL.csproj">
+      <Project>{eaccf02f-5479-4df7-baa9-4eed10411032}</Project>
+      <Name>AIR.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIR.Entities\AIR.Entities.csproj">
+      <Project>{82544272-e918-4bf8-9553-8437f3bb8292}</Project>
+      <Name>AIR.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

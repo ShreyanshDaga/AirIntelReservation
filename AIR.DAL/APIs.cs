@@ -17,9 +17,14 @@ namespace AIR.DAL
         static API()
         {
             // Initialization
-            Context = new DBContext("TestLocal_Con");
+            Context = new DBContext("TestConn_Local");
             SignedInAdmins = new List<Admin>(5);
             SignInUsers = new List<User>(5);
+        }
+        // For DEBUG
+        public static void Init()
+        {
+            
         }
 
         // For User/Admin Management
@@ -203,34 +208,44 @@ namespace AIR.DAL
         }        
         public static bool IsFlightFull(int iFlightId)
         {
-
+            return true;
         }
         public static bool IsBusinessFull(int iFlightId)
         {
+            return true;
         }
         public static bool IsFirstClassFull(int iFlightId)
         {
+            return true;
         }
         public static bool IsEconomyFull(int iFlightId)
         {
+            return true;
         }
         
         // Booking Management
         public static bool BookSeatInFlight(int iFlightId, int iUserId)
         {
+            return true;
         }
         public static bool ChangeSeat(int iBookingId, int iUserId)
         {
+            return true;
         }
         public static bool CancelBooking(int iBookingId, int iUserId)
         {
+            return true;
         }
         public static List<Booking> GetBookingsForUser(int iUserId)
         {
+            var user = Context.Users.Single(u => u.Id == iUserId);
 
+            return user.Bookings.ToList();
         }
-        public static List<Booking> GetBookingsForFlight(int iFlightId)
-        {
-        }
+        //public static List<Booking> GetBookingsForFlight(int iFlightId)
+        //{
+        //    var flight = Context.Flights.Single(f => f.Id == iFlightId);
+                        
+        //}        
     }
 }
