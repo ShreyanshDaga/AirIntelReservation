@@ -52,17 +52,17 @@ namespace AIR.DAL.Internal
         private void Seed_TestFlights(DBContext context)
         {
             // Seeding Test FLights
-            var flight1 = new Flight { };
-            var flight2 = new Flight { };
-            var flight3 = new Flight { };
-            var flight4 = new Flight { };
+            //var flight1 = new Flight { Number="IT2034", FlightDT = DateTime.Now, Aircraft = };
+            //var flight2 = new Flight { };
+            //var flight3 = new Flight { };
+            //var flight4 = new Flight { };
 
-            context.Flights.Add(flight1);
-            context.Flights.Add(flight2);
-            context.Flights.Add(flight3);
-            context.Flights.Add(flight4);
+            //context.Flights.Add(flight1);
+            //context.Flights.Add(flight2);
+            //context.Flights.Add(flight3);
+            //context.Flights.Add(flight4);
 
-            context.SaveChanges();     
+            //context.SaveChanges();     
         }
 
         private void Seed_TestUsers(DBContext context)
