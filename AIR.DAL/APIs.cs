@@ -32,6 +32,17 @@ namespace AIR.DAL
         {
             return Context.Admins.ToList();
         }
+        public static Admin GetLogginAdmin()
+        {
+            // Only for basic console app
+            return SignedInAdmins[0];
+        }
+
+        public static User GetLoggedInUser()
+        {
+            // Only for basic console app
+            return SignInUsers[0];
+        }
         public static List<User> GetUsers()
         {
             return Context.Users.ToList();
@@ -56,22 +67,30 @@ namespace AIR.DAL
 
             return false;
         }
-        public static bool AdminSignIn(Admin admin)
+        public static bool AdminSignIn(string adminName, string adminPassword)
         {
-            Admin adminInDB;
+            
             try
             {
-                adminInDB = Context.Admins.Single(a => a.Name == admin.Name);
+                var adminInDB = Context.Admins.Single(a => a.Name == adminName);
+
+                if(adminInDB != null)
+                {
+                    if (adminPassword == adminInDB.PasswordHash)
+                    {
+                        SignedInAdmins.Add(adminInDB);
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+
+                return false;
             }
             catch(Exception ex)
             {
                 return false;
-            }
-
-            if (admin.PasswordHash == adminInDB.PasswordHash)
-                return true;
-            else
-                return false;
+            }                        
 
         }
         public static bool AdminSignOut(int iAdminId)
@@ -246,6 +265,6 @@ namespace AIR.DAL
         //{
         //    var flight = Context.Flights.Single(f => f.Id == iFlightId);
                         
-        //}        
+        //}                
     }
 }
