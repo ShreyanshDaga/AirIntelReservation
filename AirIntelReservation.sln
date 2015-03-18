@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIR.DAL", "AIR.DAL\AIR.DAL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIR.Console", "AIR.Console\AIR.Console.csproj", "{FD54B256-FC41-42C0-97EF-793992E82E51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIR.WinForm", "AIR.WinForm\AIR.WinForm.csproj", "{57A66C2F-9A41-4713-8A5D-3272BEB233D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FD54B256-FC41-42C0-97EF-793992E82E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD54B256-FC41-42C0-97EF-793992E82E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD54B256-FC41-42C0-97EF-793992E82E51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57A66C2F-9A41-4713-8A5D-3272BEB233D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57A66C2F-9A41-4713-8A5D-3272BEB233D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57A66C2F-9A41-4713-8A5D-3272BEB233D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57A66C2F-9A41-4713-8A5D-3272BEB233D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
