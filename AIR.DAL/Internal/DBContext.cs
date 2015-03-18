@@ -21,13 +21,17 @@ namespace AIR.DAL.Internal
         // ctors
         static DBContext()
         {
-            // Init DB seed method here
+            // This will fire up only once when a class object is instantiated for the first time, 
+            // enabling us to initialise the DB with some seed value
+
+            Database.SetInitializer<DBContext>(new DBInitializer());
         }
 
         public DBContext(string strConString)
             : base(strConString)
         {
-            // Create DB with some conn string
+            // Create DB with some connection string
+
         }
     }
 }
