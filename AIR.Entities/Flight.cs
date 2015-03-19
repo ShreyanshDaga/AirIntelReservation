@@ -13,7 +13,8 @@ namespace AIR.Entities
         public string Number { get; set; }              // Flight number
         public string Destination { get; set; }         // Flight destination
         public string Source { get; set; }              // Flight source
-        public DateTime FlightDT { get; set; }          // Departure Date Time
+        public DateTime Departure { get; set; }          // Departure Date Time
+        public DateTime Arrival { get; set; }            // Arrival Date Time
         public float BaseFare { get; set; }             // Base Fare 
         public int Distance { get; set; }               // Flight's distance
 
