@@ -72,6 +72,11 @@ namespace AIR.WinForm
                     lblLoginErrorMessage.Text = "Error: Incorrect username/password!";                    
                     lblLoginErrorMessage.ForeColor = Color.Red;
                 }
+
+                frmAdmin admin = new frmAdmin();
+                admin.MdiParent = this.MdiParent;
+                admin.Show();
+                this.Close();
             }
 
             if (rdbtnUser.Checked)
