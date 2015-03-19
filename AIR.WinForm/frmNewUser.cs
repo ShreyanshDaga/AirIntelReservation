@@ -10,21 +10,16 @@ using System.Windows.Forms;
 
 namespace AIR.WinForm
 {
-    public partial class frmLogin : Form
+    public partial class frmNewUser : Form
     {
-        public frmLogin()
+        public frmNewUser()
         {
             InitializeComponent();
         }
 
-        private void btnNewUser_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            frmNewUser formNewUser = new frmNewUser();
-
-            formNewUser.MdiParent = this.MdiParent;
-
-            formNewUser.Show();
-
+            this.Close();
         }
     }
 }

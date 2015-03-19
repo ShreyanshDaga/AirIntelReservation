@@ -76,6 +76,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnuMain;
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Air Intel Reservation";
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
