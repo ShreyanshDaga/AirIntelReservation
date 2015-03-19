@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIR.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,8 +26,32 @@ namespace AIR.WinForm
         private void btnCreate_Click(object sender, EventArgs e)
         {
             // Check for user name, and password confirmation
+            if (txtbxUserName.Text == "" || txtbxUserPassConf.Text == "" || txtbxUserPassword.Text == "")
+            {
+                MessageBox.Show("Please enter all the fields to register new user");
+                return;
+            }
+
+            string userName, userPassword;
+            userName = txtbxUserName.Text;
+            userPassword = txtbxUserPassword.Text;
 
             // Create User/Admin here
+            bool bAdmin;
+
+            if(rdbtnAdmin.Checked)
+                bAdmin = true;
+            else 
+                bAdmin = false;
+
+            var bres = API.RegisterNewUser(userName, userPassword, bAdmin);
+
+            if (bres)
+            {
+                MessageBox.Show("New User registered.!");
+            }
+            else
+                MessageBox.Show("New user not registered");
         }
     }
 }

@@ -8,15 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using AIR.DAL;
+
 namespace AIR.WinForm
 {
     public partial class frmMain : Form
     {
+        frmLogin loginForm;
+        frmNewUser newuserForm;
+       
         public frmMain()
         {
             InitializeComponent();
 
-            frmLogin loginForm = new frmLogin();
+            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+
+            API.Init();
+
+            loginForm = new frmLogin();
             loginForm.MdiParent = this;
             loginForm.Show();
         }

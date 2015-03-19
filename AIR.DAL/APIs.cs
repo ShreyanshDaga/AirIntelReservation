@@ -18,13 +18,18 @@ namespace AIR.DAL
         {
             // Initialization
             Context = new DBContext("TestConn_Local");
+            Context.Database.Initialize(true);
             SignedInAdmins = new List<Admin>(5);
             SignInUsers = new List<User>(5);
         }
         // For DEBUG
         public static void Init()
         {
-            
+
+            //if(!Context.Database.Exists())
+            //{
+            //    Context.Database.Create();
+            //}
         }
 
         // For User/Admin Management
@@ -37,7 +42,24 @@ namespace AIR.DAL
             // Only for basic console app
             return SignedInAdmins[0];
         }
+        public static bool RegisterNewUser(string userName, string userPassword, bool bAdmin)
+        {
+            if(bAdmin)
+            {
+                var Admin = new Admin { Name = userName, PasswordHash = userPassword};
+                Context.Admins.Add(Admin);
+                Context.SaveChanges();
+            }
+            else
+            {
+                var User = new User { UserName = userName, Password = userPassword};
+                Context.Users.Add(User);
+                Context.SaveChanges();
+            }
 
+
+            return true;
+        }
         public static User GetLoggedInUser()
         {
             // Only for basic console app
@@ -106,8 +128,9 @@ namespace AIR.DAL
 
             return false;
         }
-        public static bool UserSignIn(User user)
+        public static bool UserSignIn(string userName, string userPassword)
         {
+            User user = new User();
             SignInUsers.Add(user);
             return true;
         }
@@ -265,6 +288,6 @@ namespace AIR.DAL
         //{
         //    var flight = Context.Flights.Single(f => f.Id == iFlightId);
                         
-        //}                
+        //}                                
     }
 }
