@@ -73,7 +73,7 @@ namespace AIR.WinForm
                     lblLoginErrorMessage.ForeColor = Color.Red;
                 }
 
-                frmAdmin admin = new frmAdmin();
+                frmAdmin admin = new frmAdmin(API.GetLogginAdmin());
                 admin.MdiParent = this.MdiParent;
                 admin.Show();
                 this.Close();
