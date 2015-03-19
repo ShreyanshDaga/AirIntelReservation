@@ -98,6 +98,12 @@
             this.txtbxAdminOldPwd = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.grpbxPersonalDetails.SuspendLayout();
             this.tbctMainPanel.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -503,6 +509,12 @@
             // 
             // grpbxAddNewFlight
             // 
+            this.grpbxAddNewFlight.Controls.Add(this.label26);
+            this.grpbxAddNewFlight.Controls.Add(this.label27);
+            this.grpbxAddNewFlight.Controls.Add(this.textBox2);
+            this.grpbxAddNewFlight.Controls.Add(this.label23);
+            this.grpbxAddNewFlight.Controls.Add(this.label25);
+            this.grpbxAddNewFlight.Controls.Add(this.textBox1);
             this.grpbxAddNewFlight.Controls.Add(this.label18);
             this.grpbxAddNewFlight.Controls.Add(this.label17);
             this.grpbxAddNewFlight.Controls.Add(this.label16);
@@ -531,7 +543,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(176, 278);
+            this.label18.Location = new System.Drawing.Point(176, 259);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(13, 13);
             this.label18.TabIndex = 17;
@@ -540,29 +552,29 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(22, 278);
+            this.label17.Location = new System.Drawing.Point(2, 259);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(55, 13);
+            this.label17.Size = new System.Drawing.Size(75, 13);
             this.label17.TabIndex = 16;
-            this.label17.Text = "Base Fare";
+            this.label17.Text = "Economy Fare";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(18, 223);
+            this.label16.Location = new System.Drawing.Point(12, 223);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(20, 13);
+            this.label16.Size = new System.Drawing.Size(65, 13);
             this.label16.TabIndex = 15;
-            this.label16.Text = "Arr";
+            this.label16.Text = "Arrrival Date";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(11, 197);
+            this.label15.Location = new System.Drawing.Point(-3, 197);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(27, 13);
+            this.label15.Size = new System.Drawing.Size(80, 13);
             this.label15.TabIndex = 14;
-            this.label15.Text = "Dep";
+            this.label15.Text = "Departure Date";
             // 
             // label14
             // 
@@ -628,7 +640,7 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(96, 274);
+            this.textBox8.Location = new System.Drawing.Point(96, 255);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(75, 20);
             this.textBox8.TabIndex = 6;
@@ -637,18 +649,18 @@
             // 
             this.dtArr.CustomFormat = "MM/dd/yyyy    HH:mm";
             this.dtArr.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtArr.Location = new System.Drawing.Point(58, 219);
+            this.dtArr.Location = new System.Drawing.Point(96, 219);
             this.dtArr.Name = "dtArr";
-            this.dtArr.Size = new System.Drawing.Size(181, 20);
+            this.dtArr.Size = new System.Drawing.Size(143, 20);
             this.dtArr.TabIndex = 5;
             // 
             // dtDep
             // 
             this.dtDep.CustomFormat = "MM/dd/yyyy    HH:mm";
             this.dtDep.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDep.Location = new System.Drawing.Point(58, 193);
+            this.dtDep.Location = new System.Drawing.Point(96, 193);
             this.dtDep.Name = "dtDep";
-            this.dtDep.Size = new System.Drawing.Size(181, 20);
+            this.dtDep.Size = new System.Drawing.Size(143, 20);
             this.dtDep.TabIndex = 4;
             // 
             // textBox7
@@ -745,6 +757,56 @@
             this.label24.Size = new System.Drawing.Size(72, 13);
             this.label24.TabIndex = 12;
             this.label24.Text = "Old Password";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(176, 285);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(13, 13);
+            this.label23.TabIndex = 20;
+            this.label23.Text = "$";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(4, 285);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(73, 13);
+            this.label25.TabIndex = 19;
+            this.label25.Text = "Business Fare";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(96, 281);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(75, 20);
+            this.textBox1.TabIndex = 18;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(176, 311);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(13, 13);
+            this.label26.TabIndex = 23;
+            this.label26.Text = "$";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(27, 311);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(50, 13);
+            this.label27.TabIndex = 22;
+            this.label27.Text = "First Fare";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(96, 307);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(75, 20);
+            this.textBox2.TabIndex = 21;
             // 
             // frmAdmin
             // 
@@ -846,5 +908,11 @@
         private System.Windows.Forms.TextBox txtbxAdminNewPwd;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

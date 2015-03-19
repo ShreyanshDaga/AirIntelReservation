@@ -15,8 +15,9 @@ namespace AIR.Entities
         public string Source { get; set; }              // Flight source
         public DateTime Departure { get; set; }          // Departure Date Time
         public DateTime Arrival { get; set; }            // Arrival Date Time
-        public float BaseFare { get; set; }             // Base Fare 
-        public int Distance { get; set; }               // Flight's distance
+        public float EconomyFare { get; set; }           // Base Fare 
+        public float BusinessFare { get; set; }          // Business Fare 
+        public float FirstFare { get; set; }             // Firstclass Fare         
 
         // Navigational Properties
         public virtual Aircraft Aircraft { get; set; }  // Aicraft used by the flight

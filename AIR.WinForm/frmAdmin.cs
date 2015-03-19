@@ -41,6 +41,10 @@ namespace AIR.WinForm
             var newAircraft = new Aircraft { Name = txtbxNewAircraftName.Text, FusalageWidth = iWidth, BusinessSeats = iBusinessSeats, EconomySeats = iEconSeats, FirstClassSeats=iFirstSeats, TotalSeats = iTotal};
 
             API.AddNewAircraft(newAircraft, loggedinAdmin.Id);
+
+            MessageBox.Show("Aircraft added successfully");
+
+            btnClear_Click(sender, e);
         }        
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -91,7 +95,7 @@ namespace AIR.WinForm
         private bool Validate_EditPersonalDetails()
         {
             // Check for validation errors here
-            return true;            
+            return true;
         }
     }
 }
