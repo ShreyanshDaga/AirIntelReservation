@@ -39,7 +39,7 @@
             // rdbtnUser
             // 
             this.rdbtnUser.AutoSize = true;
-            this.rdbtnUser.Location = new System.Drawing.Point(118, 12);
+            this.rdbtnUser.Location = new System.Drawing.Point(49, 12);
             this.rdbtnUser.Name = "rdbtnUser";
             this.rdbtnUser.Size = new System.Drawing.Size(47, 17);
             this.rdbtnUser.TabIndex = 0;
@@ -50,7 +50,7 @@
             // rdbtnAdmin
             // 
             this.rdbtnAdmin.AutoSize = true;
-            this.rdbtnAdmin.Location = new System.Drawing.Point(209, 12);
+            this.rdbtnAdmin.Location = new System.Drawing.Point(140, 12);
             this.rdbtnAdmin.Name = "rdbtnAdmin";
             this.rdbtnAdmin.Size = new System.Drawing.Size(85, 17);
             this.rdbtnAdmin.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(136, 97);
+            this.btnLogin.Location = new System.Drawing.Point(67, 97);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(140, 33);
             this.btnLogin.TabIndex = 2;
@@ -69,7 +69,7 @@
             // 
             // txtbxUserName
             // 
-            this.txtbxUserName.Location = new System.Drawing.Point(136, 45);
+            this.txtbxUserName.Location = new System.Drawing.Point(67, 45);
             this.txtbxUserName.Name = "txtbxUserName";
             this.txtbxUserName.Size = new System.Drawing.Size(140, 20);
             this.txtbxUserName.TabIndex = 3;
@@ -77,7 +77,7 @@
             // 
             // txtbxUserPassword
             // 
-            this.txtbxUserPassword.Location = new System.Drawing.Point(136, 71);
+            this.txtbxUserPassword.Location = new System.Drawing.Point(67, 71);
             this.txtbxUserPassword.Name = "txtbxUserPassword";
             this.txtbxUserPassword.Size = new System.Drawing.Size(140, 20);
             this.txtbxUserPassword.TabIndex = 4;
@@ -85,7 +85,7 @@
             // 
             // btnNewUser
             // 
-            this.btnNewUser.Location = new System.Drawing.Point(135, 136);
+            this.btnNewUser.Location = new System.Drawing.Point(66, 136);
             this.btnNewUser.Name = "btnNewUser";
             this.btnNewUser.Size = new System.Drawing.Size(143, 27);
             this.btnNewUser.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 168);
+            this.ClientSize = new System.Drawing.Size(275, 168);
             this.Controls.Add(this.btnNewUser);
             this.Controls.Add(this.txtbxUserPassword);
             this.Controls.Add(this.txtbxUserName);

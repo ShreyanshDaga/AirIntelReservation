@@ -21,8 +21,7 @@ namespace AIR.WinForm
         {
             frmNewUser formNewUser = new frmNewUser();
 
-            formNewUser.MdiParent = this.MdiParent;
-
+            formNewUser.MdiParent = this.MdiParent;            
             formNewUser.Show();
 
         }

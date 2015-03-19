@@ -21,5 +21,12 @@ namespace AIR.WinForm
         {
             this.Close();
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            // Check for user name, and password confirmation
+
+            // Create User/Admin here
+        }
     }
 }
