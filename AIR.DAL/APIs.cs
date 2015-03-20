@@ -289,5 +289,10 @@ namespace AIR.DAL
         //    var flight = Context.Flights.Single(f => f.Id == iFlightId);
                         
         //}                                
+
+        public static List<Aircraft> GetAllAircrafts()
+        {
+            return Context.Aircrafts.ToList();
+        }
     }
 }
