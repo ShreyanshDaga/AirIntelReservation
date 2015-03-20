@@ -17,6 +17,8 @@ namespace AIR.WinForm
         Admin loggedinAdmin;
         List<Aircraft> aircraftsInService;
         List<Flight> scheduledFlights;
+        frmFlightDetail frmFlightDetail;
+        frmAircraftDetail frmAircraftDetail;
 
         public frmAdmin(Admin loggedInAdmin)
         {
@@ -191,7 +193,29 @@ namespace AIR.WinForm
 
         private void lstvwFlights_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (this.lstvwFlights.SelectedIndices.Count == 0)
+                return;
+
+            var flightIndex = this.lstvwFlights.SelectedIndices[0];
+
+            var flight = scheduledFlights[flightIndex];
+
+            if(frmFlightDetail == null)
+            {
+                frmFlightDetail = new frmFlightDetail(flight);
+                frmFlightDetail.FormClosed += frmFlightDetail_FormClosed;
+                frmFlightDetail.MdiParent = this.MdiParent;
+                frmFlightDetail.Show();
+            }
+            else
+            {
+                frmFlightDetail.Activate();
+            }
+        }
+
+        void frmFlightDetail_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmFlightDetail = null;
         }
     }
 }
