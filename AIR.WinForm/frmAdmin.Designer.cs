@@ -105,6 +105,7 @@
             this.btnSignOut = new System.Windows.Forms.Button();
             this.lbluserName = new System.Windows.Forms.Label();
             this.btnRefreshFlights = new System.Windows.Forms.Button();
+            this.btnRefreshAircrafts = new System.Windows.Forms.Button();
             this.grpbxPersonalDetails.SuspendLayout();
             this.tbctMainPanel.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -213,6 +214,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnRefreshAircrafts);
             this.tabPage1.Controls.Add(this.lstvwAircrafts);
             this.tabPage1.Controls.Add(this.grpbxAddNewAircraft);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -467,13 +469,13 @@
             // columnHeader7
             // 
             this.columnHeader7.Text = "Flight #";
-            this.columnHeader7.Width = 69;
+            this.columnHeader7.Width = 73;
             // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "From";
             this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader8.Width = 50;
+            this.columnHeader8.Width = 53;
             // 
             // columnHeader9
             // 
@@ -831,6 +833,17 @@
             this.btnRefreshFlights.TabIndex = 2;
             this.btnRefreshFlights.Text = "Refresh List";
             this.btnRefreshFlights.UseVisualStyleBackColor = true;
+            this.btnRefreshFlights.Click += new System.EventHandler(this.btnRefreshFlights_Click);
+            // 
+            // btnRefreshAircrafts
+            // 
+            this.btnRefreshAircrafts.Location = new System.Drawing.Point(261, 352);
+            this.btnRefreshAircrafts.Name = "btnRefreshAircrafts";
+            this.btnRefreshAircrafts.Size = new System.Drawing.Size(110, 45);
+            this.btnRefreshAircrafts.TabIndex = 2;
+            this.btnRefreshAircrafts.Text = "Refresh List";
+            this.btnRefreshAircrafts.UseVisualStyleBackColor = true;
+            this.btnRefreshAircrafts.Click += new System.EventHandler(this.btnRefreshAircrafts_Click);
             // 
             // frmAdmin
             // 
@@ -941,5 +954,6 @@
         private System.Windows.Forms.Button btnSignOut;
         private System.Windows.Forms.Label lbluserName;
         private System.Windows.Forms.Button btnRefreshFlights;
+        private System.Windows.Forms.Button btnRefreshAircrafts;
     }
 }
