@@ -104,6 +104,8 @@
             this.txtbxNewFLightFirstFare = new System.Windows.Forms.TextBox();
             this.btnSignOut = new System.Windows.Forms.Button();
             this.lbluserName = new System.Windows.Forms.Label();
+            this.btnRefreshFlights = new System.Windows.Forms.Button();
+            this.btnRefreshAircrafts = new System.Windows.Forms.Button();
             this.grpbxPersonalDetails.SuspendLayout();
             this.tbctMainPanel.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -212,6 +214,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnRefreshAircrafts);
             this.tabPage1.Controls.Add(this.lstvwAircrafts);
             this.tabPage1.Controls.Add(this.grpbxAddNewAircraft);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -433,6 +436,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnRefreshFlights);
             this.tabPage2.Controls.Add(this.lstvwFlights);
             this.tabPage2.Controls.Add(this.grpbxAddNewFlight);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -465,28 +469,31 @@
             // columnHeader7
             // 
             this.columnHeader7.Text = "Flight #";
+            this.columnHeader7.Width = 73;
             // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "From";
             this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader8.Width = 58;
+            this.columnHeader8.Width = 53;
             // 
             // columnHeader9
             // 
             this.columnHeader9.Text = "To";
             this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader9.Width = 52;
+            this.columnHeader9.Width = 50;
             // 
             // columnHeader10
             // 
             this.columnHeader10.Text = "Dep";
             this.columnHeader10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader10.Width = 98;
             // 
             // columnHeader11
             // 
             this.columnHeader11.Text = "Arr";
             this.columnHeader11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader11.Width = 95;
             // 
             // columnHeader12
             // 
@@ -818,6 +825,26 @@
             this.lbluserName.TabIndex = 5;
             this.lbluserName.Text = "Hello:   ";
             // 
+            // btnRefreshFlights
+            // 
+            this.btnRefreshFlights.Location = new System.Drawing.Point(257, 353);
+            this.btnRefreshFlights.Name = "btnRefreshFlights";
+            this.btnRefreshFlights.Size = new System.Drawing.Size(88, 44);
+            this.btnRefreshFlights.TabIndex = 2;
+            this.btnRefreshFlights.Text = "Refresh List";
+            this.btnRefreshFlights.UseVisualStyleBackColor = true;
+            this.btnRefreshFlights.Click += new System.EventHandler(this.btnRefreshFlights_Click);
+            // 
+            // btnRefreshAircrafts
+            // 
+            this.btnRefreshAircrafts.Location = new System.Drawing.Point(261, 352);
+            this.btnRefreshAircrafts.Name = "btnRefreshAircrafts";
+            this.btnRefreshAircrafts.Size = new System.Drawing.Size(110, 45);
+            this.btnRefreshAircrafts.TabIndex = 2;
+            this.btnRefreshAircrafts.Text = "Refresh List";
+            this.btnRefreshAircrafts.UseVisualStyleBackColor = true;
+            this.btnRefreshAircrafts.Click += new System.EventHandler(this.btnRefreshAircrafts_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -926,5 +953,7 @@
         private System.Windows.Forms.TextBox txtbxNewFlightBusinessFare;
         private System.Windows.Forms.Button btnSignOut;
         private System.Windows.Forms.Label lbluserName;
+        private System.Windows.Forms.Button btnRefreshFlights;
+        private System.Windows.Forms.Button btnRefreshAircrafts;
     }
 }
