@@ -32,7 +32,7 @@ namespace AIR.WinForm
         {
             try
             {
-                this.adminClient = new ReservationServiceRef.ReservationServiceClient();
+                this.adminClient = new ReservationServiceRef.ReservationServiceClient();                
             }
             catch(Exception ex)
             {
