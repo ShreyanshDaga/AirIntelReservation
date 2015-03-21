@@ -16,7 +16,14 @@ namespace AIR.WCFService
         {
             AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
             API.Init();
-        }        
+        }
+
+        #region Custom Service PING        
+        public bool Ping()
+        {
+            return true;
+        }
+        #endregion
 
         #region Admin APIs
         public APIResult CreateNewAdmin(Admin newAdmin)

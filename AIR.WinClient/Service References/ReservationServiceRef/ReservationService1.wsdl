@@ -8,6 +8,12 @@
       <xsd:import schemaLocation="http://localhost:9999/AirIntelReservationService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IReservationService_Ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_Ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
   <wsdl:message name="IReservationService_CreateNewAdmin_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateNewAdmin" />
   </wsdl:message>
@@ -165,6 +171,10 @@
     <wsdl:part name="parameters" element="tns:GetAllBookingsForFlightResponse" />
   </wsdl:message>
   <wsdl:portType name="IReservationService">
+    <wsdl:operation name="Ping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/Ping" message="tns:IReservationService_Ping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/PingResponse" message="tns:IReservationService_Ping_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateNewAdmin">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/CreateNewAdmin" message="tns:IReservationService_CreateNewAdmin_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/CreateNewAdminResponse" message="tns:IReservationService_CreateNewAdmin_OutputMessage" />
@@ -272,6 +282,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReservationService" type="tns:IReservationService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CreateNewAdmin">
       <soap:operation soapAction="http://tempuri.org/IReservationService/CreateNewAdmin" style="document" />
       <wsdl:input>

@@ -13,6 +13,12 @@ namespace AIR.WCFService
     [ServiceContract]
     public interface IReservationService
     {
+        #region custom service ping
+        [OperationContract]
+        bool Ping();
+        #endregion
+
+
         #region AdminAPIs
         [OperationContract]
         APIResult CreateNewAdmin(Admin newAdmin);

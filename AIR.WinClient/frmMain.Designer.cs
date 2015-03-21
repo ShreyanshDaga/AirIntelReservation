@@ -408,7 +408,7 @@
             this.txtbxSeatMap.Multiline = true;
             this.txtbxSeatMap.Name = "txtbxSeatMap";
             this.txtbxSeatMap.ReadOnly = true;
-            this.txtbxSeatMap.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtbxSeatMap.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtbxSeatMap.Size = new System.Drawing.Size(274, 326);
             this.txtbxSeatMap.TabIndex = 0;
             this.txtbxSeatMap.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

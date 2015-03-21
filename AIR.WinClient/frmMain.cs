@@ -106,6 +106,8 @@ namespace AIR.WinClient
             try
             {
                 this.userClient = new ReservationServiceRef.ReservationServiceClient();
+                if (!userClient.Ping())
+                    MessageBox.Show("Air Intel Reservation Service is Unavailable!");
             }
             catch(Exception ex)
             {
@@ -125,7 +127,7 @@ namespace AIR.WinClient
         {
             iFlightIndex = lstvwFlights.SelectedIndices[0];
             
-            if(iFlightIndex > 0)
+            if(iFlightIndex >= 0)
             {
                 this.selectedFlight = scheduledFlights[iFlightIndex];
 
@@ -152,7 +154,7 @@ namespace AIR.WinClient
             int iTotalRows = iBusinessRows + iFirstRows + iEconRows + 6;
 
             string[] seatMap = new string[iTotalRows];
-            this.seatMap = new bool[iWidth, iTotalRows];
+            this.seatMap = new bool[iTotalRows, iWidth];
 
             GetSeatMapFromBookings(selectedFlight.Id);
 
@@ -166,7 +168,7 @@ namespace AIR.WinClient
                     seatMap[1] += ("--- FIRST CLASS ---");
 
                 for (int j = 2; j < 2 + iFirstRows; j++)
-                {
+                {                    
                     if (this.seatMap[j - 2, i])
                         seatMap[j] += (" " + "O" + " ");
                     else
@@ -185,9 +187,9 @@ namespace AIR.WinClient
                 if (i == 0)
                     seatMap[iFirstRows + iBusinessRows + 4] += ("--- ECONOMY CLASS ---");
 
-                for (int j = iFirstRows + iBusinessRows + 4; j < iTotalRows + 4; j++)
+                for (int j = iFirstRows + iBusinessRows + 5; j < iTotalRows + 5; j++)
                 {
-                    if (this.seatMap[j - 4, i])
+                    if (this.seatMap[j - 5, i])
                         seatMap[j] += (" " + "O" + " ");
                     else
                         seatMap[j] += (" " + "X" + " ");

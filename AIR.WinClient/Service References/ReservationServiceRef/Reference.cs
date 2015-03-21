@@ -15,6 +15,12 @@ namespace AIR.WinClient.ReservationServiceRef {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReservationServiceRef.IReservationService")]
     public interface IReservationService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/Ping", ReplyAction="http://tempuri.org/IReservationService/PingResponse")]
+        bool Ping();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/Ping", ReplyAction="http://tempuri.org/IReservationService/PingResponse")]
+        System.Threading.Tasks.Task<bool> PingAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/CreateNewAdmin", ReplyAction="http://tempuri.org/IReservationService/CreateNewAdminResponse")]
         AIR.Entities.APIResult CreateNewAdmin(AIR.Entities.Admin newAdmin);
         
@@ -197,6 +203,14 @@ namespace AIR.WinClient.ReservationServiceRef {
         
         public ReservationServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool Ping() {
+            return base.Channel.Ping();
+        }
+        
+        public System.Threading.Tasks.Task<bool> PingAsync() {
+            return base.Channel.PingAsync();
         }
         
         public AIR.Entities.APIResult CreateNewAdmin(AIR.Entities.Admin newAdmin) {
