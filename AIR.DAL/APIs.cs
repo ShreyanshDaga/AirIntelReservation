@@ -92,7 +92,7 @@ namespace AIR.DAL
             
             try
             {
-                var adminInDB = Context.Admins.Single(a => a.Name == adminName);
+                var adminInDB = Context.Admins.Single(a => a.UserName == adminName);
 
                 if(adminInDB != null)
                 {

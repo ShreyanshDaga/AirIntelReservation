@@ -93,19 +93,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\ReservationServiceRef\AIR.Entities.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReservationServiceRef\Arrays.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReservationServiceRef\service.wsdl" />
-    <None Include="Service References\ReservationServiceRef\service.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReservationServiceRef\service1.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ReservationServiceRef\ReservationService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -121,6 +121,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ReservationServiceRef\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ReservationServiceRef\configuration91.svcinfo" />

@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using AIR.Entities;
+
 namespace AIR.WinClient
 {
     public partial class frmMain : Form
@@ -112,7 +114,5 @@ namespace AIR.WinClient
         {
             grpbxFlightDetails.Enabled = true;
         }
-
-
     }
 }
