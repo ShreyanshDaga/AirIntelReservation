@@ -17,6 +17,6 @@ namespace AIR.Entities
         [DataMember]
         public string UserName { get; set; }        // User name
         [DataMember]
-        public string PasswordHash { get; set; }    // Password, not storing it directly
+        public string PasswordHash { get; set; }    // Password, not storing it directly6
     }   
 }

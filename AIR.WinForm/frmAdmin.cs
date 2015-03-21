@@ -1,5 +1,4 @@
-﻿using AIR.DAL;
-using AIR.Entities;
+﻿using AIR.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,11 +18,13 @@ namespace AIR.WinForm
         List<Flight> scheduledFlights;
         frmFlightDetail frmFlightDetail;
         frmAircraftDetail frmAircraftDetail;
+        ReservationServiceRef.ReservationServiceClient adminClient;
 
-        public frmAdmin(Admin loggedInAdmin)
+        public frmAdmin(ReservationServiceRef.ReservationServiceClient adminClient,Admin loggedInAdmin)
         {
             InitializeComponent();
             this.loggedinAdmin = loggedInAdmin;
+            this.adminClient = adminClient;
 
             txtbxAdminName.Text = loggedInAdmin.Name;
             txtbxAdminUName.Text = loggedInAdmin.Name;
@@ -31,7 +32,6 @@ namespace AIR.WinForm
 
             // List of aircrafts
             Refresh_Aircrafts();
-
             // List of Flights     
             Refresh_Flights();
         }
@@ -50,10 +50,13 @@ namespace AIR.WinForm
             iTotal = iBusinessSeats + iEconSeats + iFirstSeats;
 
             var newAircraft = new Aircraft { Name = txtbxNewAircraftName.Text, FusalageWidth = iWidth, BusinessSeats = iBusinessSeats, EconomySeats = iEconSeats, FirstClassSeats=iFirstSeats, TotalSeats = iTotal};
+            
+            var res = adminClient.CreateNewAircraft(newAircraft, loggedinAdmin.Id);
 
-            API.AddNewAircraft(newAircraft, loggedinAdmin.Id);
-
-            MessageBox.Show("Aircraft added successfully");
+            if (res.IsSuccess)
+                MessageBox.Show(res.Results["0"]);
+            else
+                MessageBox.Show(res.ErrorMessages["Error"]);
 
             btnClear_Click(sender, e);
             Refresh_Aircrafts();
@@ -134,9 +137,14 @@ namespace AIR.WinForm
 
             Flight newFlight = new Flight { Number = flightNumber, Destination = strTo, Source = strFrom, Arrival = dtArr, Departure = dtDep, Aircraft = selectedAircraft, BusinessFare = fBusinessFare, EconomyFare = fEconFare, FirstFare = fFirstFare };
 
-            API.AddNewFlight(newFlight, loggedinAdmin.Id);
+            //API.AddNewFlight(newFlight, loggedinAdmin.Id);
 
-            MessageBox.Show("New Flight Added Succesfully");
+            var res = adminClient.CreateNewFlight(newFlight, loggedinAdmin.Id);
+
+            if (res.IsSuccess)
+                MessageBox.Show(res.Results["0"]);
+            else
+                MessageBox.Show(res.ErrorMessages["Error"]);
 
             this.btnClearFlight_Click(sender, e);
 
@@ -162,8 +170,13 @@ namespace AIR.WinForm
 
         private void btnSignOut_Click(object sender, EventArgs e)
         {
-            API.AdminSignOut(loggedinAdmin.Id);
-            MessageBox.Show("You have logged out successfully");
+            var res = adminClient.AdminLogout(loggedinAdmin.Id);
+
+            if (res.IsSuccess)
+                MessageBox.Show(res.Results["0"]);
+            else
+                MessageBox.Show(res.ErrorMessages["Error"]);
+            
             this.Close();
         }
 
@@ -171,7 +184,8 @@ namespace AIR.WinForm
         {
             this.lstvwAircrafts.Items.Clear();
             // Refresh List of Aircrafts
-            aircraftsInService = API.GetAllAircrafts();
+            //aircraftsInService = API.GetAllAircrafts();
+            aircraftsInService = adminClient.
 
             foreach (var aircraft in aircraftsInService)
             {

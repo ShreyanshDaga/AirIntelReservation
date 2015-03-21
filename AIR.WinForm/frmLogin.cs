@@ -1,5 +1,4 @@
-﻿using AIR.DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,14 +12,18 @@ namespace AIR.WinForm
 {
     public partial class frmLogin : Form
     {
+        ReservationServiceRef.ReservationServiceClient adminClient;
+        frmNewUser formNewUser;
 
-        public frmLogin()
+        public frmLogin(ReservationServiceRef.ReservationServiceClient adminClient)
         {
             InitializeComponent();
             this.txtbxUserName.GotFocus += txtbxUserName_GotFocus;
             this.txtbxUserPassword.GotFocus += txtbxUserPassword_GotFocus;
             this.txtbxUserName.Leave += txtbxUserName_Leave;
             this.txtbxUserPassword.Leave += txtbxUserPassword_Leave;
+
+            this.adminClient = adminClient;
         }
 
         void txtbxUserPassword_Leave(object sender, EventArgs e)
@@ -47,11 +50,16 @@ namespace AIR.WinForm
 
         private void btnNewUser_Click(object sender, EventArgs e)
         {
-            frmNewUser formNewUser = new frmNewUser();
+            this.formNewUser = new frmNewUser(this.adminClient);
 
-            formNewUser.MdiParent = this.MdiParent;            
-            formNewUser.Show();
+            this.formNewUser.FormClosed += formNewUser_FormClosed;
+            this.formNewUser.MdiParent = this.MdiParent;
+            this.formNewUser.Show();
+        }
 
+        void formNewUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.formNewUser = null;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -64,29 +72,21 @@ namespace AIR.WinForm
 
             userName = txtbxUserName.Text;
             userPassword = txtbxUserPassword.Text;
+                        
 
-            if (rdbtnAdmin.Checked)
+            var res = adminClient.AdminLogin(userName, userPassword);
+
+            if(!res.IsSuccess)
             {
-                if(!API.AdminSignIn(userName, userPassword))
-                {
-                    lblLoginErrorMessage.Text = "Error: Incorrect username/password!";                    
-                    lblLoginErrorMessage.ForeColor = Color.Red;
-                }
-
-                frmAdmin admin = new frmAdmin(API.GetLogginAdmin());
-                admin.MdiParent = this.MdiParent;
-                admin.Show();
-                this.Close();
+                lblLoginErrorMessage.Text = "Error: Incorrect username/password!";                    
+                lblLoginErrorMessage.ForeColor = Color.Red;
             }
 
-            if (rdbtnUser.Checked)
-            {
-                if (!API.UserSignIn(userName, userPassword))
-                {
-                    lblLoginErrorMessage.Text = "Error: Incorrect username/password!";
-                    lblLoginErrorMessage.ForeColor = Color.Red;
-                }
-            }
+            var currentAdmin = adminClient.GetAdminByUserName(userName);
+            frmAdmin admin = new frmAdmin(adminClient, currentAdmin);
+            admin.MdiParent = this.MdiParent;
+            admin.Show();
+            this.Close();                        
         }
     }
 }

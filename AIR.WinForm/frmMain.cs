@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using AIR.DAL;
-
 namespace AIR.WinForm
 {
     public partial class frmMain : Form
@@ -17,19 +15,30 @@ namespace AIR.WinForm
         frmLogin loginForm;
         frmNewUser newuserForm;
         frmAdmin adminPanel;
+        ReservationServiceRef.ReservationServiceClient adminClient;
 
        
         public frmMain()
         {
             InitializeComponent();
-
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
-
-            API.Init();
-
-            loginForm = new frmLogin();
+            InitWCF();            
+            
+            loginForm = new frmLogin(adminClient);
             loginForm.MdiParent = this;
             loginForm.Show();
+        }
+
+        private void InitWCF()
+        {
+            try
+            {
+                this.adminClient = new ReservationServiceRef.ReservationServiceClient();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Air Inter Reservation Server is unavailable!");
+            }
+
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)

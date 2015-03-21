@@ -162,10 +162,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AIR.DAL\AIR.DAL.csproj">
-      <Project>{eaccf02f-5479-4df7-baa9-4eed10411032}</Project>
-      <Name>AIR.DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AIR.Entities\AIR.Entities.csproj">
       <Project>{82544272-e918-4bf8-9553-8437f3bb8292}</Project>
       <Name>AIR.Entities</Name>

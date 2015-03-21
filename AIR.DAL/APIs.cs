@@ -17,8 +17,7 @@ namespace AIR.DAL
         static API()
         {
             // Initialization
-            Context = new DBContext("TestConn_Local");
-            //Context.Database.Initialize(true);
+            Context = new DBContext("TestConn_Local");            
             SignedInAdmins = new List<Admin>(5);
             SignInUsers = new List<User>(5);
         }
