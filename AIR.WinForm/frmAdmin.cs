@@ -136,9 +136,7 @@ namespace AIR.WinForm
             fBusinessFare = (float)Convert.ToDouble(txtbxNewFlightBusinessFare.Text);
             fFirstFare = (float)Convert.ToDouble(txtbxNewFLightFirstFare.Text);
 
-            Flight newFlight = new Flight { Number = flightNumber, Destination = strTo, Source = strFrom, Arrival = dtArr, Departure = dtDep, Aircraft = selectedAircraft, BusinessFare = fBusinessFare, EconomyFare = fEconFare, FirstFare = fFirstFare };
-
-            //API.AddNewFlight(newFlight, loggedinAdmin.Id);
+            Flight newFlight = new Flight { Number = flightNumber, Destination = strTo, Source = strFrom, Arrival = dtArr, Departure = dtDep, AircraftId = selectedAircraft.Id, BusinessFare = fBusinessFare, EconomyFare = fEconFare, FirstFare = fFirstFare };            
 
             var res = adminClient.CreateNewFlight(newFlight, loggedinAdmin.Id);
 

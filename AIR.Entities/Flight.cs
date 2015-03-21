@@ -32,7 +32,7 @@ namespace AIR.Entities
 
         // Navigational Properties        
         [DataMember]
-        public Aircraft Aircraft { get; set; }          // Aicraft used by the flight
+        public virtual Aircraft Aircraft { get; set; }          // Aicraft used by the flight
         [DataMember]
         public int AircraftId { get; set; }             // Aircraft property foreign key
     }
