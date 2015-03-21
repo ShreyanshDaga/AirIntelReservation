@@ -16,6 +16,8 @@ namespace AIR.WCFService
         [OperationContract]
         string AdminLogin(string adminUserName, string adminPassword);
         [OperationContract]
-        string CreateNewAdmin(string strName, string strUserName, string strPassword);        
+        string CreateNewAdmin(Admin newAdmin);
+        [OperationContract]
+        Admin GetAdminByUserName(int iId);
     }
 }

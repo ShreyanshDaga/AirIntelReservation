@@ -23,18 +23,28 @@ namespace AIR.WCFService
             else
                 return "Incorrect username/password";
         }
-
-        public string CreateNewAdmin(string strName, string strUserName, string strPassword)
-        {
-            var newDmin = new Admin();
-
-            newDmin.Name = strName;
-            newDmin.PasswordHash = strPassword;
-
-            if (API.AdminRegister(newDmin))
+        public string CreateNewAdmin(Admin newAdmin)
+        {            
+            if (API.AdminRegister(newAdmin))
                 return "Succesful";
             else
                 return "Fail";
+        }
+        public Admin GetAdminByUserName(int iId)
+        {
+            var admins = API.GetAdmins();
+
+            if (admins != null)
+            {
+                foreach (var admin in admins)
+                {
+                    if (admin.Id == iId)
+                        return admin;
+                }
+                return null;
+            }
+            else
+                return null;
         }
     }
 }
