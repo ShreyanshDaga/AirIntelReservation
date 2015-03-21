@@ -20,15 +20,15 @@ namespace AIR.WinForm
         frmAircraftDetail frmAircraftDetail;
         ReservationServiceRef.ReservationServiceClient adminClient;
 
-        public frmAdmin(ReservationServiceRef.ReservationServiceClient adminClient,Admin loggedInAdmin)
+        public frmAdmin(ReservationServiceRef.ReservationServiceClient adminClient, Admin loggedInAdmin)
         {
             InitializeComponent();
             this.loggedinAdmin = loggedInAdmin;
             this.adminClient = adminClient;
 
-            txtbxAdminName.Text = loggedInAdmin.Name;
-            txtbxAdminUName.Text = loggedInAdmin.Name;
-            this.lbluserName.Text += loggedinAdmin.Name;                                                 
+            txtbxAdminName.Text = this.loggedinAdmin.Name;
+            txtbxAdminUName.Text = this.loggedinAdmin.UserName;
+            this.lbluserName.Text += this.loggedinAdmin.UserName;                                                 
 
             // List of aircrafts
             Refresh_Aircrafts();
@@ -183,9 +183,9 @@ namespace AIR.WinForm
         private void Refresh_Aircrafts()
         {
             this.lstvwAircrafts.Items.Clear();
-            // Refresh List of Aircrafts
-            //aircraftsInService = API.GetAllAircrafts();
-            aircraftsInService = adminClient.
+            
+            // Refresh List of Aircrafts            
+            this.aircraftsInService = adminClient.GetAllAircrafts();
 
             foreach (var aircraft in aircraftsInService)
             {
@@ -202,8 +202,10 @@ namespace AIR.WinForm
         private void Refresh_Flights()
         {
             this.lstvwFlights.Items.Clear();
+            
             // Refresh List of flights
-            this.scheduledFlights = API.GetAllFights();
+            this.scheduledFlights = adminClient.GetAllFlights();
+
             foreach (var flight in scheduledFlights)
             {
                 string[] row = { flight.Number, flight.Source, flight.Destination, flight.Departure.ToString(), flight.Arrival.ToString(), flight.Aircraft.Name };

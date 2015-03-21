@@ -73,7 +73,7 @@ namespace AIR.WinForm
             userName = txtbxUserName.Text;
             userPassword = txtbxUserPassword.Text;
                         
-
+            // Call the service
             var res = adminClient.AdminLogin(userName, userPassword);
 
             if(!res.IsSuccess)

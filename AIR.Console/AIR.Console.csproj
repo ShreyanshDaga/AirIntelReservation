@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,13 +58,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AIR.DAL\AIR.DAL.csproj">
-      <Project>{eaccf02f-5479-4df7-baa9-4eed10411032}</Project>
-      <Name>AIR.DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AIR.Entities\AIR.Entities.csproj">
       <Project>{82544272-e918-4bf8-9553-8437f3bb8292}</Project>
       <Name>AIR.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIR.WCFService\AIR.WCFService.csproj">
+      <Project>{7f6b81f0-3f59-4bab-8eac-4cf8c2c30b6b}</Project>
+      <Name>AIR.WCFService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

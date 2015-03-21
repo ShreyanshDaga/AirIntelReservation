@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f13dd974-5654-4211-b485-f2ce08e1edab" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="029b33db-af1d-49d0-bede-8abd65d29760" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -21,14 +21,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:9991/AirIntelReservationService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="49875389-0cdd-45ff-95cd-13ce534388ec" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="2bb262bf-4792-46ba-ac17-1e15ccaa8a17" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="d0832075-d33b-4fec-954e-cc4423f1bbba" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" />
-    <MetadataFile FileName="AIR.Entities.xsd" MetadataType="Schema" ID="570c8888-2c2b-4eea-860b-f57ce3dfd7ac" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="07694915-a355-495d-bde0-7cf65607b98a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" />
+    <MetadataFile FileName="ReservationService.wsdl" MetadataType="Wsdl" ID="72563515-27eb-49e2-a84a-486f72e0d5c8" SourceId="1" SourceUrl="http://localhost:9991/AirIntelReservationService?wsdl" />
+    <MetadataFile FileName="AirIntelReservationService.xsd" MetadataType="Schema" ID="13e09be8-997d-4962-ab77-b63e0483588e" SourceId="1" SourceUrl="http://localhost:9991/AirIntelReservationService?xsd=xsd0" />
+    <MetadataFile FileName="AirIntelReservationService1.xsd" MetadataType="Schema" ID="61f3d21b-ff5c-458b-9a51-a841f9c46982" SourceId="1" SourceUrl="http://localhost:9991/AirIntelReservationService?xsd=xsd1" />
+    <MetadataFile FileName="AirIntelReservationService2.xsd" MetadataType="Schema" ID="c8d153c7-8876-422e-98e9-7ad42384dcb9" SourceId="1" SourceUrl="http://localhost:9991/AirIntelReservationService?xsd=xsd2" />
+    <MetadataFile FileName="AirIntelReservationService3.xsd" MetadataType="Schema" ID="9b853afa-aa69-4bc1-9bcd-443e7e98977b" SourceId="1" SourceUrl="http://localhost:9991/AirIntelReservationService?xsd=xsd3" />
+    <MetadataFile FileName="AirIntelReservationService.disco" MetadataType="Disco" ID="111d8182-b889-429c-a133-2e6aeaf8484d" SourceId="1" SourceUrl="http://localhost:9991/AirIntelReservationService?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

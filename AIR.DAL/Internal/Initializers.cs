@@ -24,8 +24,8 @@ namespace AIR.DAL.Internal
         private void Seed_TestAdmins(DBContext context)
         {
             // Seeding Test Admins
-            var admin1 = new Admin { Name = "eMusk", PasswordHash = "MuskToMars" };
-            var admin2 = new Admin { Name = "gMoore", PasswordHash = "IntelInside" };
+            var admin1 = new Admin { Name = "Elon Musk", UserName = "emusk", PasswordHash = "pwd" };
+            var admin2 = new Admin { Name = "Gordon Moore", UserName = "gmoore", PasswordHash = "pwd" };
 
             context.Admins.Add(admin1);
             context.Admins.Add(admin2);

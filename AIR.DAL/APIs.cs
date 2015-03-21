@@ -24,11 +24,10 @@ namespace AIR.DAL
         // For DEBUG
         public static void Init()
         {
-
-            //if(!Context.Database.Exists())
-            //{
-            //    Context.Database.Create();
-            //}
+            if (!Context.Database.Exists())
+            {
+                Context.Database.Initialize(true);
+            }
         }
 
         public static List<Admin> GetAdmins()
