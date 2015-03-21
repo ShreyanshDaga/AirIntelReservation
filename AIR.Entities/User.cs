@@ -28,6 +28,6 @@ namespace AIR.Entities
 
         // Navigational Properties
         [DataMember]
-        public virtual ICollection<Booking> Bookings { get; set; }  // User's bookings so far
+        public ICollection<Booking> Bookings { get; set; }  // User's bookings so far
     }
 }

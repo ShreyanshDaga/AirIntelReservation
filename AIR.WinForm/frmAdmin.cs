@@ -28,12 +28,13 @@ namespace AIR.WinForm
 
             txtbxAdminName.Text = this.loggedinAdmin.Name;
             txtbxAdminUName.Text = this.loggedinAdmin.UserName;
-            this.lbluserName.Text += this.loggedinAdmin.UserName;                                                 
+            this.lbluserName.Text += this.loggedinAdmin.UserName;
 
+            Refresh_Flights();
             // List of aircrafts
             Refresh_Aircrafts();
             // List of Flights     
-            Refresh_Flights();
+            
         }
 
         private void btnAddAircraft_Click(object sender, EventArgs e)

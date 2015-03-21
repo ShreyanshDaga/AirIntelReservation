@@ -93,19 +93,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\ReservationServiceRef\AirIntelReservationService.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReservationServiceRef\AirIntelReservationService1.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService41.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReservationServiceRef\AirIntelReservationService2.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService42.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReservationServiceRef\AirIntelReservationService3.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService43.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReservationServiceRef\ReservationService.wsdl" />
+    <None Include="Service References\ReservationServiceRef\ReservationService1.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -123,9 +123,6 @@
     <WCFMetadataStorage Include="Service References\ReservationServiceRef\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ReservationServiceRef\AirIntelReservationService.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\ReservationServiceRef\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +133,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

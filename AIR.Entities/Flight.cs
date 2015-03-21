@@ -30,8 +30,10 @@ namespace AIR.Entities
         [DataMember]
         public float FirstFare { get; set; }             // Firstclass Fare         
 
-        // Navigational Properties
+        // Navigational Properties        
         [DataMember]
-        public virtual Aircraft Aircraft { get; set; }  // Aicraft used by the flight
+        public Aircraft Aircraft { get; set; }          // Aicraft used by the flight
+        [DataMember]
+        public int AircraftId { get; set; }             // Aircraft property foreign key
     }
 }

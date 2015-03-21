@@ -22,10 +22,14 @@ namespace AIR.Entities
         public DateTime BoardingTime { get; set; }      // boarding time
         [DataMember]
         public DateTime DepartureTime { get; set; }     // Same as flight departure to be printed on ticket
-
+        
         [DataMember]
-        public virtual User User { get; set; }          // User
+        public virtual User User { get; set; }          // User        
+        [DataMember]
+        public int UserId { get; set; }
         [DataMember]
         public virtual Flight Flight { get; set; }      // Flight
+        [DataMember]
+        public int FlightId { get; set; }
     }
 }

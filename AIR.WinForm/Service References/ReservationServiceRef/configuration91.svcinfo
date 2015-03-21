@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="CJ6kvys1vcyOO2lKsheRN6MLano=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="clEKtXmXZiF4OX0aLpGmsBuGl/8=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IReservationService">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IReservationService" contract="ReservationServiceRef.IReservationService" bindingType="basicHttpBinding" address="http://localhost:9991/AirIntelReservationService" bindingConfiguration="BasicHttpBinding_IReservationService">
+    <endpoint name="BasicHttpBinding_IReservationService" contract="ReservationServiceRef.IReservationService" bindingType="basicHttpBinding" address="http://localhost:9999/AirIntelReservationService" bindingConfiguration="BasicHttpBinding_IReservationService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:9991/AirIntelReservationService</serializedValue>
+          <serializedValue>http://localhost:9999/AirIntelReservationService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

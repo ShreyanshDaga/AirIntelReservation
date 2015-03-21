@@ -33,13 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -128,7 +121,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\DataSources\AIR.Entities.Admin.datasource" />
     <None Include="Properties\DataSources\AIR.Entities.Aircraft.datasource" />
     <None Include="Properties\DataSources\AIR.Entities.APIResult.datasource" />
@@ -144,22 +136,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\ReservationServiceRef\AirIntelReservationService.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReservationServiceRef\AirIntelReservationService1.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService41.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReservationServiceRef\AirIntelReservationService2.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService42.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReservationServiceRef\AirIntelReservationService3.xsd">
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService43.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReservationServiceRef\ReservationService.wsdl" />
+    <None Include="Service References\ReservationServiceRef\ReservationService1.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AIR.Entities\AIR.Entities.csproj">
@@ -174,9 +168,6 @@
     <WCFMetadataStorage Include="Service References\ReservationServiceRef\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ReservationServiceRef\AirIntelReservationService.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\ReservationServiceRef\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +178,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
