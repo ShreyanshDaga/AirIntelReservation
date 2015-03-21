@@ -114,5 +114,15 @@ namespace AIR.WinClient
         {
             grpbxFlightDetails.Enabled = true;
         }
+
+        private void btnRefreshFlights_Click(object sender, EventArgs e)
+        {
+            RefreshFlights();
+        }
+
+        private void lstvwFlights_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

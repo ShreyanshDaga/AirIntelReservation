@@ -199,7 +199,7 @@ namespace AIR.DAL
         }        
         public static List<Flight> GetAllFights()
         {
-            return Context.Flights.ToList();
+            return Context.Flights.Include("Aircraft").ToList();
         }
         public static Flight GetFlightDetail(int iFlightId)
         {
