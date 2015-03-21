@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f13dd974-5654-4211-b485-f2ce08e1edab" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="49875389-0cdd-45ff-95cd-13ce534388ec" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="2bb262bf-4792-46ba-ac17-1e15ccaa8a17" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="d0832075-d33b-4fec-954e-cc4423f1bbba" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" />
+    <MetadataFile FileName="AIR.Entities.xsd" MetadataType="Schema" ID="570c8888-2c2b-4eea-860b-f57ce3dfd7ac" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="07694915-a355-495d-bde0-7cf65607b98a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

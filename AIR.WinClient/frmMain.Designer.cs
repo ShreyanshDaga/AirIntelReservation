@@ -31,7 +31,7 @@
             this.grbbxBooking = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRefreshFlights = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstvwFlights = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -82,7 +82,7 @@
             // grbbxBooking
             // 
             this.grbbxBooking.Controls.Add(this.btnBookFlight);
-            this.grbbxBooking.Controls.Add(this.listView1);
+            this.grbbxBooking.Controls.Add(this.lstvwFlights);
             this.grbbxBooking.Controls.Add(this.btnRefreshFlights);
             this.grbbxBooking.Controls.Add(this.label1);
             this.grbbxBooking.Location = new System.Drawing.Point(12, 31);
@@ -111,23 +111,23 @@
             this.btnRefreshFlights.Text = "Refresh List";
             this.btnRefreshFlights.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // lstvwFlights
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstvwFlights.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(6, 47);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(396, 395);
-            this.listView1.TabIndex = 4;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lstvwFlights.FullRowSelect = true;
+            this.lstvwFlights.GridLines = true;
+            this.lstvwFlights.Location = new System.Drawing.Point(6, 47);
+            this.lstvwFlights.MultiSelect = false;
+            this.lstvwFlights.Name = "lstvwFlights";
+            this.lstvwFlights.Size = new System.Drawing.Size(396, 395);
+            this.lstvwFlights.TabIndex = 4;
+            this.lstvwFlights.UseCompatibleStateImageBehavior = false;
+            this.lstvwFlights.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -546,7 +546,7 @@
         private System.Windows.Forms.GroupBox grbbxBooking;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRefreshFlights;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstvwFlights;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;

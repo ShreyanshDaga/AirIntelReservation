@@ -17,6 +17,7 @@ namespace AIR.WinForm
         frmLogin loginForm;
         frmNewUser newuserForm;
         frmAdmin adminPanel;
+
        
         public frmMain()
         {

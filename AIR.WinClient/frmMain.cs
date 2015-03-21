@@ -13,11 +13,16 @@ namespace AIR.WinClient
 {
     public partial class frmMain : Form
     {
+        ReservationServiceRef.ReservationServiceClient client;
+
         public frmMain()
         {
             InitializeComponent();
 
             InitWCFService();
+
+            RefreshFlights();
+
             int iWidth = 10;
             int iBusinessSeats = 10, iFirstSeats = 5, iEconomySeats = 40;
 
@@ -72,10 +77,35 @@ namespace AIR.WinClient
             grpbxFlightDetails.Enabled = false;
         }
 
+        private void RefreshFlights()
+        {
+            this.lstvwFlights.Items.Clear();
+            
+            var allflights = client.GetAllFlights();
+
+            if (allflights == null)
+                return;
+
+            // Refresh List of flights            
+            foreach (var flight in allflights)
+            {
+                string[] row = { flight.Number, flight.Source, flight.Destination, flight.Departure.ToString(), flight.Arrival.ToString(), flight.Aircraft.Name };
+                var listViewItem = new ListViewItem(row);
+                this.lstvwFlights.Items.Add(listViewItem);
+            }
+        }
+
         private void InitWCFService()
         {
-            BasicHttpBinding httpBinding = new BasicHttpBinding();
-
+            try
+            {
+                this.client = new ReservationServiceRef.ReservationServiceClient();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Air Intel Reservation Service is Unavailable!");
+            }
+                        
         }
 
         private void btnBookFlight_Click(object sender, EventArgs e)
