@@ -30,11 +30,11 @@ namespace AIR.WinForm
             txtbxAdminUName.Text = this.loggedinAdmin.UserName;
             this.lbluserName.Text += this.loggedinAdmin.UserName;
 
+
+            // List of Flights
             Refresh_Flights();
             // List of aircrafts
-            Refresh_Aircrafts();
-            // List of Flights     
-            
+            Refresh_Aircrafts();                           
         }
 
         private void btnAddAircraft_Click(object sender, EventArgs e)

@@ -15,7 +15,12 @@ namespace AIR.WinClient
 {
     public partial class frmMain : Form
     {
-        ReservationServiceRef.ReservationServiceClient client;
+        ReservationServiceRef.ReservationServiceClient userClient;
+        List<Flight> scheduledFlights;
+        Flight selectedFlight;
+        int iFlightIndex;
+        int iBusinessRows, iFirstRows, iEconRows, iWidth;
+        bool[,] seatMap;
 
         public frmMain()
         {
@@ -78,30 +83,29 @@ namespace AIR.WinClient
 
             grpbxFlightDetails.Enabled = false;
         }
-
         private void RefreshFlights()
         {
             this.lstvwFlights.Items.Clear();
-            
-            var allflights = client.GetAllFlights();
 
-            if (allflights == null)
+            //scheduledFlights.Clear();
+            scheduledFlights = userClient.GetAllFlights();
+
+            if (scheduledFlights == null)
                 return;
 
             // Refresh List of flights            
-            foreach (var flight in allflights)
+            foreach (var flight in scheduledFlights)
             {
                 string[] row = { flight.Number, flight.Source, flight.Destination, flight.Departure.ToString(), flight.Arrival.ToString(), flight.Aircraft.Name };
                 var listViewItem = new ListViewItem(row);
                 this.lstvwFlights.Items.Add(listViewItem);
             }
         }
-
         private void InitWCFService()
         {
             try
             {
-                this.client = new ReservationServiceRef.ReservationServiceClient();
+                this.userClient = new ReservationServiceRef.ReservationServiceClient();
             }
             catch(Exception ex)
             {
@@ -109,20 +113,109 @@ namespace AIR.WinClient
             }
                         
         }
-
         private void btnBookFlight_Click(object sender, EventArgs e)
         {
             grpbxFlightDetails.Enabled = true;
         }
-
         private void btnRefreshFlights_Click(object sender, EventArgs e)
         {
             RefreshFlights();
         }
-
         private void lstvwFlights_SelectedIndexChanged(object sender, EventArgs e)
         {
+            iFlightIndex = lstvwFlights.SelectedIndices[0];
+            
+            if(iFlightIndex > 0)
+            {
+                this.selectedFlight = scheduledFlights[iFlightIndex];
 
+                grpbxFlightDetails.Enabled = true;
+
+                lblSelFlightNumbe.Text = selectedFlight.Number;
+                lblSelFlightFrom.Text = selectedFlight.Source;
+                lblSelFlightTo.Text = selectedFlight.Destination;
+                lblSelFlightArr.Text = selectedFlight.Arrival.ToString();
+                lblSelFlightDep.Text = selectedFlight.Departure.ToString();
+                lblAircraftType.Text = selectedFlight.Aircraft.Name;
+
+                iBusinessRows = selectedFlight.Aircraft.BusinessSeats;
+                iFirstRows = selectedFlight.Aircraft.FirstClassSeats;
+                iEconRows = selectedFlight.Aircraft.EconomySeats;
+
+                iWidth = selectedFlight.Aircraft.FusalageWidth;
+
+                RenderSeatMap();
+            }
+        }
+        private void RenderSeatMap()
+        {
+            int iTotalRows = iBusinessRows + iFirstRows + iEconRows + 6;
+
+            string[] seatMap = new string[iTotalRows];
+            this.seatMap = new bool[iWidth, iTotalRows];
+
+            GetSeatMapFromBookings(selectedFlight.Id);
+
+            // Print Columns
+            for (int i = 0; i < iWidth; i++)
+            {
+                char c = Convert.ToChar((65 + i));
+
+                seatMap[0] += (" " + c.ToString() + " ");
+                if (i == 0)
+                    seatMap[1] += ("--- FIRST CLASS ---");
+
+                for (int j = 2; j < 2 + iFirstRows; j++)
+                {
+                    if (this.seatMap[j - 2, i])
+                        seatMap[j] += (" " + "O" + " ");
+                    else
+                        seatMap[j] += (" " + "X" + " ");
+                }
+                if (i == 0)
+                    seatMap[iFirstRows + 2] += ("--- BUSINESS CLASS ---");
+
+                for (int j = iFirstRows + 3; j < iFirstRows + 3 + iBusinessRows; j++)
+                {
+                    if (this.seatMap[j - 3, i])
+                        seatMap[j] += (" " + "O" + " ");
+                    else
+                        seatMap[j] += (" " + "X" + " ");
+                }
+                if (i == 0)
+                    seatMap[iFirstRows + iBusinessRows + 4] += ("--- ECONOMY CLASS ---");
+
+                for (int j = iFirstRows + iBusinessRows + 4; j < iTotalRows + 4; j++)
+                {
+                    if (this.seatMap[j - 4, i])
+                        seatMap[j] += (" " + "O" + " ");
+                    else
+                        seatMap[j] += (" " + "X" + " ");
+                }
+            }
+
+            txtbxSeatMap.Lines = seatMap;
+        }
+        private void GetSeatMapFromBookings(int iFlightId)
+        {
+            // Get all the bookings for this flight
+            var bookings = userClient.GetAllBookingsForFlight(iFlightId);
+            
+            foreach(var booking in bookings)
+            {
+                int iR = GetRowFromSeatNumber(booking.SeatNumber);
+                int iC = GetColumnFromSeatNumber(booking.SeatNumber);
+
+                this.seatMap[iR, iC] = false;
+            }
+        }
+        private int GetRowFromSeatNumber(string p)
+        {
+            return 0;
+        }
+        private int GetColumnFromSeatNumber(string p)
+        {
+            return 0;
         }
     }
 }
