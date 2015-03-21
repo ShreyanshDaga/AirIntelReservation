@@ -45,9 +45,9 @@ namespace AIR.WCFService
 
         #region Aircraft APIs
         [OperationContract]
-        APIResult CreateNewAircraft(Aircraft newAircraft);
+        APIResult CreateNewAircraft(Aircraft newAircraft, int iAdminId);
         [OperationContract]
-        APIResult RemoveAircraft(int iAircraftId);
+        APIResult RemoveAircraft(int iAircraftId, int iAdminId);
         [OperationContract]
         Aircraft GetAircraftDetails(int iAircraft);
         [OperationContract]
@@ -56,9 +56,9 @@ namespace AIR.WCFService
 
         #region Flight APIs
         [OperationContract]
-        APIResult CreateNewFlight(Flight newFlight);
+        APIResult CreateNewFlight(Flight newFlight, int iAdminId);
         [OperationContract]
-        APIResult RemoveFLight(int iFlightId);
+        APIResult RemoveFlight(int iFlightId, int iAdminId);
         [OperationContract]
         Flight GetFlightDetails(int iFlightId);
         [OperationContract]

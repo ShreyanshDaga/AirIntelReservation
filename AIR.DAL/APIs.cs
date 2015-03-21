@@ -18,7 +18,7 @@ namespace AIR.DAL
         {
             // Initialization
             Context = new DBContext("TestConn_Local");
-            Context.Database.Initialize(true);
+            //Context.Database.Initialize(true);
             SignedInAdmins = new List<Admin>(5);
             SignInUsers = new List<User>(5);
         }
@@ -32,7 +32,6 @@ namespace AIR.DAL
             //}
         }
 
-        // For User/Admin Management
         public static List<Admin> GetAdmins()
         {
             return Context.Admins.ToList();
@@ -166,8 +165,6 @@ namespace AIR.DAL
             }
             return false;
         }
-
-        // Aircraft Management
         public static bool AddNewAircraft(Aircraft newAircraft, int iAdminId)
         {
             if(IsAdminSignedIn(iAdminId))
@@ -202,8 +199,6 @@ namespace AIR.DAL
                 return false;
             }
         }        
-
-        // Flight Management
         public static List<Flight> GetAllFights()
         {
             try
@@ -216,7 +211,6 @@ namespace AIR.DAL
                 return null;
             }
         }
-
         public static Flight GetFlightDetail(int iFlightId)
         {
             try
@@ -265,8 +259,6 @@ namespace AIR.DAL
         {
             return true;
         }
-        
-        // Booking Management
         public static bool BookSeatInFlight(int iFlightId, int iUserId)
         {
             return true;
@@ -284,16 +276,131 @@ namespace AIR.DAL
             var user = Context.Users.Single(u => u.Id == iUserId);
 
             return user.Bookings.ToList();
-        }
-        //public static List<Booking> GetBookingsForFlight(int iFlightId)
-        //{
-        //    var flight = Context.Flights.Single(f => f.Id == iFlightId);
-                        
-        //}                                
-
+        }                                        
         public static List<Aircraft> GetAllAircrafts()
         {
             return Context.Aircrafts.ToList();
+        }
+        public static bool UpdateAdmin(Admin updateAdmin, int iAdminId)
+        {
+            var admin = Context.Admins.Single(a => a.Id == iAdminId);
+
+            if(admin != null)
+            {
+                admin.Name = updateAdmin.Name;
+                admin.PasswordHash = updateAdmin.PasswordHash;
+                admin.UserName = updateAdmin.UserName;
+
+                Context.Entry(admin).State = System.Data.Entity.EntityState.Modified;
+                Context.SaveChanges();
+                return true;
+
+            }
+
+            return false;
+        }
+        public static Admin GetAdminByUserName(string adminUserName)
+        {
+            return Context.Admins.Single(a => a.UserName == adminUserName);
+        }
+        public static bool UpdateUserDetails(User updateUser, int iUserId)
+        {
+            var user = Context.Users.Single(u => u.Id == iUserId);
+
+            if (user != null)
+            {
+                user.Name = updateUser.Name;
+                user.PassportNumber = updateUser.PassportNumber;
+                user.Password = updateUser.Password;
+                user.Age = updateUser.Age;
+                user.EmailAddress = updateUser.EmailAddress;
+
+                Context.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                Context.SaveChanges();
+
+                return true;
+            }
+
+            return false;
+        }
+        public static User GetUserByName(string userName)
+        {
+            return Context.Users.Single(u => u.UserName == userName);
+        }
+        public static Aircraft GetAircraftDetails(int iAircraftId)
+        {
+            return Context.Aircrafts.Single(a => a.Id == iAircraftId);
+        }
+        public static bool RemoveFlight(int iFlightId, int iAdminId)
+        {
+            if (!IsAdminSignedIn(iAdminId))
+                return false;
+
+            var flight = Context.Flights.Single(f => f.Id == iFlightId);
+
+            if (flight != null)
+            {
+                Context.Flights.Remove(flight);
+                Context.SaveChanges();
+
+                return true;
+            }
+            
+            return false;
+        }
+        public static List<Flight> GetFlightBetweenAirports(string strTo, string strFrom)
+        {
+            var flights = Context.Flights.Where(f => f.Source == strFrom && f.Destination == strTo).ToList();
+
+            return flights;
+        }
+        public static bool AddNewBooking(Booking newBooking)
+        {
+            Context.Bookings.Add(newBooking);
+            Context.SaveChanges();
+
+            return true;
+        }
+        public static bool ChangeBooking(Booking booking, int iBookingId)
+        {
+            var oldBooking = Context.Bookings.Single(b => b.Id == iBookingId);
+
+            if(oldBooking != null)
+            {
+                oldBooking.SeatNumber = booking.SeatNumber;
+
+                switch(booking.SeatNumber[0])
+                {
+                    case 'B':
+                        oldBooking.TotalFare = oldBooking.Flight.BusinessFare;
+                        break;
+
+                    case 'F':
+                        oldBooking.TotalFare = oldBooking.Flight.FirstFare;
+                        break;
+
+                    case 'E':
+                        oldBooking.TotalFare = oldBooking.Flight.EconomyFare;
+                        break;
+                }
+
+                Context.Entry(oldBooking).State = System.Data.Entity.EntityState.Modified;
+                Context.SaveChanges();
+
+                return true;
+            }
+
+            return false;
+        }       
+        public static Booking GetBooking(int iBookingId)
+        {
+            return Context.Bookings.Single(b => b.Id == iBookingId);
+        }
+        public static List<Booking> GetBookingsForFlight(int iFlightId)
+        {
+            var bookings = Context.Bookings.Where(b => b.Flight.Id == iFlightId).ToList();
+
+            return bookings;
         }
     }
 }
