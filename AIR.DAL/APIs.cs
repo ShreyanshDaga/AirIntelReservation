@@ -84,6 +84,7 @@ namespace AIR.DAL
             if (newAdmin != null)
             {
                 Context.Admins.Add(newAdmin);
+                Context.SaveChanges();
                 return true;
             }
 

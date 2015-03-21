@@ -10,9 +10,12 @@ using AIR.DAL;
 
 namespace AIR.WCFService
 {
+    [ServiceContract]
     public interface IReservationService
     {
+        [OperationContract]
         string AdminLogin(string adminUserName, string adminPassword);
-        string CreateNewAdmin(string strName, string strUserName, string strPassword, );
+        [OperationContract]
+        string CreateNewAdmin(string strName, string strUserName, string strPassword);        
     }
 }
