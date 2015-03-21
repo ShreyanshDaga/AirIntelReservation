@@ -53,15 +53,26 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.rdbtnBusiness = new System.Windows.Forms.RadioButton();
+            this.rdbtnFirst = new System.Windows.Forms.RadioButton();
+            this.rdbtnEcon = new System.Windows.Forms.RadioButton();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.btnCheckAvail = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.grbbxBooking.SuspendLayout();
             this.grpbxFlightDetails.SuspendLayout();
             this.pnlFlightInformation.SuspendLayout();
@@ -170,7 +181,9 @@
             // 
             // txtbxSeatMap
             // 
+            this.txtbxSeatMap.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtbxSeatMap.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbxSeatMap.ForeColor = System.Drawing.Color.Yellow;
             this.txtbxSeatMap.Location = new System.Drawing.Point(279, 25);
             this.txtbxSeatMap.Multiline = true;
             this.txtbxSeatMap.Name = "txtbxSeatMap";
@@ -214,6 +227,18 @@
             // pnlUserInformation
             // 
             this.pnlUserInformation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUserInformation.Controls.Add(this.label13);
+            this.pnlUserInformation.Controls.Add(this.label12);
+            this.pnlUserInformation.Controls.Add(this.label11);
+            this.pnlUserInformation.Controls.Add(this.label10);
+            this.pnlUserInformation.Controls.Add(this.label9);
+            this.pnlUserInformation.Controls.Add(this.label8);
+            this.pnlUserInformation.Controls.Add(this.label7);
+            this.pnlUserInformation.Controls.Add(this.label6);
+            this.pnlUserInformation.Controls.Add(this.label5);
+            this.pnlUserInformation.Controls.Add(this.label4);
+            this.pnlUserInformation.Controls.Add(this.label3);
+            this.pnlUserInformation.Controls.Add(this.label2);
             this.pnlUserInformation.Controls.Add(this.btnCheckAvail);
             this.pnlUserInformation.Controls.Add(this.textBox8);
             this.pnlUserInformation.Controls.Add(this.btnConfirm);
@@ -221,11 +246,10 @@
             this.pnlUserInformation.Controls.Add(this.btnRefreshSeatMap);
             this.pnlUserInformation.Controls.Add(this.lblAircraftType);
             this.pnlUserInformation.Controls.Add(this.textBox6);
-            this.pnlUserInformation.Controls.Add(this.radioButton3);
+            this.pnlUserInformation.Controls.Add(this.rdbtnEcon);
             this.pnlUserInformation.Controls.Add(this.txtbxSeatMap);
-            this.pnlUserInformation.Controls.Add(this.radioButton2);
-            this.pnlUserInformation.Controls.Add(this.radioButton1);
-            this.pnlUserInformation.Controls.Add(this.textBox5);
+            this.pnlUserInformation.Controls.Add(this.rdbtnFirst);
+            this.pnlUserInformation.Controls.Add(this.rdbtnBusiness);
             this.pnlUserInformation.Controls.Add(this.textBox4);
             this.pnlUserInformation.Controls.Add(this.textBox3);
             this.pnlUserInformation.Controls.Add(this.textBox2);
@@ -282,71 +306,64 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(111, 42);
+            this.textBox1.Location = new System.Drawing.Point(111, 41);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(162, 20);
             this.textBox1.TabIndex = 0;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(111, 81);
+            this.textBox2.Location = new System.Drawing.Point(111, 67);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(162, 20);
             this.textBox2.TabIndex = 1;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(111, 120);
+            this.textBox3.Location = new System.Drawing.Point(111, 93);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(65, 20);
             this.textBox3.TabIndex = 2;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(111, 156);
+            this.textBox4.Location = new System.Drawing.Point(111, 119);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(133, 20);
             this.textBox4.TabIndex = 3;
             // 
-            // textBox5
+            // rdbtnBusiness
             // 
-            this.textBox5.Location = new System.Drawing.Point(111, 192);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(133, 20);
-            this.textBox5.TabIndex = 4;
+            this.rdbtnBusiness.AutoSize = true;
+            this.rdbtnBusiness.Location = new System.Drawing.Point(18, 245);
+            this.rdbtnBusiness.Name = "rdbtnBusiness";
+            this.rdbtnBusiness.Size = new System.Drawing.Size(67, 17);
+            this.rdbtnBusiness.TabIndex = 5;
+            this.rdbtnBusiness.TabStop = true;
+            this.rdbtnBusiness.Text = "Business";
+            this.rdbtnBusiness.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rdbtnFirst
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(18, 245);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 5;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdbtnFirst.AutoSize = true;
+            this.rdbtnFirst.Location = new System.Drawing.Point(18, 268);
+            this.rdbtnFirst.Name = "rdbtnFirst";
+            this.rdbtnFirst.Size = new System.Drawing.Size(44, 17);
+            this.rdbtnFirst.TabIndex = 6;
+            this.rdbtnFirst.TabStop = true;
+            this.rdbtnFirst.Text = "First";
+            this.rdbtnFirst.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdbtnEcon
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(18, 268);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
-            this.radioButton2.TabIndex = 6;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(18, 291);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(85, 17);
-            this.radioButton3.TabIndex = 7;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rdbtnEcon.AutoSize = true;
+            this.rdbtnEcon.Location = new System.Drawing.Point(18, 291);
+            this.rdbtnEcon.Name = "rdbtnEcon";
+            this.rdbtnEcon.Size = new System.Drawing.Size(69, 17);
+            this.rdbtnEcon.TabIndex = 7;
+            this.rdbtnEcon.TabStop = true;
+            this.rdbtnEcon.Text = "Economy";
+            this.rdbtnEcon.UseVisualStyleBackColor = true;
             // 
             // textBox6
             // 
@@ -364,6 +381,7 @@
             // 
             // btnConfirm
             // 
+            this.btnConfirm.Font = new System.Drawing.Font("Monaco", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.Location = new System.Drawing.Point(160, 340);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(100, 33);
@@ -375,7 +393,7 @@
             // 
             this.textBox8.Location = new System.Drawing.Point(18, 347);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(136, 20);
+            this.textBox8.Size = new System.Drawing.Size(112, 20);
             this.textBox8.TabIndex = 11;
             // 
             // btnCheckAvail
@@ -386,6 +404,120 @@
             this.btnCheckAvail.TabIndex = 12;
             this.btnCheckAvail.Text = "Check Availabilty";
             this.btnCheckAvail.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(51, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(54, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Email";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(60, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Age";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(28, 123);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Passport #";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(182, 97);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "years";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Monaco", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(79, 178);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(134, 16);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Seat Selection";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Monaco", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(88, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(116, 16);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "User Details";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Monaco", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(163, 229);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 15);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Row #";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Monaco", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(215, 229);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(49, 15);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Column";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Monaco", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(18, 219);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(112, 15);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Class Selection";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Monaco", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(37, 331);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(98, 16);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Total Fare";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(136, 350);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(13, 13);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "$";
             // 
             // frmMain
             // 
@@ -434,10 +566,9 @@
         private System.Windows.Forms.Label lblSelFlightNumbe;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.RadioButton rdbtnEcon;
+        private System.Windows.Forms.RadioButton rdbtnFirst;
+        private System.Windows.Forms.RadioButton rdbtnBusiness;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
@@ -445,6 +576,18 @@
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button btnCheckAvail;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }
 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,7 @@ namespace AIR.WinClient
         {
             InitializeComponent();
 
+            InitWCFService();
             int iWidth = 10;
             int iBusinessSeats = 10, iFirstSeats = 5, iEconomySeats = 40;
 
@@ -68,6 +70,12 @@ namespace AIR.WinClient
             //rtxtbxSeatMap.SelectionColor = rtxtbxSeatMap.ForeColor;
 
             grpbxFlightDetails.Enabled = false;
+        }
+
+        private void InitWCFService()
+        {
+            BasicHttpBinding httpBinding = new BasicHttpBinding();
+
         }
 
         private void btnBookFlight_Click(object sender, EventArgs e)

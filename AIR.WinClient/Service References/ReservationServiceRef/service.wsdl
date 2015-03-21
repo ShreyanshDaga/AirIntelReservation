@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ReservationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/AIR.Entities" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IReservationService_CreateNewAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewAdmin" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_CreateNewAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_AdminLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdminLogin" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_AdminLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdminLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_AdminLogout_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdminLogout" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_AdminLogout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdminLogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_UpdateAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAdmin" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_UpdateAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAdminByUserName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminByUserName" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAdminByUserName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminByUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetLoggedInAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedInAdmin" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetLoggedInAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedInAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_CreateNewUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewUser" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_CreateNewUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_UserLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserLogin" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_UserLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_UserLogout_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserLogout" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_UserLogout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserLogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetUserByUserName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByUserName" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetUserByUserName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetLoggedInUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedInUser" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetLoggedInUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedInUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_CreateNewAircraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewAircraft" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_CreateNewAircraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewAircraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_RemoveAircraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAircraft" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_RemoveAircraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAircraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAircraftDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAircraftDetails" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAircraftDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAircraftDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAllAircrafts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAircrafts" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAllAircrafts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAircraftsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_CreateNewFlight_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewFlight" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_CreateNewFlight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewFlightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_RemoveFlight_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFlight" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_RemoveFlight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFlightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetFlightDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightDetails" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetFlightDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAllFlights_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFlights" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAllFlights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFlightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_AddNewBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewBooking" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_AddNewBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_ChangeBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeBooking" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_ChangeBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_CancelBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelBooking" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_CancelBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetBookingDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingDetails" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetBookingDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAllBookingsForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBookingsForUser" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAllBookingsForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBookingsForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAllBookingsForFlight_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBookingsForFlight" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetAllBookingsForFlight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBookingsForFlightResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IReservationService">
+    <wsdl:operation name="CreateNewAdmin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/CreateNewAdmin" message="tns:IReservationService_CreateNewAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/CreateNewAdminResponse" message="tns:IReservationService_CreateNewAdmin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/AdminLogin" message="tns:IReservationService_AdminLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/AdminLoginResponse" message="tns:IReservationService_AdminLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminLogout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/AdminLogout" message="tns:IReservationService_AdminLogout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/AdminLogoutResponse" message="tns:IReservationService_AdminLogout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdmin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/UpdateAdmin" message="tns:IReservationService_UpdateAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/UpdateAdminResponse" message="tns:IReservationService_UpdateAdmin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminByUserName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetAdminByUserName" message="tns:IReservationService_GetAdminByUserName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetAdminByUserNameResponse" message="tns:IReservationService_GetAdminByUserName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedInAdmin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetLoggedInAdmin" message="tns:IReservationService_GetLoggedInAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetLoggedInAdminResponse" message="tns:IReservationService_GetLoggedInAdmin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/CreateNewUser" message="tns:IReservationService_CreateNewUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/CreateNewUserResponse" message="tns:IReservationService_CreateNewUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/UserLogin" message="tns:IReservationService_UserLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/UserLoginResponse" message="tns:IReservationService_UserLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/UserLogout" message="tns:IReservationService_UserLogout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/UserLogoutResponse" message="tns:IReservationService_UserLogout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/UpdateUser" message="tns:IReservationService_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/UpdateUserResponse" message="tns:IReservationService_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUserName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetUserByUserName" message="tns:IReservationService_GetUserByUserName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetUserByUserNameResponse" message="tns:IReservationService_GetUserByUserName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedInUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetLoggedInUser" message="tns:IReservationService_GetLoggedInUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetLoggedInUserResponse" message="tns:IReservationService_GetLoggedInUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewAircraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/CreateNewAircraft" message="tns:IReservationService_CreateNewAircraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/CreateNewAircraftResponse" message="tns:IReservationService_CreateNewAircraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAircraft">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/RemoveAircraft" message="tns:IReservationService_RemoveAircraft_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/RemoveAircraftResponse" message="tns:IReservationService_RemoveAircraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAircraftDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetAircraftDetails" message="tns:IReservationService_GetAircraftDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetAircraftDetailsResponse" message="tns:IReservationService_GetAircraftDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAircrafts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetAllAircrafts" message="tns:IReservationService_GetAllAircrafts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetAllAircraftsResponse" message="tns:IReservationService_GetAllAircrafts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewFlight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/CreateNewFlight" message="tns:IReservationService_CreateNewFlight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/CreateNewFlightResponse" message="tns:IReservationService_CreateNewFlight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFlight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/RemoveFlight" message="tns:IReservationService_RemoveFlight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/RemoveFlightResponse" message="tns:IReservationService_RemoveFlight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetFlightDetails" message="tns:IReservationService_GetFlightDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetFlightDetailsResponse" message="tns:IReservationService_GetFlightDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFlights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetAllFlights" message="tns:IReservationService_GetAllFlights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetAllFlightsResponse" message="tns:IReservationService_GetAllFlights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/AddNewBooking" message="tns:IReservationService_AddNewBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/AddNewBookingResponse" message="tns:IReservationService_AddNewBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/ChangeBooking" message="tns:IReservationService_ChangeBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/ChangeBookingResponse" message="tns:IReservationService_ChangeBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/CancelBooking" message="tns:IReservationService_CancelBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/CancelBookingResponse" message="tns:IReservationService_CancelBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookingDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetBookingDetails" message="tns:IReservationService_GetBookingDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetBookingDetailsResponse" message="tns:IReservationService_GetBookingDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBookingsForUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetAllBookingsForUser" message="tns:IReservationService_GetAllBookingsForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetAllBookingsForUserResponse" message="tns:IReservationService_GetAllBookingsForUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBookingsForFlight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetAllBookingsForFlight" message="tns:IReservationService_GetAllBookingsForFlight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetAllBookingsForFlightResponse" message="tns:IReservationService_GetAllBookingsForFlight_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IReservationService" type="tns:IReservationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateNewAdmin">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/CreateNewAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminLogin">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/AdminLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminLogout">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/AdminLogout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdmin">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/UpdateAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminByUserName">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetAdminByUserName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedInAdmin">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetLoggedInAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewUser">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/CreateNewUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogin">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/UserLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogout">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/UserLogout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUserName">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetUserByUserName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedInUser">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetLoggedInUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewAircraft">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/CreateNewAircraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAircraft">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/RemoveAircraft" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAircraftDetails">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetAircraftDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAircrafts">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetAllAircrafts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewFlight">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/CreateNewFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFlight">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/RemoveFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDetails">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetFlightDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFlights">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetAllFlights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewBooking">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/AddNewBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeBooking">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/ChangeBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelBooking">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/CancelBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookingDetails">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetBookingDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBookingsForUser">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetAllBookingsForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBookingsForFlight">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetAllBookingsForFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReservationService">
+    <wsdl:port name="BasicHttpBinding_IReservationService" binding="tns:BasicHttpBinding_IReservationService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/AIR.WCFService/ReservationService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

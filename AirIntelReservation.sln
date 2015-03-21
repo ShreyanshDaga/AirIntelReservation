@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIR.WCFService", "AIR.WCFService\AIR.WCFService.csproj", "{7F6B81F0-3F59-4BAB-8EAC-4CF8C2C30B6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIR.WinClient", "AIR.WinClient\AIR.WinClient.csproj", "{2873E98C-10CE-4352-84C8-E6B18C2AF03A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7F6B81F0-3F59-4BAB-8EAC-4CF8C2C30B6B} = {7F6B81F0-3F59-4BAB-8EAC-4CF8C2C30B6B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
