@@ -34,7 +34,7 @@ namespace AIR.WCFService
         [OperationContract]
         APIResult UserLogin(string userName, string userPassword);
         [OperationContract]
-        APIResult UserLogout(string iUserId);
+        APIResult UserLogout(int iUserId);
         [OperationContract]
         APIResult UpdateUser(User updateUser, int iUserId);
         [OperationContract]
