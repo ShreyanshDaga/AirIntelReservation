@@ -66,6 +66,13 @@ namespace AIR.WinClient
             //rtxtbxSeatMap.SelectionColor = Color.Blue;
             //rtxtbxSeatMap.AppendText("World");
             //rtxtbxSeatMap.SelectionColor = rtxtbxSeatMap.ForeColor;
+
+            grpbxFlightDetails.Enabled = false;
+        }
+
+        private void btnBookFlight_Click(object sender, EventArgs e)
+        {
+            grpbxFlightDetails.Enabled = true;
         }
 
 
