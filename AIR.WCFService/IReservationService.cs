@@ -13,11 +13,76 @@ namespace AIR.WCFService
     [ServiceContract]
     public interface IReservationService
     {
+        #region AdminAPIs
         [OperationContract]
-        string AdminLogin(string adminUserName, string adminPassword);
+        APIResult CreateNewAdmin(Admin newAdmin);
         [OperationContract]
-        string CreateNewAdmin(Admin newAdmin);
+        APIResult AdminLogin(string adminUserName, string adminPassword);
         [OperationContract]
-        Admin GetAdminByUserName(int iId);
+        APIResult AdminLogout(int iAdminId);        
+        [OperationContract]
+        APIResult UpdateAdmin(Admin updateAdmin, int iAdminId);
+        [OperationContract]
+        Admin GetAdminByUserName(string adminUserName);
+        [OperationContract]
+        Admin GetLoggedInAdmin();
+        #endregion
+
+        #region User APIs
+        [OperationContract]
+        APIResult CreateNewUser(User newUser);
+        [OperationContract]
+        APIResult UserLogin(string userName, string userPassword);
+        [OperationContract]
+        APIResult UserLogout(string iUserId);
+        [OperationContract]
+        APIResult UpdateUser(User updateUser, int iUserId);
+        [OperationContract]
+        User GetUserByUserName(string userName);
+        [OperationContract]
+        User GetLoggedInUser();
+        #endregion
+
+        #region Aircraft APIs
+        [OperationContract]
+        APIResult CreateNewAircraft(Aircraft newAircraft);
+        [OperationContract]
+        APIResult RemoveAircraft(int iAircraftId);
+        [OperationContract]
+        Aircraft GetAircraftDetails(int iAircraft);
+        [OperationContract]
+        List<Aircraft> GetAllAircrafts();
+        #endregion
+
+        #region Flight APIs
+        [OperationContract]
+        APIResult CreateNewFlight(Flight newFlight);
+        [OperationContract]
+        APIResult RemoveFLight(int iFlightId);
+        [OperationContract]
+        Flight GetFlightDetails(int iFlightId);
+        [OperationContract]
+        List<Flight> GetAllFlights();
+        List<Flight> GetFlightsBetweenAirports(string strTo, string strFrom);
+        #endregion
+
+        #region Booking APIs
+        [OperationContract]
+        APIResult AddNewBooking(Booking newBooking);
+        [OperationContract]
+        APIResult ChangeBooking(Booking booking, int iBookingId);
+        [OperationContract]
+        APIResult CancelBooking(int iBookingId, int iUserId);
+        [OperationContract]
+        Booking GetBookingDetails(int iBookingId);
+        [OperationContract]
+        List<Booking> GetAllBookingsForUser(int iUserId);
+        [OperationContract]
+        List<Booking> GetAllBookingsForFlight(int iFlightId);
+        #endregion
+
+        #region Reports APIs
+        // To be implemented later
+        #endregion
     }
 }

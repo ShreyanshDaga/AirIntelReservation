@@ -15,6 +15,7 @@ namespace AIR.Entities
         public DateTime BoardingTime { get; set; }      // boarding time
         public DateTime DepartureTime { get; set; }     // Same as flight departure to be printed on ticket
 
-        public virtual User User { get; set; }          // user
+        public virtual User User { get; set; }          // User
+        public virtual Flight Flight { get; set; }      // Flight
     }
 }
