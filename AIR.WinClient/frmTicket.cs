@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AIR.WinClient
 {
-    public partial class frmBookingInformation : Form
+    public partial class frmTicket : Form
     {
-        public frmBookingInformation()
+        public frmTicket()
         {
             InitializeComponent();
         }

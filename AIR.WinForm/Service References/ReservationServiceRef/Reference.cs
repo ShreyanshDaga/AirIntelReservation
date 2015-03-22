@@ -176,6 +176,12 @@ namespace AIR.WinForm.ReservationServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetAllBookingsForFlight", ReplyAction="http://tempuri.org/IReservationService/GetAllBookingsForFlightResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<AIR.Entities.Booking>> GetAllBookingsForFlightAsync(int iFlightId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/IsSeatAvailable", ReplyAction="http://tempuri.org/IReservationService/IsSeatAvailableResponse")]
+        bool IsSeatAvailable(string seatNumber, int iFlightId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/IsSeatAvailable", ReplyAction="http://tempuri.org/IReservationService/IsSeatAvailableResponse")]
+        System.Threading.Tasks.Task<bool> IsSeatAvailableAsync(string seatNumber, int iFlightId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -419,6 +425,14 @@ namespace AIR.WinForm.ReservationServiceRef {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<AIR.Entities.Booking>> GetAllBookingsForFlightAsync(int iFlightId) {
             return base.Channel.GetAllBookingsForFlightAsync(iFlightId);
+        }
+        
+        public bool IsSeatAvailable(string seatNumber, int iFlightId) {
+            return base.Channel.IsSeatAvailable(seatNumber, iFlightId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsSeatAvailableAsync(string seatNumber, int iFlightId) {
+            return base.Channel.IsSeatAvailableAsync(seatNumber, iFlightId);
         }
     }
 }

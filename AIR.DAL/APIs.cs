@@ -346,6 +346,15 @@ namespace AIR.DAL
         }
         public static bool AddNewBooking(Booking newBooking)
         {
+            var thisFlightBookings = Context.Bookings.Where(b => b.FlightId == newBooking.FlightId).ToList();
+
+            // Check if seat is already taken
+            foreach(var booking in thisFlightBookings)
+            {
+                if (booking.SeatNumber == newBooking.SeatNumber)
+                    return false;
+            }
+
             Context.Bookings.Add(newBooking);
             Context.SaveChanges();
 
@@ -388,6 +397,7 @@ namespace AIR.DAL
         }
         public static List<Booking> GetBookingsForFlight(int iFlightId)
         {
+            //var bookings = Context.Bookings.Include("Flight").Include("User").Where(b => b.Flight.Id == iFlightId).ToList();
             var bookings = Context.Bookings.Where(b => b.Flight.Id == iFlightId).ToList();
 
             return bookings;

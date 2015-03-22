@@ -47,11 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmBookingInformation.cs">
+    <Compile Include="frmTicket.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBookingInformation.Designer.cs">
-      <DependentUpon>frmBookingInformation.cs</DependentUpon>
+    <Compile Include="frmTicket.Designer.cs">
+      <DependentUpon>frmTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>

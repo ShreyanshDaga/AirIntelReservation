@@ -170,6 +170,12 @@
   <wsdl:message name="IReservationService_GetAllBookingsForFlight_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllBookingsForFlightResponse" />
   </wsdl:message>
+  <wsdl:message name="IReservationService_IsSeatAvailable_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsSeatAvailable" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_IsSeatAvailable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsSeatAvailableResponse" />
+  </wsdl:message>
   <wsdl:portType name="IReservationService">
     <wsdl:operation name="Ping">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/Ping" message="tns:IReservationService_Ping_InputMessage" />
@@ -278,6 +284,10 @@
     <wsdl:operation name="GetAllBookingsForFlight">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetAllBookingsForFlight" message="tns:IReservationService_GetAllBookingsForFlight_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetAllBookingsForFlightResponse" message="tns:IReservationService_GetAllBookingsForFlight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsSeatAvailable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/IsSeatAvailable" message="tns:IReservationService_IsSeatAvailable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/IsSeatAvailableResponse" message="tns:IReservationService_IsSeatAvailable_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReservationService" type="tns:IReservationService">
@@ -518,6 +528,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllBookingsForFlight">
       <soap:operation soapAction="http://tempuri.org/IReservationService/GetAllBookingsForFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsSeatAvailable">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/IsSeatAvailable" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

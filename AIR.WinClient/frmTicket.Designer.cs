@@ -1,6 +1,6 @@
 ﻿namespace AIR.WinClient
 {
-    partial class frmBookingInformation
+    partial class frmTicket
     {
         /// <summary>
         /// Required designer variable.

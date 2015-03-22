@@ -348,7 +348,7 @@ namespace AIR.WCFService
                 if (API.AddNewBooking(newBooking))
                     apiRes.AddResult("0", "New booking added.");
                 else
-                    apiRes.AddError("Error", "Unable to add new booking");
+                    apiRes.AddError("Error","This seat is already assigned.!");
 
                 return apiRes;
             }
@@ -418,6 +418,24 @@ namespace AIR.WCFService
             var bookingsForFlight = API.GetBookingsForFlight(iFlightId);
 
             return bookingsForFlight;
+        }
+
+        public bool IsSeatAvailable(string seatNumber, int iFlightId)
+        {
+            var bookings = API.GetBookingsForFlight(iFlightId);
+
+            if(bookings != null)
+            {
+                foreach(var booking in bookings)
+                {
+                    if (booking.SeatNumber == seatNumber)
+                        return false;
+                }
+
+                return true;
+            }
+
+            return false;
         }
         #endregion
     }

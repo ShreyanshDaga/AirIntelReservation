@@ -53,20 +53,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCheckAvail = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtbxTotalFare = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtbxRow = new System.Windows.Forms.TextBox();
             this.btnRefreshSeatMap = new System.Windows.Forms.Button();
             this.lblAircraftType = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtbxCol = new System.Windows.Forms.TextBox();
             this.rdbtnEcon = new System.Windows.Forms.RadioButton();
             this.txtbxSeatMap = new System.Windows.Forms.TextBox();
             this.rdbtnFirst = new System.Windows.Forms.RadioButton();
             this.rdbtnBusiness = new System.Windows.Forms.RadioButton();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtbxUserPassport = new System.Windows.Forms.TextBox();
+            this.txtbxUserAge = new System.Windows.Forms.TextBox();
+            this.txtbxUserEmail = new System.Windows.Forms.TextBox();
+            this.txtbxUserName = new System.Windows.Forms.TextBox();
             this.pnlFlightInformation = new System.Windows.Forms.Panel();
             this.lblSelFlightArr = new System.Windows.Forms.Label();
             this.lblSelFlightDep = new System.Windows.Forms.Label();
@@ -197,20 +197,20 @@
             this.pnlUserInformation.Controls.Add(this.label3);
             this.pnlUserInformation.Controls.Add(this.label2);
             this.pnlUserInformation.Controls.Add(this.btnCheckAvail);
-            this.pnlUserInformation.Controls.Add(this.textBox8);
+            this.pnlUserInformation.Controls.Add(this.txtbxTotalFare);
             this.pnlUserInformation.Controls.Add(this.btnConfirm);
-            this.pnlUserInformation.Controls.Add(this.textBox7);
+            this.pnlUserInformation.Controls.Add(this.txtbxRow);
             this.pnlUserInformation.Controls.Add(this.btnRefreshSeatMap);
             this.pnlUserInformation.Controls.Add(this.lblAircraftType);
-            this.pnlUserInformation.Controls.Add(this.textBox6);
+            this.pnlUserInformation.Controls.Add(this.txtbxCol);
             this.pnlUserInformation.Controls.Add(this.rdbtnEcon);
             this.pnlUserInformation.Controls.Add(this.txtbxSeatMap);
             this.pnlUserInformation.Controls.Add(this.rdbtnFirst);
             this.pnlUserInformation.Controls.Add(this.rdbtnBusiness);
-            this.pnlUserInformation.Controls.Add(this.textBox4);
-            this.pnlUserInformation.Controls.Add(this.textBox3);
-            this.pnlUserInformation.Controls.Add(this.textBox2);
-            this.pnlUserInformation.Controls.Add(this.textBox1);
+            this.pnlUserInformation.Controls.Add(this.txtbxUserPassport);
+            this.pnlUserInformation.Controls.Add(this.txtbxUserAge);
+            this.pnlUserInformation.Controls.Add(this.txtbxUserEmail);
+            this.pnlUserInformation.Controls.Add(this.txtbxUserName);
             this.pnlUserInformation.Location = new System.Drawing.Point(6, 133);
             this.pnlUserInformation.Name = "pnlUserInformation";
             this.pnlUserInformation.Size = new System.Drawing.Size(558, 385);
@@ -338,13 +338,14 @@
             this.btnCheckAvail.TabIndex = 12;
             this.btnCheckAvail.Text = "Check Availabilty";
             this.btnCheckAvail.UseVisualStyleBackColor = true;
+            this.btnCheckAvail.Click += new System.EventHandler(this.btnCheckAvail_Click);
             // 
-            // textBox8
+            // txtbxTotalFare
             // 
-            this.textBox8.Location = new System.Drawing.Point(18, 347);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(112, 20);
-            this.textBox8.TabIndex = 11;
+            this.txtbxTotalFare.Location = new System.Drawing.Point(18, 347);
+            this.txtbxTotalFare.Name = "txtbxTotalFare";
+            this.txtbxTotalFare.Size = new System.Drawing.Size(112, 20);
+            this.txtbxTotalFare.TabIndex = 11;
             // 
             // btnConfirm
             // 
@@ -355,13 +356,14 @@
             this.btnConfirm.TabIndex = 10;
             this.btnConfirm.Text = "Book ";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // textBox7
+            // txtbxRow
             // 
-            this.textBox7.Location = new System.Drawing.Point(160, 245);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(49, 20);
-            this.textBox7.TabIndex = 9;
+            this.txtbxRow.Location = new System.Drawing.Point(160, 245);
+            this.txtbxRow.Name = "txtbxRow";
+            this.txtbxRow.Size = new System.Drawing.Size(49, 20);
+            this.txtbxRow.TabIndex = 9;
             // 
             // btnRefreshSeatMap
             // 
@@ -371,6 +373,7 @@
             this.btnRefreshSeatMap.TabIndex = 1;
             this.btnRefreshSeatMap.Text = "Refresh Seat Map";
             this.btnRefreshSeatMap.UseVisualStyleBackColor = true;
+            this.btnRefreshSeatMap.Click += new System.EventHandler(this.btnRefreshSeatMap_Click);
             // 
             // lblAircraftType
             // 
@@ -381,16 +384,17 @@
             this.lblAircraftType.TabIndex = 2;
             this.lblAircraftType.Text = "Aircraft Type: ";
             // 
-            // textBox6
+            // txtbxCol
             // 
-            this.textBox6.Location = new System.Drawing.Point(215, 245);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(49, 20);
-            this.textBox6.TabIndex = 8;
+            this.txtbxCol.Location = new System.Drawing.Point(215, 245);
+            this.txtbxCol.Name = "txtbxCol";
+            this.txtbxCol.Size = new System.Drawing.Size(49, 20);
+            this.txtbxCol.TabIndex = 8;
             // 
             // rdbtnEcon
             // 
             this.rdbtnEcon.AutoSize = true;
+            this.rdbtnEcon.Checked = true;
             this.rdbtnEcon.Location = new System.Drawing.Point(18, 291);
             this.rdbtnEcon.Name = "rdbtnEcon";
             this.rdbtnEcon.Size = new System.Drawing.Size(69, 17);
@@ -398,6 +402,7 @@
             this.rdbtnEcon.TabStop = true;
             this.rdbtnEcon.Text = "Economy";
             this.rdbtnEcon.UseVisualStyleBackColor = true;
+            this.rdbtnEcon.CheckedChanged += new System.EventHandler(this.rdbtnEcon_CheckedChanged);
             // 
             // txtbxSeatMap
             // 
@@ -423,6 +428,7 @@
             this.rdbtnFirst.TabStop = true;
             this.rdbtnFirst.Text = "First";
             this.rdbtnFirst.UseVisualStyleBackColor = true;
+            this.rdbtnFirst.CheckedChanged += new System.EventHandler(this.rdbtnFirst_CheckedChanged);
             // 
             // rdbtnBusiness
             // 
@@ -434,34 +440,35 @@
             this.rdbtnBusiness.TabStop = true;
             this.rdbtnBusiness.Text = "Business";
             this.rdbtnBusiness.UseVisualStyleBackColor = true;
+            this.rdbtnBusiness.CheckedChanged += new System.EventHandler(this.rdbtnBusiness_CheckedChanged);
             // 
-            // textBox4
+            // txtbxUserPassport
             // 
-            this.textBox4.Location = new System.Drawing.Point(111, 119);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(133, 20);
-            this.textBox4.TabIndex = 3;
+            this.txtbxUserPassport.Location = new System.Drawing.Point(111, 119);
+            this.txtbxUserPassport.Name = "txtbxUserPassport";
+            this.txtbxUserPassport.Size = new System.Drawing.Size(133, 20);
+            this.txtbxUserPassport.TabIndex = 3;
             // 
-            // textBox3
+            // txtbxUserAge
             // 
-            this.textBox3.Location = new System.Drawing.Point(111, 93);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(65, 20);
-            this.textBox3.TabIndex = 2;
+            this.txtbxUserAge.Location = new System.Drawing.Point(111, 93);
+            this.txtbxUserAge.Name = "txtbxUserAge";
+            this.txtbxUserAge.Size = new System.Drawing.Size(65, 20);
+            this.txtbxUserAge.TabIndex = 2;
             // 
-            // textBox2
+            // txtbxUserEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(111, 67);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(162, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtbxUserEmail.Location = new System.Drawing.Point(111, 67);
+            this.txtbxUserEmail.Name = "txtbxUserEmail";
+            this.txtbxUserEmail.Size = new System.Drawing.Size(162, 20);
+            this.txtbxUserEmail.TabIndex = 1;
             // 
-            // textBox1
+            // txtbxUserName
             // 
-            this.textBox1.Location = new System.Drawing.Point(111, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(162, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtbxUserName.Location = new System.Drawing.Point(111, 41);
+            this.txtbxUserName.Name = "txtbxUserName";
+            this.txtbxUserName.Size = new System.Drawing.Size(162, 20);
+            this.txtbxUserName.TabIndex = 0;
             // 
             // pnlFlightInformation
             // 
@@ -532,6 +539,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmMain";
             this.Text = "AIR Client";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.grbbxBooking.ResumeLayout(false);
             this.grbbxBooking.PerformLayout();
             this.grpbxFlightDetails.ResumeLayout(false);
@@ -566,17 +574,17 @@
         private System.Windows.Forms.Label lblSelFlightTo;
         private System.Windows.Forms.Label lblSelFlightFrom;
         private System.Windows.Forms.Label lblSelFlightNumbe;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtbxRow;
+        private System.Windows.Forms.TextBox txtbxCol;
         private System.Windows.Forms.RadioButton rdbtnEcon;
         private System.Windows.Forms.RadioButton rdbtnFirst;
         private System.Windows.Forms.RadioButton rdbtnBusiness;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtbxUserPassport;
+        private System.Windows.Forms.TextBox txtbxUserAge;
+        private System.Windows.Forms.TextBox txtbxUserEmail;
+        private System.Windows.Forms.TextBox txtbxUserName;
         private System.Windows.Forms.Button btnConfirm;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtbxTotalFare;
         private System.Windows.Forms.Button btnCheckAvail;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;

@@ -20,24 +20,31 @@ namespace AIR.Console
         {
             AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
 
+            System.Console.WriteLine(" --x Air Intel Reservation service x-- ");
+            System.Console.WriteLine("\n Press any key to start the service.!");
+
+            System.Console.ReadKey();
+
             try
             {
                 svcAirIntelReservation = new ServiceHost(typeof(ReservationService));
                 svcAirIntelReservation.Open();
 
-                System.Console.WriteLine("Service Started");
+                System.Console.WriteLine(" Service Started");
+                System.Console.WriteLine(" Air Intel Reservation service is now running..");                
             }
             catch(Exception ex)
             {
                 svcAirIntelReservation = null;
-                System.Console.WriteLine("Error Starting Service");
-                System.Console.WriteLine(ex.Message);
+                System.Console.WriteLine("** Error starting service **");
+                System.Console.WriteLine("   Error Message: " + ex.Message);
+                System.Console.WriteLine("\nPress any key to continue.!");
                 System.Console.ReadKey();
             }
 
             if(svcAirIntelReservation != null)
             {
-                System.Console.WriteLine("Press AnyKey to Stop Service");
+                System.Console.WriteLine("\n Press any key to stop the service.!");
                 System.Console.ReadKey();
             }
             //Basic_Console();

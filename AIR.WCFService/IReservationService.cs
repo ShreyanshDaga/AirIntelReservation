@@ -85,6 +85,8 @@ namespace AIR.WCFService
         List<Booking> GetAllBookingsForUser(int iUserId);
         [OperationContract]
         List<Booking> GetAllBookingsForFlight(int iFlightId);
+        [OperationContract]
+        bool IsSeatAvailable(string seatNumber, int iFlightId);
         #endregion
 
         #region Reports APIs
