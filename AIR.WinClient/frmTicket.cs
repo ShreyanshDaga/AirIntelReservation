@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIR.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,14 @@ namespace AIR.WinClient
 {
     public partial class frmTicket : Form
     {
-        public frmTicket()
+        public frmTicket(Booking booking, User user)
         {
             InitializeComponent();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

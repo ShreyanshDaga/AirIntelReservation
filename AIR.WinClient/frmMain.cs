@@ -20,7 +20,8 @@ namespace AIR.WinClient
         Flight selectedFlight;
         int iFlightIndex;
         int iBusinessRows, iFirstRows, iEconRows, iWidth;
-        bool[,] seatMap;        
+        bool[,] seatMap;
+        frmTicket frmTicket;
 
         public frmMain()
         {
@@ -249,12 +250,20 @@ namespace AIR.WinClient
 
             if(res.IsSuccess)
             {
-                MessageBox.Show("Your booking is confirmed.!");
+                // New ticket form
+                this.frmTicket = new frmTicket(booking, user);
+                this.frmTicket.FormClosed += frmTicket_FormClosed;
+                frmTicket.Show();
             }
             else
             {
                 MessageBox.Show(res.ErrorMessages["Error"]);
             }
+        }
+
+        void frmTicket_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.frmTicket = null;
         }
         private void ValidateUserBooking()
         {
