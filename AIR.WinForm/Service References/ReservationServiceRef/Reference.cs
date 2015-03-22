@@ -81,11 +81,11 @@ namespace AIR.WinForm.ReservationServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/UpdateUser", ReplyAction="http://tempuri.org/IReservationService/UpdateUserResponse")]
         System.Threading.Tasks.Task<AIR.Entities.APIResult> UpdateUserAsync(AIR.Entities.User updateUser, int iUserId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetUserByUserName", ReplyAction="http://tempuri.org/IReservationService/GetUserByUserNameResponse")]
-        AIR.Entities.User GetUserByUserName(string userName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetUserIdByEmailAddress", ReplyAction="http://tempuri.org/IReservationService/GetUserIdByEmailAddressResponse")]
+        int GetUserIdByEmailAddress(string userEmail);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetUserByUserName", ReplyAction="http://tempuri.org/IReservationService/GetUserByUserNameResponse")]
-        System.Threading.Tasks.Task<AIR.Entities.User> GetUserByUserNameAsync(string userName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetUserIdByEmailAddress", ReplyAction="http://tempuri.org/IReservationService/GetUserIdByEmailAddressResponse")]
+        System.Threading.Tasks.Task<int> GetUserIdByEmailAddressAsync(string userEmail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetLoggedInUser", ReplyAction="http://tempuri.org/IReservationService/GetLoggedInUserResponse")]
         AIR.Entities.User GetLoggedInUser();
@@ -141,6 +141,12 @@ namespace AIR.WinForm.ReservationServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetAllFlights", ReplyAction="http://tempuri.org/IReservationService/GetAllFlightsResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<AIR.Entities.Flight>> GetAllFlightsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetFlightsBetweenAirports", ReplyAction="http://tempuri.org/IReservationService/GetFlightsBetweenAirportsResponse")]
+        System.Collections.Generic.List<AIR.Entities.Flight> GetFlightsBetweenAirports(string strTo, string strFrom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetFlightsBetweenAirports", ReplyAction="http://tempuri.org/IReservationService/GetFlightsBetweenAirportsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AIR.Entities.Flight>> GetFlightsBetweenAirportsAsync(string strTo, string strFrom);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/AddNewBooking", ReplyAction="http://tempuri.org/IReservationService/AddNewBookingResponse")]
         AIR.Entities.APIResult AddNewBooking(AIR.Entities.Booking newBooking);
         
@@ -171,11 +177,11 @@ namespace AIR.WinForm.ReservationServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetAllBookingsForUser", ReplyAction="http://tempuri.org/IReservationService/GetAllBookingsForUserResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<AIR.Entities.Booking>> GetAllBookingsForUserAsync(int iUserId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetAllBookingsForFlight", ReplyAction="http://tempuri.org/IReservationService/GetAllBookingsForFlightResponse")]
-        System.Collections.Generic.List<AIR.Entities.Booking> GetAllBookingsForFlight(int iFlightId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetAllSeatsForFlight", ReplyAction="http://tempuri.org/IReservationService/GetAllSeatsForFlightResponse")]
+        System.Collections.Generic.List<string> GetAllSeatsForFlight(int iFlightId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetAllBookingsForFlight", ReplyAction="http://tempuri.org/IReservationService/GetAllBookingsForFlightResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<AIR.Entities.Booking>> GetAllBookingsForFlightAsync(int iFlightId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/GetAllSeatsForFlight", ReplyAction="http://tempuri.org/IReservationService/GetAllSeatsForFlightResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<string>> GetAllSeatsForFlightAsync(int iFlightId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/IsSeatAvailable", ReplyAction="http://tempuri.org/IReservationService/IsSeatAvailableResponse")]
         bool IsSeatAvailable(string seatNumber, int iFlightId);
@@ -299,12 +305,12 @@ namespace AIR.WinForm.ReservationServiceRef {
             return base.Channel.UpdateUserAsync(updateUser, iUserId);
         }
         
-        public AIR.Entities.User GetUserByUserName(string userName) {
-            return base.Channel.GetUserByUserName(userName);
+        public int GetUserIdByEmailAddress(string userEmail) {
+            return base.Channel.GetUserIdByEmailAddress(userEmail);
         }
         
-        public System.Threading.Tasks.Task<AIR.Entities.User> GetUserByUserNameAsync(string userName) {
-            return base.Channel.GetUserByUserNameAsync(userName);
+        public System.Threading.Tasks.Task<int> GetUserIdByEmailAddressAsync(string userEmail) {
+            return base.Channel.GetUserIdByEmailAddressAsync(userEmail);
         }
         
         public AIR.Entities.User GetLoggedInUser() {
@@ -379,6 +385,14 @@ namespace AIR.WinForm.ReservationServiceRef {
             return base.Channel.GetAllFlightsAsync();
         }
         
+        public System.Collections.Generic.List<AIR.Entities.Flight> GetFlightsBetweenAirports(string strTo, string strFrom) {
+            return base.Channel.GetFlightsBetweenAirports(strTo, strFrom);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AIR.Entities.Flight>> GetFlightsBetweenAirportsAsync(string strTo, string strFrom) {
+            return base.Channel.GetFlightsBetweenAirportsAsync(strTo, strFrom);
+        }
+        
         public AIR.Entities.APIResult AddNewBooking(AIR.Entities.Booking newBooking) {
             return base.Channel.AddNewBooking(newBooking);
         }
@@ -419,12 +433,12 @@ namespace AIR.WinForm.ReservationServiceRef {
             return base.Channel.GetAllBookingsForUserAsync(iUserId);
         }
         
-        public System.Collections.Generic.List<AIR.Entities.Booking> GetAllBookingsForFlight(int iFlightId) {
-            return base.Channel.GetAllBookingsForFlight(iFlightId);
+        public System.Collections.Generic.List<string> GetAllSeatsForFlight(int iFlightId) {
+            return base.Channel.GetAllSeatsForFlight(iFlightId);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<AIR.Entities.Booking>> GetAllBookingsForFlightAsync(int iFlightId) {
-            return base.Channel.GetAllBookingsForFlightAsync(iFlightId);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<string>> GetAllSeatsForFlightAsync(int iFlightId) {
+            return base.Channel.GetAllSeatsForFlightAsync(iFlightId);
         }
         
         public bool IsSeatAvailable(string seatNumber, int iFlightId) {

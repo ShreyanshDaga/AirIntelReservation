@@ -71,6 +71,7 @@ namespace AIR.DAL
             if(newUser != null)
             {
                 Context.Users.Add(newUser);
+                Context.SaveChanges();
                 return true;
             }
 
@@ -401,6 +402,22 @@ namespace AIR.DAL
             var bookings = Context.Bookings.Where(b => b.Flight.Id == iFlightId).ToList();
 
             return bookings;
+        }
+        public static User GetUserByEmail(string userEmail)
+        {
+            var user = Context.Users.Single(u => u.EmailAddress == userEmail);
+
+            return user;
+        }
+        public static int GetUserIdByEmail(string userEmail)
+        {
+            foreach(var user in Context.Users)
+            {
+                if (user.EmailAddress == userEmail)
+                    return user.Id;
+            }
+
+            return -1;
         }
     }
 }

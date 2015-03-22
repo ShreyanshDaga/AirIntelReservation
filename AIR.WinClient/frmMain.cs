@@ -185,12 +185,12 @@ namespace AIR.WinClient
         private void GetSeatMapFromBookings(int iFlightId)
         {
             // Get all the bookings for this flight
-            var bookings = userClient.GetAllBookingsForFlight(iFlightId);
+            var seats = userClient.GetAllSeatsForFlight(iFlightId);
             
-            foreach(var booking in bookings)
+            foreach(var seat in seats)
             {
-                int iR = GetRowFromSeatNumber(booking.SeatNumber);
-                int iC = GetColumnFromSeatNumber(booking.SeatNumber);
+                int iR = GetRowFromSeatNumber(seat);
+                int iC = GetColumnFromSeatNumber(seat);
 
                 this.seatMap[iR, iC] = true;
             }
@@ -217,6 +217,14 @@ namespace AIR.WinClient
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             GenerateUserBooking();
+
+            txtbxCol.Clear();
+            txtbxRow.Clear();
+            txtbxTotalFare.Clear();
+            txtbxUserAge.Clear();
+            txtbxUserEmail.Clear();
+            txtbxUserName.Clear();
+            txtbxUserPassport.Clear();            
         }
         private void GenerateUserBooking()
         {
@@ -227,9 +235,15 @@ namespace AIR.WinClient
 
             fare = (float)Convert.ToDouble(txtbxTotalFare.Text);
 
-            var user = new User { Name = txtbxUserName.Text, EmailAddress = txtbxUserEmail.Text, Age = Convert.ToInt32(txtbxUserAge.Text), PassportNumber = txtbxUserPassport.Text };            
+            var user = new User { Name = txtbxUserName.Text, EmailAddress = txtbxUserEmail.Text, Age = Convert.ToInt32(txtbxUserAge.Text), PassportNumber = txtbxUserPassport.Text };
 
-            Booking booking = new Booking { FlightId = selectedFlight.Id, TotalFare = fare, SeatNumber = seatNumber, TicketNumber = ticketNumber, DepartureTime = selectedFlight.Departure, BoardingTime = selectedFlight.Departure.AddMinutes(-30.00), User = user };
+            var userRes = userClient.CreateNewUser(user);
+            if (!userRes.IsSuccess)
+                MessageBox.Show("error");
+
+            int Id = userClient.GetUserIdByEmailAddress(user.EmailAddress);
+
+            Booking booking = new Booking { FlightId = selectedFlight.Id, TotalFare = fare, SeatNumber = seatNumber, TicketNumber = ticketNumber, DepartureTime = selectedFlight.Departure, BoardingTime = selectedFlight.Departure.AddMinutes(-30.00), UserId =  Id};
 
             var res = userClient.AddNewBooking(booking);
 

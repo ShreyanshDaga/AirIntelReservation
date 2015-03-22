@@ -204,11 +204,11 @@ namespace AIR.WCFService
             }
         }
 
-        public User GetUserByUserName(string userName)
+        public int GetUserIdByEmailAddress(string userEmail)
         {
-            var user = API.GetUserByName(userName);
+            var id = API.GetUserIdByEmail(userEmail);
 
-            return user;
+            return id;
         }
 
         public User GetLoggedInUser()
@@ -413,11 +413,18 @@ namespace AIR.WCFService
             return bookingsForUser;
         }
 
-        public List<Booking> GetAllBookingsForFlight(int iFlightId)
+        public List<string> GetAllSeatsForFlight(int iFlightId)
         {
             var bookingsForFlight = API.GetBookingsForFlight(iFlightId);
 
-            return bookingsForFlight;
+            List<string> seats = new List<string>();
+
+            foreach(var booking in bookingsForFlight)
+            {
+                seats.Add(booking.SeatNumber);
+            }
+
+            return seats;
         }
 
         public bool IsSeatAvailable(string seatNumber, int iFlightId)

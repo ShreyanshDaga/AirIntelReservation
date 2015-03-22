@@ -44,7 +44,7 @@ namespace AIR.WCFService
         [OperationContract]
         APIResult UpdateUser(User updateUser, int iUserId);
         [OperationContract]
-        User GetUserByUserName(string userName);
+        int GetUserIdByEmailAddress(string userEmail);
         [OperationContract]
         User GetLoggedInUser();
         #endregion
@@ -69,6 +69,7 @@ namespace AIR.WCFService
         Flight GetFlightDetails(int iFlightId);
         [OperationContract]
         List<Flight> GetAllFlights();
+        [OperationContract]
         List<Flight> GetFlightsBetweenAirports(string strTo, string strFrom);
         #endregion
 
@@ -84,7 +85,7 @@ namespace AIR.WCFService
         [OperationContract]
         List<Booking> GetAllBookingsForUser(int iUserId);
         [OperationContract]
-        List<Booking> GetAllBookingsForFlight(int iFlightId);
+        List<string> GetAllSeatsForFlight(int iFlightId);
         [OperationContract]
         bool IsSeatAvailable(string seatNumber, int iFlightId);
         #endregion

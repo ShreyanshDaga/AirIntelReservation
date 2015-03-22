@@ -74,11 +74,11 @@
   <wsdl:message name="IReservationService_UpdateUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IReservationService_GetUserByUserName_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserByUserName" />
+  <wsdl:message name="IReservationService_GetUserIdByEmailAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIdByEmailAddress" />
   </wsdl:message>
-  <wsdl:message name="IReservationService_GetUserByUserName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserByUserNameResponse" />
+  <wsdl:message name="IReservationService_GetUserIdByEmailAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIdByEmailAddressResponse" />
   </wsdl:message>
   <wsdl:message name="IReservationService_GetLoggedInUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLoggedInUser" />
@@ -134,6 +134,12 @@
   <wsdl:message name="IReservationService_GetAllFlights_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllFlightsResponse" />
   </wsdl:message>
+  <wsdl:message name="IReservationService_GetFlightsBetweenAirports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightsBetweenAirports" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_GetFlightsBetweenAirports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightsBetweenAirportsResponse" />
+  </wsdl:message>
   <wsdl:message name="IReservationService_AddNewBooking_InputMessage">
     <wsdl:part name="parameters" element="tns:AddNewBooking" />
   </wsdl:message>
@@ -164,11 +170,11 @@
   <wsdl:message name="IReservationService_GetAllBookingsForUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllBookingsForUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IReservationService_GetAllBookingsForFlight_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllBookingsForFlight" />
+  <wsdl:message name="IReservationService_GetAllSeatsForFlight_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSeatsForFlight" />
   </wsdl:message>
-  <wsdl:message name="IReservationService_GetAllBookingsForFlight_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllBookingsForFlightResponse" />
+  <wsdl:message name="IReservationService_GetAllSeatsForFlight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSeatsForFlightResponse" />
   </wsdl:message>
   <wsdl:message name="IReservationService_IsSeatAvailable_InputMessage">
     <wsdl:part name="parameters" element="tns:IsSeatAvailable" />
@@ -221,9 +227,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/UpdateUser" message="tns:IReservationService_UpdateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/UpdateUserResponse" message="tns:IReservationService_UpdateUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetUserByUserName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetUserByUserName" message="tns:IReservationService_GetUserByUserName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetUserByUserNameResponse" message="tns:IReservationService_GetUserByUserName_OutputMessage" />
+    <wsdl:operation name="GetUserIdByEmailAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetUserIdByEmailAddress" message="tns:IReservationService_GetUserIdByEmailAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetUserIdByEmailAddressResponse" message="tns:IReservationService_GetUserIdByEmailAddress_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetLoggedInUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetLoggedInUser" message="tns:IReservationService_GetLoggedInUser_InputMessage" />
@@ -261,6 +267,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetAllFlights" message="tns:IReservationService_GetAllFlights_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetAllFlightsResponse" message="tns:IReservationService_GetAllFlights_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetFlightsBetweenAirports">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetFlightsBetweenAirports" message="tns:IReservationService_GetFlightsBetweenAirports_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetFlightsBetweenAirportsResponse" message="tns:IReservationService_GetFlightsBetweenAirports_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddNewBooking">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/AddNewBooking" message="tns:IReservationService_AddNewBooking_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/AddNewBookingResponse" message="tns:IReservationService_AddNewBooking_OutputMessage" />
@@ -281,9 +291,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetAllBookingsForUser" message="tns:IReservationService_GetAllBookingsForUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetAllBookingsForUserResponse" message="tns:IReservationService_GetAllBookingsForUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllBookingsForFlight">
-      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetAllBookingsForFlight" message="tns:IReservationService_GetAllBookingsForFlight_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetAllBookingsForFlightResponse" message="tns:IReservationService_GetAllBookingsForFlight_OutputMessage" />
+    <wsdl:operation name="GetAllSeatsForFlight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/GetAllSeatsForFlight" message="tns:IReservationService_GetAllSeatsForFlight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/GetAllSeatsForFlightResponse" message="tns:IReservationService_GetAllSeatsForFlight_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="IsSeatAvailable">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/IsSeatAvailable" message="tns:IReservationService_IsSeatAvailable_InputMessage" />
@@ -391,8 +401,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserByUserName">
-      <soap:operation soapAction="http://tempuri.org/IReservationService/GetUserByUserName" style="document" />
+    <wsdl:operation name="GetUserIdByEmailAddress">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetUserIdByEmailAddress" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -481,6 +491,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFlightsBetweenAirports">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetFlightsBetweenAirports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddNewBooking">
       <soap:operation soapAction="http://tempuri.org/IReservationService/AddNewBooking" style="document" />
       <wsdl:input>
@@ -526,8 +545,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllBookingsForFlight">
-      <soap:operation soapAction="http://tempuri.org/IReservationService/GetAllBookingsForFlight" style="document" />
+    <wsdl:operation name="GetAllSeatsForFlight">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/GetAllSeatsForFlight" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

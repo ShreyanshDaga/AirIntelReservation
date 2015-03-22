@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:9999/AirIntelReservationService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AIR.Entities" />
+  <xs:import schemaLocation="http://localhost:9999/AirIntelReservationService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="Ping">
     <xs:complexType>
       <xs:sequence />
@@ -155,17 +156,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetUserByUserName">
+  <xs:element name="GetUserIdByEmailAddress">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userEmail" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetUserByUserNameResponse">
+  <xs:element name="GetUserIdByEmailAddressResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetUserByUserNameResult" nillable="true" type="q15:User" />
+        <xs:element minOccurs="0" name="GetUserIdByEmailAddressResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -177,14 +178,14 @@
   <xs:element name="GetLoggedInUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetLoggedInUserResult" nillable="true" type="q16:User" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetLoggedInUserResult" nillable="true" type="q15:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateNewAircraft">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="newAircraft" nillable="true" type="q17:Aircraft" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="newAircraft" nillable="true" type="q16:Aircraft" />
         <xs:element minOccurs="0" name="iAdminId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -192,7 +193,7 @@
   <xs:element name="CreateNewAircraftResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="CreateNewAircraftResult" nillable="true" type="q18:APIResult" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="CreateNewAircraftResult" nillable="true" type="q17:APIResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -207,7 +208,7 @@
   <xs:element name="RemoveAircraftResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="RemoveAircraftResult" nillable="true" type="q19:APIResult" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="RemoveAircraftResult" nillable="true" type="q18:APIResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -221,7 +222,7 @@
   <xs:element name="GetAircraftDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAircraftDetailsResult" nillable="true" type="q20:Aircraft" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAircraftDetailsResult" nillable="true" type="q19:Aircraft" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -233,14 +234,14 @@
   <xs:element name="GetAllAircraftsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAllAircraftsResult" nillable="true" type="q21:ArrayOfAircraft" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAllAircraftsResult" nillable="true" type="q20:ArrayOfAircraft" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateNewFlight">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="newFlight" nillable="true" type="q22:Flight" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="newFlight" nillable="true" type="q21:Flight" />
         <xs:element minOccurs="0" name="iAdminId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -248,7 +249,7 @@
   <xs:element name="CreateNewFlightResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="CreateNewFlightResult" nillable="true" type="q23:APIResult" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="CreateNewFlightResult" nillable="true" type="q22:APIResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -263,7 +264,7 @@
   <xs:element name="RemoveFlightResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="RemoveFlightResult" nillable="true" type="q24:APIResult" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="RemoveFlightResult" nillable="true" type="q23:APIResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -277,7 +278,7 @@
   <xs:element name="GetFlightDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetFlightDetailsResult" nillable="true" type="q25:Flight" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetFlightDetailsResult" nillable="true" type="q24:Flight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -289,7 +290,22 @@
   <xs:element name="GetAllFlightsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAllFlightsResult" nillable="true" type="q26:ArrayOfFlight" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAllFlightsResult" nillable="true" type="q25:ArrayOfFlight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFlightsBetweenAirports">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strTo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strFrom" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFlightsBetweenAirportsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetFlightsBetweenAirportsResult" nillable="true" type="q26:ArrayOfFlight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -365,17 +381,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllBookingsForFlight">
+  <xs:element name="GetAllSeatsForFlight">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="iFlightId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllBookingsForFlightResponse">
+  <xs:element name="GetAllSeatsForFlightResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAllBookingsForFlightResult" nillable="true" type="q34:ArrayOfBooking" />
+        <xs:element xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllSeatsForFlightResult" nillable="true" type="q34:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
