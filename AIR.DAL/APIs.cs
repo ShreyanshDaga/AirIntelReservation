@@ -21,7 +21,7 @@ namespace AIR.DAL
             SignedInAdmins = new List<Admin>(5);
             SignInUsers = new List<User>(5);
         }
-        // For DEBUG
+        
         public static void Init()
         {
             if (!Context.Database.Exists())
@@ -30,45 +30,14 @@ namespace AIR.DAL
             }
         }
 
-        public static List<Admin> GetAdmins()
-        {
-            return Context.Admins.ToList();
-        }
+        #region Admin/User
         public static Admin GetLogginAdmin()
-        {
-            // Only for basic console app
+        {            
             return SignedInAdmins[0];
-        }
-        public static bool RegisterNewUser(string userName, string userPassword, bool bAdmin)
-        {
-            if(bAdmin)
-            {
-                var Admin = new Admin { Name = userName, PasswordHash = userPassword};
-                Context.Admins.Add(Admin);
-                Context.SaveChanges();
-            }
-            else
-            {
-                var User = new User { UserName = userName, Password = userPassword};
-                Context.Users.Add(User);
-                Context.SaveChanges();
-            }
-
-
-            return true;
-        }
-        public static User GetLoggedInUser()
-        {
-            // Only for basic console app
-            return SignInUsers[0];
-        }
-        public static List<User> GetUsers()
-        {
-            return Context.Users.ToList();
         }
         public static bool UserRegister(User newUser)
         {
-            if(newUser != null)
+            if (newUser != null)
             {
                 Context.Users.Add(newUser);
                 Context.SaveChanges();
@@ -90,12 +59,12 @@ namespace AIR.DAL
         }
         public static bool AdminSignIn(string adminName, string adminPassword)
         {
-            
+
             try
             {
                 var adminInDB = Context.Admins.Single(a => a.UserName == adminName);
 
-                if(adminInDB != null)
+                if (adminInDB != null)
                 {
                     if (adminPassword == adminInDB.PasswordHash)
                     {
@@ -108,10 +77,10 @@ namespace AIR.DAL
 
                 return false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
-            }                        
+            }
 
         }
         public static bool AdminSignOut(int iAdminId)
@@ -138,7 +107,7 @@ namespace AIR.DAL
             foreach (var user in SignInUsers)
             {
                 if (user.Id == iUserId)
-                { 
+                {
                     SignInUsers.Remove(user);
                     return true;
                 }
@@ -146,137 +115,20 @@ namespace AIR.DAL
 
             return false;
         }
-        private static bool IsUserSignedIn(int iUserId)
-        {
-            foreach (var admin in SignInUsers)
-            {
-                if (admin.Id == iUserId)
-                    return true;
-            }
-            return false;
-        }
         private static bool IsAdminSignedIn(int iAdminId)
         {
-            foreach(var admin in SignedInAdmins)
+            foreach (var admin in SignedInAdmins)
             {
                 if (admin.Id == iAdminId)
                     return true;
             }
             return false;
         }
-        public static bool AddNewAircraft(Aircraft newAircraft, int iAdminId)
-        {
-            if(IsAdminSignedIn(iAdminId))
-            {
-                try
-                {
-                    Context.Aircrafts.Add(newAircraft);
-                    Context.SaveChanges();
-                    return true;
-                }
-                catch(Exception ex)
-                {
-                    return false;
-                }
-            }
-
-            return false;
-        }
-        public static bool RemoveAircraft(int iAircraftId, int iAdminId)
-        {
-            // Find the entry for aircraft first
-            var aircraft = Context.Aircrafts.Single(a => a.Id == iAircraftId);
-
-            if(aircraft != null)
-            {
-                Context.Aircrafts.Remove(aircraft);
-                Context.SaveChanges();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }        
-        public static List<Flight> GetAllFights()
-        {
-            return Context.Flights.Include("Aircraft").ToList();
-        }
-        public static Flight GetFlightDetail(int iFlightId)
-        {
-            try
-            {
-                var flightDetail = Context.Flights.Single(f => f.Id == iFlightId);
-                if (flightDetail != null)
-                    return flightDetail;
-                else
-                    return null;
-            }
-            catch(Exception ex)
-            {
-                return null;
-            }
-        }        
-        public static bool AddNewFlight(Flight newFlight, int iAdminId)
-        {
-            if(IsAdminSignedIn(iAdminId))
-            {
-                try
-                {
-                    Context.Flights.Add(newFlight);
-                    Context.SaveChanges();
-                    return true;
-                }
-                catch(Exception ex)
-                {
-                    return false;
-                }
-            }
-            return false;
-        }        
-        public static bool IsFlightFull(int iFlightId)
-        {
-            return true;
-        }
-        public static bool IsBusinessFull(int iFlightId)
-        {
-            return true;
-        }
-        public static bool IsFirstClassFull(int iFlightId)
-        {
-            return true;
-        }
-        public static bool IsEconomyFull(int iFlightId)
-        {
-            return true;
-        }
-        public static bool BookSeatInFlight(int iFlightId, int iUserId)
-        {
-            return true;
-        }
-        public static bool ChangeSeat(int iBookingId, int iUserId)
-        {
-            return true;
-        }
-        public static bool CancelBooking(int iBookingId, int iUserId)
-        {
-            return true;
-        }
-        public static List<Booking> GetBookingsForUser(int iUserId)
-        {
-            var user = Context.Users.Single(u => u.Id == iUserId);
-
-            return user.Bookings.ToList();
-        }                                        
-        public static List<Aircraft> GetAllAircrafts()
-        {
-            return Context.Aircrafts.ToList();
-        }
         public static bool UpdateAdmin(Admin updateAdmin, int iAdminId)
         {
             var admin = Context.Admins.Single(a => a.Id == iAdminId);
 
-            if(admin != null)
+            if (admin != null)
             {
                 admin.Name = updateAdmin.Name;
                 admin.PasswordHash = updateAdmin.PasswordHash;
@@ -314,13 +166,105 @@ namespace AIR.DAL
 
             return false;
         }
-        public static User GetUserByName(string userName)
+        public static User GetUserByEmail(string userEmail)
         {
-            return Context.Users.Single(u => u.UserName == userName);
+            var user = Context.Users.Single(u => u.EmailAddress == userEmail);
+
+            return user;
+        }
+        public static int GetUserIdByEmail(string userEmail)
+        {
+            foreach (var user in Context.Users)
+            {
+                if (user.EmailAddress == userEmail)
+                    return user.Id;
+            }
+
+            return -1;
+        }
+        #endregion
+
+        #region Aircraft
+        public static bool AddNewAircraft(Aircraft newAircraft, int iAdminId)
+        {
+            if (IsAdminSignedIn(iAdminId))
+            {
+                try
+                {
+                    Context.Aircrafts.Add(newAircraft);
+                    Context.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
+        public static bool RemoveAircraft(int iAircraftId, int iAdminId)
+        {
+            // Find the entry for aircraft first
+            var aircraft = Context.Aircrafts.Single(a => a.Id == iAircraftId);
+
+            if (aircraft != null)
+            {
+                Context.Aircrafts.Remove(aircraft);
+                Context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public static Aircraft GetAircraftDetails(int iAircraftId)
         {
             return Context.Aircrafts.Single(a => a.Id == iAircraftId);
+        }
+        public static List<Aircraft> GetAllAircrafts()
+        {
+            return Context.Aircrafts.ToList();
+        }
+        #endregion
+
+        #region Flights
+        public static List<Flight> GetAllFights()
+        {
+            return Context.Flights.Include("Aircraft").ToList();
+        }
+        public static Flight GetFlightDetail(int iFlightId)
+        {
+            try
+            {
+                var flightDetail = Context.Flights.Single(f => f.Id == iFlightId);
+                if (flightDetail != null)
+                    return flightDetail;
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public static bool AddNewFlight(Flight newFlight, int iAdminId)
+        {
+            if (IsAdminSignedIn(iAdminId))
+            {
+                try
+                {
+                    Context.Flights.Add(newFlight);
+                    Context.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return false;
         }
         public static bool RemoveFlight(int iFlightId, int iAdminId)
         {
@@ -336,7 +280,7 @@ namespace AIR.DAL
 
                 return true;
             }
-            
+
             return false;
         }
         public static List<Flight> GetFlightBetweenAirports(string strTo, string strFrom)
@@ -345,12 +289,25 @@ namespace AIR.DAL
 
             return flights;
         }
+        #endregion
+
+        #region Bookings
+        public static bool CancelBooking(int iBookingId, int iUserId)
+        {
+            return true;
+        }
+        public static List<Booking> GetBookingsForUser(int iUserId)
+        {
+            var user = Context.Users.Single(u => u.Id == iUserId);
+
+            return user.Bookings.ToList();
+        }
         public static bool AddNewBooking(Booking newBooking)
         {
             var thisFlightBookings = Context.Bookings.Where(b => b.FlightId == newBooking.FlightId).ToList();
 
             // Check if seat is already taken
-            foreach(var booking in thisFlightBookings)
+            foreach (var booking in thisFlightBookings)
             {
                 if (booking.SeatNumber == newBooking.SeatNumber)
                     return false;
@@ -365,11 +322,11 @@ namespace AIR.DAL
         {
             var oldBooking = Context.Bookings.Single(b => b.Id == iBookingId);
 
-            if(oldBooking != null)
+            if (oldBooking != null)
             {
                 oldBooking.SeatNumber = booking.SeatNumber;
 
-                switch(booking.SeatNumber[0])
+                switch (booking.SeatNumber[0])
                 {
                     case 'B':
                         oldBooking.TotalFare = oldBooking.Flight.BusinessFare;
@@ -391,7 +348,7 @@ namespace AIR.DAL
             }
 
             return false;
-        }       
+        }
         public static Booking GetBooking(int iBookingId)
         {
             return Context.Bookings.Single(b => b.Id == iBookingId);
@@ -402,22 +359,86 @@ namespace AIR.DAL
             var bookings = Context.Bookings.Where(b => b.Flight.Id == iFlightId).ToList();
 
             return bookings;
-        }
-        public static User GetUserByEmail(string userEmail)
-        {
-            var user = Context.Users.Single(u => u.EmailAddress == userEmail);
+        }              
+        #endregion
 
-            return user;
-        }
-        public static int GetUserIdByEmail(string userEmail)
-        {
-            foreach(var user in Context.Users)
-            {
-                if (user.EmailAddress == userEmail)
-                    return user.Id;
-            }
+        #region Not Required Code
+        //public static List<Admin> GetAdmins()
+        //{
+        //    return Context.Admins.ToList();
+        //}
+        
+        //public static bool RegisterNewUser(string userName, string userPassword, bool bAdmin)
+        //{
+        //    if(bAdmin)
+        //    {
+        //        var Admin = new Admin { Name = userName, PasswordHash = userPassword};
+        //        Context.Admins.Add(Admin);
+        //        Context.SaveChanges();
+        //    }
+        //    else
+        //    {
+        //        var User = new User { UserName = userName, Password = userPassword};
+        //        Context.Users.Add(User);
+        //        Context.SaveChanges();
+        //    }
 
-            return -1;
-        }
+
+        //    return true;
+        //}
+        //public static User GetLoggedInUser()
+        //{
+        //    // Only for basic console app
+        //    return SignInUsers[0];
+        //}
+        //public static List<User> GetUsers()
+        //{
+        //    return Context.Users.ToList();
+        //}
+        
+        //private static bool IsUserSignedIn(int iUserId)
+        //{
+        //    foreach (var admin in SignInUsers)
+        //    {
+        //        if (admin.Id == iUserId)
+        //            return true;
+        //    }
+        //    return false;
+        //}
+        
+        
+        
+        //public static bool IsFlightFull(int iFlightId)
+        //{
+        //    return true;
+        //}
+        //public static bool IsBusinessFull(int iFlightId)
+        //{
+        //    return true;
+        //}
+        //public static bool IsFirstClassFull(int iFlightId)
+        //{
+        //    return true;
+        //}
+        //public static bool IsEconomyFull(int iFlightId)
+        //{
+        //    return true;
+        //}
+        //public static bool BookSeatInFlight(int iFlightId, int iUserId)
+        //{
+        //    return true;
+        //}
+        //public static bool ChangeSeat(int iBookingId, int iUserId)
+        //{
+        //    return true;
+        //}
+        
+        
+
+        //public static User GetUserByName(string userName)
+        //{
+        //    return Context.Users.Single(u => u.UserName == userName);
+        //}
+        #endregion                        
     }
 }

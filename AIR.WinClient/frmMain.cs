@@ -251,6 +251,9 @@ namespace AIR.WinClient
             if(res.IsSuccess)
             {
                 // New ticket form
+                MessageBox.Show("Your booking is confirmed.!");
+
+                booking.Flight = this.selectedFlight;
                 this.frmTicket = new frmTicket(booking, user);
                 this.frmTicket.FormClosed += frmTicket_FormClosed;
                 frmTicket.Show();

@@ -16,6 +16,14 @@ namespace AIR.WinClient
         public frmTicket(Booking booking, User user)
         {
             InitializeComponent();
+
+            lblName.Text += user.Name;
+            lblSeat.Text += booking.SeatNumber;
+            lblTicket.Text += booking.TicketNumber;
+            lblFrom.Text += booking.Flight.Source;
+            lblTo.Text += booking.Flight.Destination;
+            lblDepartire.Text += booking.DepartureTime.ToString();
+            lblBoarding.Text += booking.BoardingTime.ToString();            
         }
 
         private void btnBack_Click(object sender, EventArgs e)

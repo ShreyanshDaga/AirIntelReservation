@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIR.WinClient", "AIR.WinCli
 		{7F6B81F0-3F59-4BAB-8EAC-4CF8C2C30B6B} = {7F6B81F0-3F59-4BAB-8EAC-4CF8C2C30B6B}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIR.Starter", "AIR.Starter\AIR.Starter.csproj", "{2755A560-38CB-43FD-9BD9-DF18EA5B517E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{2873E98C-10CE-4352-84C8-E6B18C2AF03A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2873E98C-10CE-4352-84C8-E6B18C2AF03A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2873E98C-10CE-4352-84C8-E6B18C2AF03A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2755A560-38CB-43FD-9BD9-DF18EA5B517E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2755A560-38CB-43FD-9BD9-DF18EA5B517E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2755A560-38CB-43FD-9BD9-DF18EA5B517E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2755A560-38CB-43FD-9BD9-DF18EA5B517E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
