@@ -16,7 +16,8 @@ namespace AIR.Starter
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+            Application.Run(new frmMain());
         }
     }
 }
