@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIR.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,14 +11,19 @@ using System.Windows.Forms;
 
 namespace AIR.WinForm
 {
+
+    public class LoginFormEventArgs : EventArgs
+    {
+        public frmAdmin adminPanel { get; set; }
+        public Admin loggedInAdmin { get; set; }
+    }
+    
     public partial class frmMain : Form
     {
         frmLogin loginForm;
-        //frmNewUser newuserForm;
-        //frmAdmin adminPanel;
+        frmAdmin adminPanel;
         ReservationServiceRef.ReservationServiceClient adminClient;
         bool bRunning = false;
-
        
         public frmMain()
         {
@@ -27,12 +33,26 @@ namespace AIR.WinForm
             
             loginForm = new frmLogin(adminClient);
             loginForm.FormClosed += loginForm_FormClosed;
+            loginForm.OnLoginClose += loginForm_OnLoginClose;
             loginForm.MdiParent = this;
             loginForm.Show();
         }
 
-        void loginForm_FormClosed(object sender, FormClosedEventArgs e)
+        void loginForm_OnLoginClose(object sender, LoginFormEventArgs e)
         {
+            // Get the login result here
+            this.adminPanel = e.adminPanel;
+            this.adminPanel.OnSignOut += adminPanel_OnSignOut;
+            e.adminPanel.Show();
+        }
+
+        void adminPanel_OnSignOut(object sender, EventArgs e)
+        {            
+            this.adminPanel = null;
+        }
+
+        void loginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {            
             this.loginForm = null;
         }
 
@@ -79,11 +99,48 @@ namespace AIR.WinForm
                 }                    
             }
 
+            if(this.loginForm != null)
+            {
+                // if instance is already running
+                this.loginForm.Activate();
+                this.Cursor = Cursors.Default;
+                return;
+            }            
+
+            if(this.adminPanel != null)
+            {                
+                this.adminPanel.Activate();
+                this.Cursor = Cursors.Default;
+                return;
+            }
+
+            // If instance is not running
             this.Cursor = Cursors.Default;
-            loginForm = new frmLogin(adminClient);
+            loginForm = new frmLogin(this.adminClient);
             loginForm.FormClosed += loginForm_FormClosed;
             loginForm.MdiParent = this;
             loginForm.Show();
+        }
+        private bool IsServiceAlive()
+        {
+            try
+            {
+                if (!this.adminClient.Ping())
+                {
+                    MessageBox.Show("WCF Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Cursor = Cursors.Default;
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Incase service goes down before the ping is tested
+                MessageBox.Show("WCF Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Cursor = Cursors.Default;
+                return false;
+            }
+
+            return true;
         }
     }
 }

@@ -424,6 +424,7 @@ namespace AIR.WinClient
                 if (!this.userClient.Ping())
                 {
                     MessageBox.Show("WCF Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Cursor = Cursors.Default;
                     return false;
                 }
             }
@@ -431,6 +432,7 @@ namespace AIR.WinClient
             {
                 // Incase service goes down before the ping is tested
                 MessageBox.Show("WCF Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Cursor = Cursors.Default;
                 return false;
             }
 

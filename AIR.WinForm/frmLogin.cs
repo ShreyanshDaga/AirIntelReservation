@@ -12,8 +12,12 @@ namespace AIR.WinForm
 {
     public partial class frmLogin : Form
     {
+
+        public event EventHandler<LoginFormEventArgs> OnLoginClose;
+
         ReservationServiceRef.ReservationServiceClient adminClient;
         frmNewUser formNewUser;
+        frmAdmin adminPanel;
 
         public frmLogin(ReservationServiceRef.ReservationServiceClient adminClient)
         {
@@ -23,7 +27,7 @@ namespace AIR.WinForm
             this.txtbxUserName.Leave += txtbxUserName_Leave;
             this.txtbxUserPassword.Leave += txtbxUserPassword_Leave;
 
-            this.adminClient = adminClient;
+            this.adminClient = adminClient;            
         }
 
         void txtbxUserPassword_Leave(object sender, EventArgs e)
@@ -90,22 +94,43 @@ namespace AIR.WinForm
 
             if (!IsServiceAlive())
                 return;
+
+            
             var currentAdmin = adminClient.GetAdminByUserName(userName);
-            frmAdmin admin = new frmAdmin(adminClient, currentAdmin);
-            admin.MdiParent = this.MdiParent;
-            admin.Show();
-            this.Close();                        
+            adminPanel = new frmAdmin(adminClient, currentAdmin);
+            adminPanel.MdiParent = this.MdiParent;
+
+            // Trigger the login event
+            var eventargs = new LoginFormEventArgs { adminPanel = adminPanel, loggedInAdmin = currentAdmin };
+            this.OnLoginClose(this, eventargs);
+            this.Close();
         }
 
         private bool IsServiceAlive()
         {
-            if(!adminClient.Ping())
+            try
             {
-                MessageBox.Show("Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!this.adminClient.Ping())
+                {
+                    MessageBox.Show("WCF Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Cursor = Cursors.Default;
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Incase service goes down before the ping is tested
+                MessageBox.Show("WCF Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Cursor = Cursors.Default;
                 return false;
             }
 
             return true;
         }
+
+        public frmAdmin GetAdminPanel()
+        {
+            return this.adminPanel;
+        }        
     }
 }
