@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.grbbxBooking = new System.Windows.Forms.GroupBox();
-            this.btnBookFlight = new System.Windows.Forms.Button();
             this.lstvwFlights = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -81,7 +80,6 @@
             // 
             // grbbxBooking
             // 
-            this.grbbxBooking.Controls.Add(this.btnBookFlight);
             this.grbbxBooking.Controls.Add(this.lstvwFlights);
             this.grbbxBooking.Controls.Add(this.btnRefreshFlights);
             this.grbbxBooking.Controls.Add(this.label1);
@@ -91,16 +89,6 @@
             this.grbbxBooking.TabIndex = 0;
             this.grbbxBooking.TabStop = false;
             this.grbbxBooking.Text = "Book Tickets";
-            // 
-            // btnBookFlight
-            // 
-            this.btnBookFlight.Location = new System.Drawing.Point(309, 448);
-            this.btnBookFlight.Name = "btnBookFlight";
-            this.btnBookFlight.Size = new System.Drawing.Size(93, 59);
-            this.btnBookFlight.TabIndex = 5;
-            this.btnBookFlight.Text = "Next";
-            this.btnBookFlight.UseVisualStyleBackColor = true;
-            this.btnBookFlight.Click += new System.EventHandler(this.btnBookFlight_Click);
             // 
             // lstvwFlights
             // 
@@ -541,7 +529,7 @@
             this.Controls.Add(this.grbbxBooking);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmMain";
-            this.Text = "AIR Client";
+            this.Text = "AIR Consumer Client";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.grbbxBooking.ResumeLayout(false);
             this.grbbxBooking.PerformLayout();
@@ -565,7 +553,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.Button btnBookFlight;
         private System.Windows.Forms.GroupBox grpbxFlightDetails;
         private System.Windows.Forms.TextBox txtbxSeatMap;
         private System.Windows.Forms.Button btnRefreshSeatMap;

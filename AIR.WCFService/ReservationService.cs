@@ -120,9 +120,15 @@ namespace AIR.WCFService
 
         public Admin GetAdminByUserName(string adminUserName)
         {
-            var admin = API.GetAdminByUserName(adminUserName);
-            
-            return admin;            
+            try
+            {
+                var admin = API.GetAdminByUserName(adminUserName);
+                return admin;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }            
         }
 
         public Admin GetLoggedInAdmin()
