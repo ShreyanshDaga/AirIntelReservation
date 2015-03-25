@@ -13,11 +13,12 @@ namespace AIR.WCFService
     [ServiceContract]
     public interface IReservationService
     {
-        #region custom service ping
+        #region Misc
         [OperationContract]
         bool Ping();
+        [OperationContract]
+        string InitService();
         #endregion
-
 
         #region AdminAPIs
         [OperationContract]

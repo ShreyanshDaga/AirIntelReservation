@@ -22,6 +22,8 @@ namespace AIR.WinClient
         int iBusinessRows, iFirstRows, iEconRows, iWidth;
         bool[,] seatMap;
         frmTicket frmTicket;
+        List<int> seatRows = new List<int>();
+        List<string> seatCols = new List<string>();
 
         public frmMain()
         {
@@ -33,7 +35,8 @@ namespace AIR.WinClient
         {
             this.lstvwFlights.Items.Clear();
 
-            //scheduledFlights.Clear();
+            if (!IsServiceAlive())
+                return;
             scheduledFlights = userClient.GetAllFlights();
 
             if (scheduledFlights == null)
@@ -73,7 +76,9 @@ namespace AIR.WinClient
         }
         private void btnRefreshFlights_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             RefreshFlights();
+            this.Cursor = Cursors.Default;
         }
         private void lstvwFlights_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -83,24 +88,38 @@ namespace AIR.WinClient
 
             iFlightIndex = lstvwFlights.SelectedIndices[0];
                         
-            this.selectedFlight = scheduledFlights[iFlightIndex];
+            this.selectedFlight = scheduledFlights[iFlightIndex];                        
 
             grpbxFlightDetails.Enabled = true;
 
-            lblSelFlightNumbe.Text = selectedFlight.Number;
-            lblSelFlightFrom.Text = selectedFlight.Source;
-            lblSelFlightTo.Text = selectedFlight.Destination;
-            lblSelFlightArr.Text = selectedFlight.Arrival.ToString();
-            lblSelFlightDep.Text = selectedFlight.Departure.ToString();
-            lblAircraftType.Text = selectedFlight.Aircraft.Name;
+            this.lblSelFlightNumbe.Text = selectedFlight.Number;
+            this.lblSelFlightFrom.Text = selectedFlight.Source;
+            this.lblSelFlightTo.Text = selectedFlight.Destination;
+            this.lblSelFlightArr.Text = selectedFlight.Arrival.ToString();
+            this.lblSelFlightDep.Text = selectedFlight.Departure.ToString();
+            this.lblAircraftType.Text = selectedFlight.Aircraft.Name;
 
-            txtbxTotalFare.Text = selectedFlight.EconomyFare.ToString();
+            this.txtbxTotalFare.Text = selectedFlight.EconomyFare.ToString();
 
-            iBusinessRows = selectedFlight.Aircraft.BusinessSeats;
-            iFirstRows = selectedFlight.Aircraft.FirstClassSeats;
-            iEconRows = selectedFlight.Aircraft.EconomySeats;
+            this.iBusinessRows = selectedFlight.Aircraft.BusinessSeats;
+            this.iFirstRows = selectedFlight.Aircraft.FirstClassSeats;
+            this.iEconRows = selectedFlight.Aircraft.EconomySeats;
 
-            iWidth = selectedFlight.Aircraft.FusalageWidth;
+            this.iWidth = selectedFlight.Aircraft.FusalageWidth;
+
+            for (int i = 0; i < iWidth;i++)
+            {
+                char c = Convert.ToChar(i + 65);
+                this.seatCols.Add(c.ToString());
+            }
+
+            for (int j = iBusinessRows + iFirstRows; j < iBusinessRows + iEconRows + iFirstRows; j++)
+            {
+                this.seatRows.Add(j + 1);
+            }
+
+            this.cmbbxCols.DataSource = this.seatCols;
+            this.cmbbxRows.DataSource = this.seatRows;
 
             RenderSeatMap();            
         }
@@ -108,10 +127,10 @@ namespace AIR.WinClient
         {
             int iTotalRows = iBusinessRows + iFirstRows + iEconRows + 6;
 
-            string[] seatMap = new string[iTotalRows + 5];
+            string[] seatMapStrings = new string[iTotalRows + 5];
             this.seatMap = new bool[iTotalRows, iWidth];
 
-            GetSeatMapFromBookings(selectedFlight.Id);
+            this.GetSeatMapFromBookings(selectedFlight.Id);
 
             // Print Columns according to class
             for (int i = 0; i < iWidth; i++)
@@ -119,73 +138,76 @@ namespace AIR.WinClient
                 char c = Convert.ToChar((65 + i));
 
                 if(i != 0)
-                    seatMap[0] += (" " + c.ToString() + " ");
+                    seatMapStrings[0] += (" " + c.ToString() + " ");
                 if (i == 0)
                 {
-                    seatMap[0] += ("   " + c.ToString() + " ");
-                    seatMap[1] += ("--- FIRST CLASS ---");
+                    seatMapStrings[0] += ("   " + c.ToString() + " ");
+                    seatMapStrings[1] += ("--- FIRST CLASS ---");
                 }
                     
-                for (int j = 2; j < 2 + iFirstRows; j++)
+                for (int j = 2; j < iFirstRows + 2; j++)
                 {
                     if (i == 0)
                     {
-                        if(j < 10)
-                            seatMap[j] += " " + (j - 1).ToString() + " ";
+                        if((j-1) < 10)
+                            seatMapStrings[j] += " " + (j - 1).ToString();
                         else
-                            seatMap[j] += (j - 1).ToString() + " ";
+                            seatMapStrings[j] += (j - 1).ToString();
+                    }
+                        
+                    if (this.seatMap[j - 1, i])
+                        seatMapStrings[j] += (" " + "X" + " ");
+                    else
+                        seatMapStrings[j] += (" " + "O" + " ");
+                }
+
+
+                if (i == 0)
+                    seatMapStrings[iFirstRows + 2] += ("--- BUSINESS CLASS ---");
+
+                for (int j = iFirstRows + 3; j < iFirstRows + iBusinessRows + 3; j++)
+                {
+                    if (i == 0)
+                    {
+                        if((j-2) < 10)
+                            seatMapStrings[j] += " " + (j - 2).ToString();
+                        else
+                            seatMapStrings[j] += (j - 2).ToString();
                     }
                         
                     if (this.seatMap[j - 2, i])
-                        seatMap[j] += (" " + "X" + " ");
+                        seatMapStrings[j] += (" " + "X" + " ");
                     else
-                        seatMap[j] += (" " + "O" + " ");
+                        seatMapStrings[j] += (" " + "O" + " ");
                 }
 
-
                 if (i == 0)
-                    seatMap[iFirstRows + 2] += ("--- BUSINESS CLASS ---");
+                    seatMapStrings[iFirstRows + iBusinessRows + 3] += ("--- ECONOMY CLASS ---");
 
-                for (int j = iFirstRows + 3; j < iFirstRows + 3 + iBusinessRows; j++)
+                for (int j = iFirstRows + iBusinessRows + 4; j < iFirstRows + iBusinessRows + iEconRows + 4; j++)
                 {
                     if (i == 0)
                     {
-                        if(j < 10)
-                            seatMap[j] += " " + (iFirstRows + j - 2).ToString() + " ";
+                        if ((j-3) < 10)
+                            seatMapStrings[j] += " " + (j - 3).ToString();
                         else
-                            seatMap[j] += (iFirstRows + j - 2).ToString() + " ";
+                            seatMapStrings[j] += (j - 3).ToString();
                     }
                         
                     if (this.seatMap[j - 3, i])
-                        seatMap[j] += (" " + "X" + " ");
+                        seatMapStrings[j] += (" " + "X" + " ");
                     else
-                        seatMap[j] += (" " + "O" + " ");
-                }
-                if (i == 0)
-                    seatMap[iFirstRows + iBusinessRows + 3] += ("--- ECONOMY CLASS ---");
-
-                for (int j = iFirstRows + iBusinessRows + 4; j < iTotalRows; j++)
-                {
-                    if (i == 0)
-                    {
-                        if(j < 10)
-                            seatMap[j] += " " + (iFirstRows + iBusinessRows + j - 3).ToString() + " ";
-                        else
-                            seatMap[j] += (iFirstRows + iBusinessRows + j - 3).ToString() + " ";
-                    }
-                        
-                    if (this.seatMap[j - 4, i])
-                        seatMap[j] += (" " + "X" + " ");
-                    else
-                        seatMap[j] += (" " + "O" + " ");
+                        seatMapStrings[j] += (" " + "O" + " ");
                 }
             }
 
-            txtbxSeatMap.Lines = seatMap;
+            this.txtbxSeatMap.Lines = seatMapStrings;
         }
         private void GetSeatMapFromBookings(int iFlightId)
         {
-            // Get all the bookings for this flight
+            if (!IsServiceAlive())
+                return;
+            // Get seats from service for the selected flight
             var seats = userClient.GetAllSeatsForFlight(iFlightId);
             
             foreach(var seat in seats)
@@ -217,105 +239,202 @@ namespace AIR.WinClient
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            GenerateUserBooking();
-
-            txtbxCol.Clear();
-            txtbxRow.Clear();
-            txtbxTotalFare.Clear();
-            txtbxUserAge.Clear();
-            txtbxUserEmail.Clear();
-            txtbxUserName.Clear();
-            txtbxUserPassport.Clear();            
+            this.Cursor = Cursors.WaitCursor;
+            this.GenerateUserBooking();
+            this.Cursor = Cursors.Default;                                  
         }
         private void GenerateUserBooking()
         {
-            ValidateUserBooking();
+            if (!ValidateUserBooking())
+                return;
+
             float fare;
-            string seatNumber = txtbxRow.Text + txtbxCol.Text;
-            string ticketNumber = "XYZ";
+            string seatNumber = cmbbxRows.Text + cmbbxCols.Text;
+            string ticketNumber = "TCK" + seatNumber + "OE";
 
             fare = (float)Convert.ToDouble(txtbxTotalFare.Text);
 
             var user = new User { Name = txtbxUserName.Text, EmailAddress = txtbxUserEmail.Text, Age = Convert.ToInt32(txtbxUserAge.Text), PassportNumber = txtbxUserPassport.Text };
 
+            if (!IsServiceAlive())
+                return;
             var userRes = userClient.CreateNewUser(user);
             if (!userRes.IsSuccess)
-                MessageBox.Show("error");
+            {
+                MessageBox.Show("Error submitting user information.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+
+            if (!IsServiceAlive())
+                return;
             int Id = userClient.GetUserIdByEmailAddress(user.EmailAddress);
 
             Booking booking = new Booking { FlightId = selectedFlight.Id, TotalFare = fare, SeatNumber = seatNumber, TicketNumber = ticketNumber, DepartureTime = selectedFlight.Departure, BoardingTime = selectedFlight.Departure.AddMinutes(-30.00), UserId =  Id};
 
+            if (!IsServiceAlive())
+                return;
             var res = userClient.AddNewBooking(booking);
 
             if(res.IsSuccess)
             {
                 // New ticket form
-                MessageBox.Show("Your booking is confirmed.!");
+                MessageBox.Show("Your booking is confirmed.!", "New Booking", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtbxTotalFare.Clear();
+                txtbxUserAge.Clear();
+                txtbxUserEmail.Clear();
+                txtbxUserName.Clear();
+                txtbxUserPassport.Clear();  
 
                 booking.Flight = this.selectedFlight;
                 this.frmTicket = new frmTicket(booking, user);
                 this.frmTicket.FormClosed += frmTicket_FormClosed;
                 frmTicket.Show();
+                RenderSeatMap();
             }
             else
             {
-                MessageBox.Show(res.ErrorMessages["Error"]);
+                MessageBox.Show(res.ErrorMessages["Error"], "New Booking", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.cmbbxRows.Focus();
             }
         }
-
-        void frmTicket_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmTicket_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.frmTicket = null;
         }
-        private void ValidateUserBooking()
+        private bool ValidateUserBooking()
         {
-            
+            if (this.txtbxUserName.Text == "")
+            {
+                MessageBox.Show("User Name field can not be empty!","Booking Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            if (this.txtbxUserPassport.Text == "")
+            {
+                MessageBox.Show("Passport field can not be empty!", "Booking Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            if (this.txtbxUserEmail.Text == "")
+            {
+                MessageBox.Show("Email field can not be empty!", "Booking Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+                
+
+            int iAge;
+            if (!int.TryParse(this.txtbxUserAge.Text, out iAge) || iAge == 0)
+            {
+                MessageBox.Show("Age should be a integer number greater than 0!", "Booking Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }                                
+
+            return true;
         }
         private void btnCheckAvail_Click(object sender, EventArgs e)
         {
-            string seatSelected = txtbxRow.Text + txtbxCol.Text;
+            this.Cursor = Cursors.WaitCursor;
+            string seatSelected = cmbbxRows.Text + cmbbxCols.Text;
 
-            if (userClient.IsSeatAvailable(seatSelected, selectedFlight.Id))
-                MessageBox.Show("Seat is still available!");
+            if (!this.IsServiceAlive())
+                return;
+
+            if (this.userClient.IsSeatAvailable(seatSelected, selectedFlight.Id))
+                MessageBox.Show("Seat is still available!", "Seat Availabilty", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
             {
-                MessageBox.Show("We are sorry the seat was booked by some one else and is no longer available.!\nPlease select a different seat.");
-                RenderSeatMap();
-            }                
+                MessageBox.Show("We are sorry the seat was booked by some one else and is no longer available.!\nPlease select a different seat.", "Seat Availabilty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.RenderSeatMap();
+            }
+            this.Cursor = Cursors.Default;
         }
         private void rdbtnBusiness_CheckedChanged(object sender, EventArgs e)
         {
-            if(rdbtnBusiness.Checked)            
-                txtbxTotalFare.Text = selectedFlight.BusinessFare.ToString();            
+            if (this.rdbtnBusiness.Checked)
+            {
+                this.txtbxTotalFare.Text = selectedFlight.BusinessFare.ToString();
+                this.seatRows = new List<int>();
+                for (int j = iFirstRows; j < iFirstRows + iBusinessRows; j++)
+                {
+                    this.seatRows.Add(j + 1);
+                }
+
+                this.cmbbxRows.DataSource = this.seatRows;                
+            }
+                
         }
         private void rdbtnFirst_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdbtnFirst.Checked)
-                txtbxTotalFare.Text = selectedFlight.FirstFare.ToString();            
+            if (this.rdbtnFirst.Checked)
+            {
+                this.txtbxTotalFare.Text = selectedFlight.FirstFare.ToString();
+                this.seatRows = new List<int>();
+                for (int j = 0; j < iFirstRows; j++)
+                {
+                    this.seatRows.Add(j + 1);
+                }
+
+                this.cmbbxRows.DataSource = this.seatRows;                
+            }
+                
         }
         private void rdbtnEcon_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdbtnEcon.Checked)
-                txtbxTotalFare.Text = selectedFlight.EconomyFare.ToString();            
+            if (this.rdbtnEcon.Checked)
+            {
+                this.txtbxTotalFare.Text = selectedFlight.EconomyFare.ToString();
+                this.seatRows = new List<int>();
+                for (int j = iBusinessRows + iFirstRows; j < iBusinessRows + iFirstRows + iEconRows; j++)
+                {
+                    this.seatRows.Add(j + 1);
+                }
+
+                this.cmbbxRows.DataSource = this.seatRows;
+                //this.cmbbxRows.Invalidate();
+            }
+                
         }
         private void btnRefreshSeatMap_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             // Re render the SeatMap
-            RenderSeatMap();
+            this.RenderSeatMap();
+            this.Cursor = Cursors.Default;
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
             // Init WCF Service
-            if (!InitWCFService())
+            if (!this.InitWCFService())
             {                
                 return;
             }                
 
             // Refresh Flights
-            RefreshFlights(); 
+            this.RefreshFlights(); 
 
             // Form is ready
+        }
+        private bool IsServiceAlive()
+        {
+            try
+            {
+                if (!this.userClient.Ping())
+                {
+                    MessageBox.Show("WCF Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch(Exception ex)
+            {
+                // Incase service goes down before the ping is tested
+                MessageBox.Show("WCF Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 }

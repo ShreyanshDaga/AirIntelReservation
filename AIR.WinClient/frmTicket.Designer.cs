@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblName = new System.Windows.Forms.Label();
             this.lblSeat = new System.Windows.Forms.Label();
             this.lblDepartire = new System.Windows.Forms.Label();
             this.lblBoarding = new System.Windows.Forms.Label();
@@ -38,13 +39,14 @@
             this.lblTicket = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
+            this.lblFare = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Controls.Add(this.lblFare);
             this.panel1.Controls.Add(this.lblName);
             this.panel1.Controls.Add(this.lblSeat);
             this.panel1.Controls.Add(this.lblDepartire);
@@ -59,6 +61,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(469, 156);
             this.panel1.TabIndex = 0;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(33, 34);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(41, 13);
+            this.lblName.TabIndex = 11;
+            this.lblName.Text = "Name: ";
             // 
             // lblSeat
             // 
@@ -143,14 +154,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Reservation Ticket";
             // 
-            // lblName
+            // lblFare
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(33, 34);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(41, 13);
-            this.lblName.TabIndex = 11;
-            this.lblName.Text = "Name: ";
+            this.lblFare.AutoSize = true;
+            this.lblFare.Location = new System.Drawing.Point(307, 59);
+            this.lblFare.Name = "lblFare";
+            this.lblFare.Size = new System.Drawing.Size(34, 13);
+            this.lblFare.TabIndex = 12;
+            this.lblFare.Text = "Fare: ";
             // 
             // frmTicket
             // 
@@ -163,6 +174,7 @@
             this.Name = "frmTicket";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Air Ticket";
+            this.TopMost = true;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -182,5 +194,6 @@
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label lblFlight;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblFare;
     }
 }

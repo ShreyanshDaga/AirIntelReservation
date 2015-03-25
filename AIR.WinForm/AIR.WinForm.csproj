@@ -70,12 +70,6 @@
     <Compile Include="frmAdmin.Designer.cs">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAircraftDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmAircraftDetail.Designer.cs">
-      <DependentUpon>frmAircraftDetail.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmFlightDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,12 +93,6 @@
     </Compile>
     <Compile Include="frmNewUser.Designer.cs">
       <DependentUpon>frmNewUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUser.Designer.cs">
-      <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

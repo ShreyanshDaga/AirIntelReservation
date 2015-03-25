@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.grpbxFlightDetails = new System.Windows.Forms.GroupBox();
             this.pnlUserInformation = new System.Windows.Forms.Panel();
+            this.cmbbxCols = new System.Windows.Forms.ComboBox();
+            this.cmbbxRows = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -55,10 +57,8 @@
             this.btnCheckAvail = new System.Windows.Forms.Button();
             this.txtbxTotalFare = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
-            this.txtbxRow = new System.Windows.Forms.TextBox();
             this.btnRefreshSeatMap = new System.Windows.Forms.Button();
             this.lblAircraftType = new System.Windows.Forms.Label();
-            this.txtbxCol = new System.Windows.Forms.TextBox();
             this.rdbtnEcon = new System.Windows.Forms.RadioButton();
             this.txtbxSeatMap = new System.Windows.Forms.TextBox();
             this.rdbtnFirst = new System.Windows.Forms.RadioButton();
@@ -184,6 +184,8 @@
             // pnlUserInformation
             // 
             this.pnlUserInformation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUserInformation.Controls.Add(this.cmbbxCols);
+            this.pnlUserInformation.Controls.Add(this.cmbbxRows);
             this.pnlUserInformation.Controls.Add(this.label13);
             this.pnlUserInformation.Controls.Add(this.label12);
             this.pnlUserInformation.Controls.Add(this.label11);
@@ -199,10 +201,8 @@
             this.pnlUserInformation.Controls.Add(this.btnCheckAvail);
             this.pnlUserInformation.Controls.Add(this.txtbxTotalFare);
             this.pnlUserInformation.Controls.Add(this.btnConfirm);
-            this.pnlUserInformation.Controls.Add(this.txtbxRow);
             this.pnlUserInformation.Controls.Add(this.btnRefreshSeatMap);
             this.pnlUserInformation.Controls.Add(this.lblAircraftType);
-            this.pnlUserInformation.Controls.Add(this.txtbxCol);
             this.pnlUserInformation.Controls.Add(this.rdbtnEcon);
             this.pnlUserInformation.Controls.Add(this.txtbxSeatMap);
             this.pnlUserInformation.Controls.Add(this.rdbtnFirst);
@@ -215,6 +215,22 @@
             this.pnlUserInformation.Name = "pnlUserInformation";
             this.pnlUserInformation.Size = new System.Drawing.Size(558, 385);
             this.pnlUserInformation.TabIndex = 4;
+            // 
+            // cmbbxCols
+            // 
+            this.cmbbxCols.FormattingEnabled = true;
+            this.cmbbxCols.Location = new System.Drawing.Point(220, 258);
+            this.cmbbxCols.Name = "cmbbxCols";
+            this.cmbbxCols.Size = new System.Drawing.Size(49, 21);
+            this.cmbbxCols.TabIndex = 26;
+            // 
+            // cmbbxRows
+            // 
+            this.cmbbxRows.FormattingEnabled = true;
+            this.cmbbxRows.Location = new System.Drawing.Point(165, 258);
+            this.cmbbxRows.Name = "cmbbxRows";
+            this.cmbbxRows.Size = new System.Drawing.Size(42, 21);
+            this.cmbbxRows.TabIndex = 25;
             // 
             // label13
             // 
@@ -346,6 +362,7 @@
             this.txtbxTotalFare.Name = "txtbxTotalFare";
             this.txtbxTotalFare.Size = new System.Drawing.Size(112, 20);
             this.txtbxTotalFare.TabIndex = 11;
+            this.txtbxTotalFare.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnConfirm
             // 
@@ -357,13 +374,6 @@
             this.btnConfirm.Text = "Book ";
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // txtbxRow
-            // 
-            this.txtbxRow.Location = new System.Drawing.Point(160, 245);
-            this.txtbxRow.Name = "txtbxRow";
-            this.txtbxRow.Size = new System.Drawing.Size(49, 20);
-            this.txtbxRow.TabIndex = 9;
             // 
             // btnRefreshSeatMap
             // 
@@ -383,13 +393,6 @@
             this.lblAircraftType.Size = new System.Drawing.Size(73, 13);
             this.lblAircraftType.TabIndex = 2;
             this.lblAircraftType.Text = "Aircraft Type: ";
-            // 
-            // txtbxCol
-            // 
-            this.txtbxCol.Location = new System.Drawing.Point(215, 245);
-            this.txtbxCol.Name = "txtbxCol";
-            this.txtbxCol.Size = new System.Drawing.Size(49, 20);
-            this.txtbxCol.TabIndex = 8;
             // 
             // rdbtnEcon
             // 
@@ -574,8 +577,6 @@
         private System.Windows.Forms.Label lblSelFlightTo;
         private System.Windows.Forms.Label lblSelFlightFrom;
         private System.Windows.Forms.Label lblSelFlightNumbe;
-        private System.Windows.Forms.TextBox txtbxRow;
-        private System.Windows.Forms.TextBox txtbxCol;
         private System.Windows.Forms.RadioButton rdbtnEcon;
         private System.Windows.Forms.RadioButton rdbtnFirst;
         private System.Windows.Forms.RadioButton rdbtnBusiness;
@@ -598,6 +599,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox cmbbxCols;
+        private System.Windows.Forms.ComboBox cmbbxRows;
     }
 }
 

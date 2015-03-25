@@ -9,19 +9,28 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AIR.WCFService
-{    
+{
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ReservationService : IReservationService
-    {        
-        static ReservationService()
-        {
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
-            API.Init();
-        }
-
-        #region Custom Service PING        
+    {                
+        #region Misc      
         public bool Ping()
         {
+            // Simple method to check if service is still running or not
             return true;
+        }
+        public string InitService()
+        {
+            try
+            {
+                API.Init();
+                return "Success";
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+            
         }
         #endregion
 

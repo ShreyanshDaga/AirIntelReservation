@@ -83,7 +83,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\AIR.Entities.Admin.datasource" />
     <None Include="Properties\DataSources\AIR.Entities.Aircraft.datasource" />
     <None Include="Properties\DataSources\AIR.Entities.APIResult.datasource" />

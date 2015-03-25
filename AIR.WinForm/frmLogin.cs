@@ -64,6 +64,8 @@ namespace AIR.WinForm
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             string userName, userPassword;
 
             lblLoginErrorMessage.Text = "Signing in...";
@@ -72,9 +74,13 @@ namespace AIR.WinForm
 
             userName = txtbxUserName.Text;
             userPassword = txtbxUserPassword.Text;
-                        
-            // Call the service
+
+            if (!IsServiceAlive())
+                return;
+            // Call the service            
             var res = adminClient.AdminLogin(userName, userPassword);
+
+            this.Cursor = Cursors.Default;
 
             if(!res.IsSuccess)
             {
@@ -82,11 +88,24 @@ namespace AIR.WinForm
                 lblLoginErrorMessage.ForeColor = Color.Red;
             }
 
+            if (!IsServiceAlive())
+                return;
             var currentAdmin = adminClient.GetAdminByUserName(userName);
             frmAdmin admin = new frmAdmin(adminClient, currentAdmin);
             admin.MdiParent = this.MdiParent;
             admin.Show();
             this.Close();                        
+        }
+
+        private bool IsServiceAlive()
+        {
+            if(!adminClient.Ping())
+            {
+                MessageBox.Show("Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 }

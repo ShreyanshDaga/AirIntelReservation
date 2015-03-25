@@ -41,7 +41,9 @@ namespace AIR.WinForm
 
             // Create User/Admin here 
             Admin newAdmin = new Admin{Name = "", UserName = userName, PasswordHash = userPassword};
-            
+
+            if (!IsServiceAlive())
+                return;
             // Make the call to the service
             var res = adminClient.CreateNewAdmin(newAdmin);
 
@@ -51,6 +53,17 @@ namespace AIR.WinForm
             }
             else
                 MessageBox.Show(res.ErrorMessages["Error"]);
+        }
+
+        private bool IsServiceAlive()
+        {
+            if (!adminClient.Ping())
+            {
+                MessageBox.Show("Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 }

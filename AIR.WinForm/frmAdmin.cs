@@ -16,8 +16,8 @@ namespace AIR.WinForm
         Admin loggedinAdmin;
         List<Aircraft> aircraftsInService;
         List<Flight> scheduledFlights;
-        frmFlightDetail frmFlightDetail;
-        frmAircraftDetail frmAircraftDetail;
+        frmFlightDetail frmFlightDetail;        
+
         ReservationServiceRef.ReservationServiceClient adminClient;
 
         public frmAdmin(ReservationServiceRef.ReservationServiceClient adminClient, Admin loggedInAdmin)
@@ -25,12 +25,11 @@ namespace AIR.WinForm
             InitializeComponent();
             this.loggedinAdmin = loggedInAdmin;
             this.adminClient = adminClient;
-
-            txtbxAdminName.Text = this.loggedinAdmin.Name;
+            
             txtbxAdminUName.Text = this.loggedinAdmin.UserName;
             this.lbluserName.Text += this.loggedinAdmin.UserName;
 
-
+            this.Cursor = Cursors.Default;
             // List of Flights
             Refresh_Flights();
             // List of aircrafts
@@ -39,6 +38,7 @@ namespace AIR.WinForm
 
         private void btnAddAircraft_Click(object sender, EventArgs e)
         {
+            // Validate the fields
             if (!Validate_AddNewAircraft())
                 return;
 
@@ -51,7 +51,9 @@ namespace AIR.WinForm
             iTotal = iBusinessSeats + iEconSeats + iFirstSeats;
 
             var newAircraft = new Aircraft { Name = txtbxNewAircraftName.Text, FusalageWidth = iWidth, BusinessSeats = iBusinessSeats, EconomySeats = iEconSeats, FirstClassSeats=iFirstSeats, TotalSeats = iTotal};
-            
+
+            if (!IsServiceAlive())
+                return;
             var res = adminClient.CreateNewAircraft(newAircraft, loggedinAdmin.Id);
 
             if (res.IsSuccess)
@@ -75,12 +77,38 @@ namespace AIR.WinForm
         private bool Validate_AddNewAircraft()
         {
             // Validate all the fields
+
+            if(txtbxNewAircraftName.Text == "")
+            {
+                MessageBox.Show("Name can not be empty", "Add New Aircraft Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            int iWidth;
+            if (!int.TryParse(txtbxNewAircraftWidth.Text, out iWidth) || txtbxNewAircraftWidth.Text == "" || iWidth == 0)
+            {
+                MessageBox.Show("Width has to be an integer number.", "Add New Aircraft Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if(txtbxNewAircraftEconSeats.Text == "" || txtbxNewAircraftBusinessSeats.Text == "" || txtbxNewAircraftFirstSeats.Text == "")
+            {
+                MessageBox.Show("Seats can not be empty.", "Add New Aircraft Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            int iSeats1, iSeats2, iSeats3;
+            if (!int.TryParse(txtbxNewAircraftFirstSeats.Text, out iSeats1) || !int.TryParse(txtbxNewAircraftEconSeats.Text, out iSeats2) || !int.TryParse(txtbxNewAircraftBusinessSeats.Text, out iSeats3) || iSeats1 == 0 || iSeats2 == 0 || iSeats3 == 0)
+            {
+                MessageBox.Show("Number of rows of seats has to be an integer number.", "Add New Aircraft Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }                        
+
             return true;
         }
 
         private void btnEditAdminDetails_Click(object sender, EventArgs e)
-        {
-            txtbxAdminName.Enabled = true;
+        {            
             txtbxAdminNewPwd.Enabled = true;
             txtbxAdminUName.Enabled = true;
             txtbxAdminOldPwd.Enabled = true;
@@ -92,14 +120,9 @@ namespace AIR.WinForm
         private void btnSaveDetails_Click(object sender, EventArgs e)
         {
             if (!Validate_EditPersonalDetails())
-            {
-                MessageBox.Show("Validation Error");
                 return;
-            }
 
-            // Save Changes here
-
-            txtbxAdminName.Enabled = false;
+            // Save Changes here            
             txtbxAdminUName.Enabled = false;
             txtbxAdminNewPwd.Enabled = false;
             txtbxAdminOldPwd.Enabled = false;
@@ -110,13 +133,32 @@ namespace AIR.WinForm
 
         private bool Validate_EditPersonalDetails()
         {
-            // Check for validation errors here
+            if(txtbxAdminUName.Text == "")
+            {
+                MessageBox.Show("Username can not be empty", "Edit details error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if(txtbxAdminNewPwd.Text == "" || txtbxAdminOldPwd.Text == "")
+            {
+                MessageBox.Show("Passwords can not be empty", "Edit details error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if(txtbxAdminOldPwd.Text != loggedinAdmin.PasswordHash)
+            {
+                MessageBox.Show("Old password does not match", "Edit details error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return true;
         }
 
         private void btnAddNewFlight_Click(object sender, EventArgs e)
         {
-            Validate_AddNewFlight();
+            // Validate the fields
+            if (Validate_AddNewFlight())
+                return;
 
             float fEconFare, fBusinessFare, fFirstFare;
             DateTime dtDep, dtArr;
@@ -136,8 +178,10 @@ namespace AIR.WinForm
             fBusinessFare = (float)Convert.ToDouble(txtbxNewFlightBusinessFare.Text);
             fFirstFare = (float)Convert.ToDouble(txtbxNewFLightFirstFare.Text);
 
-            Flight newFlight = new Flight { Number = flightNumber, Destination = strTo, Source = strFrom, Arrival = dtArr, Departure = dtDep, AircraftId = selectedAircraft.Id, BusinessFare = fBusinessFare, EconomyFare = fEconFare, FirstFare = fFirstFare };            
+            Flight newFlight = new Flight { Number = flightNumber, Destination = strTo, Source = strFrom, Arrival = dtArr, Departure = dtDep, AircraftId = selectedAircraft.Id, BusinessFare = fBusinessFare, EconomyFare = fEconFare, FirstFare = fFirstFare };
 
+            if (!IsServiceAlive())
+                return;
             var res = adminClient.CreateNewFlight(newFlight, loggedinAdmin.Id);
 
             if (res.IsSuccess)
@@ -150,8 +194,40 @@ namespace AIR.WinForm
             Refresh_Flights();
         }
 
-        private void Validate_AddNewFlight()
-        {            
+        private bool Validate_AddNewFlight()
+        {
+            if(txtbxNewFlightNumber.Text == "")
+            {
+                MessageBox.Show("Flight number can not be empty", "Add New Flight Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if(txtbxNewFlightFrom.Text == "")
+            {
+                MessageBox.Show("Flight source can not be empty", "Add New Flight Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if(txtbxNewFlightTo.Text == "")
+            {
+                MessageBox.Show("Flight destination can not be empty", "Add New Flight Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if(dtArr.Value <= dtDep.Value)
+            {
+                MessageBox.Show("Arrival time can not be before or equal to departure time", "Add New Flight Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            float fare;
+            if (!float.TryParse(txtbxNewFLightFirstFare.Text,out fare) || !float.TryParse(txtbxNewFlightBusinessFare.Text,out fare) || !float.TryParse(txtbxNewFlightEconFare.Text,out fare) || fare == 0)
+            {
+                MessageBox.Show("Fare has to be a integer or floating point number", "Add New Flight Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            
+            return true;
         }
 
         private void btnClearFlight_Click(object sender, EventArgs e)
@@ -169,12 +245,14 @@ namespace AIR.WinForm
 
         private void btnSignOut_Click(object sender, EventArgs e)
         {
+            if (!IsServiceAlive())
+                return;
             var res = adminClient.AdminLogout(loggedinAdmin.Id);
 
             if (res.IsSuccess)
-                MessageBox.Show(res.Results["0"]);
+                MessageBox.Show(res.Results["0"], "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show(res.ErrorMessages["Error"]);
+                MessageBox.Show(res.ErrorMessages["Error"], "Logout Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             
             this.Close();
         }
@@ -182,7 +260,9 @@ namespace AIR.WinForm
         private void Refresh_Aircrafts()
         {
             this.lstvwAircrafts.Items.Clear();
-            
+
+            if (!IsServiceAlive())
+                return;
             // Refresh List of Aircrafts            
             this.aircraftsInService = adminClient.GetAllAircrafts();
 
@@ -201,7 +281,9 @@ namespace AIR.WinForm
         private void Refresh_Flights()
         {
             this.lstvwFlights.Items.Clear();
-            
+
+            if (!IsServiceAlive())
+                return;
             // Refresh List of flights
             this.scheduledFlights = adminClient.GetAllFlights();
 
@@ -248,6 +330,17 @@ namespace AIR.WinForm
         private void btnRefreshAircrafts_Click(object sender, EventArgs e)
         {
             Refresh_Aircrafts();
+        }
+
+        private bool IsServiceAlive()
+        {
+            if (!adminClient.Ping())
+            {
+                MessageBox.Show("Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 }
