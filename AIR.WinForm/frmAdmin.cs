@@ -14,7 +14,6 @@ namespace AIR.WinForm
     public partial class frmAdmin : Form
     {
         public event EventHandler OnSignOut;
-
         Admin loggedinAdmin;
         List<Aircraft> aircraftsInService;
         List<Flight> scheduledFlights;
