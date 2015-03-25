@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.rdbtnUser = new System.Windows.Forms.RadioButton();
-            this.rdbtnAdmin = new System.Windows.Forms.RadioButton();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtbxUserName = new System.Windows.Forms.TextBox();
             this.txtbxUserPassword = new System.Windows.Forms.TextBox();
@@ -37,28 +35,6 @@
             this.lblLoginErrorMessage = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // rdbtnUser
-            // 
-            this.rdbtnUser.AutoSize = true;
-            this.rdbtnUser.Location = new System.Drawing.Point(161, 48);
-            this.rdbtnUser.Name = "rdbtnUser";
-            this.rdbtnUser.Size = new System.Drawing.Size(47, 17);
-            this.rdbtnUser.TabIndex = 0;
-            this.rdbtnUser.Text = "User";
-            this.rdbtnUser.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnAdmin
-            // 
-            this.rdbtnAdmin.AutoSize = true;
-            this.rdbtnAdmin.Checked = true;
-            this.rdbtnAdmin.Location = new System.Drawing.Point(70, 48);
-            this.rdbtnAdmin.Name = "rdbtnAdmin";
-            this.rdbtnAdmin.Size = new System.Drawing.Size(85, 17);
-            this.rdbtnAdmin.TabIndex = 1;
-            this.rdbtnAdmin.TabStop = true;
-            this.rdbtnAdmin.Text = "Administrator";
-            this.rdbtnAdmin.UseVisualStyleBackColor = true;
             // 
             // btnLogin
             // 
@@ -76,7 +52,7 @@
             this.txtbxUserName.Name = "txtbxUserName";
             this.txtbxUserName.Size = new System.Drawing.Size(140, 20);
             this.txtbxUserName.TabIndex = 3;
-            this.txtbxUserName.Text = "Enter User Name";
+            this.txtbxUserName.Text = "Enter Admin Name";
             // 
             // txtbxUserPassword
             // 
@@ -93,7 +69,7 @@
             this.btnNewUser.Name = "btnNewUser";
             this.btnNewUser.Size = new System.Drawing.Size(143, 27);
             this.btnNewUser.TabIndex = 5;
-            this.btnNewUser.Text = "New Admin/User";
+            this.btnNewUser.Text = "New Admin";
             this.btnNewUser.UseVisualStyleBackColor = true;
             this.btnNewUser.Click += new System.EventHandler(this.btnNewUser_Click);
             // 
@@ -110,11 +86,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Monaco", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(102, 9);
+            this.label1.Location = new System.Drawing.Point(66, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 24);
+            this.label1.Size = new System.Drawing.Size(142, 24);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Login";
+            this.label1.Text = "Admin Login";
             // 
             // frmLogin
             // 
@@ -127,8 +103,6 @@
             this.Controls.Add(this.txtbxUserPassword);
             this.Controls.Add(this.txtbxUserName);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.rdbtnAdmin);
-            this.Controls.Add(this.rdbtnUser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLogin";
             this.ShowInTaskbar = false;
@@ -141,8 +115,6 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton rdbtnUser;
-        private System.Windows.Forms.RadioButton rdbtnAdmin;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox txtbxUserName;
         private System.Windows.Forms.TextBox txtbxUserPassword;

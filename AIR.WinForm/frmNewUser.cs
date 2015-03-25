@@ -1,4 +1,4 @@
-﻿using AIR.DAL;
+﻿using AIR.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +13,12 @@ namespace AIR.WinForm
 {
     public partial class frmNewUser : Form
     {
-        public frmNewUser()
+        ReservationServiceRef.ReservationServiceClient adminClient;
+
+        public frmNewUser(ReservationServiceRef.ReservationServiceClient adminClient)
         {
             InitializeComponent();
+            this.adminClient = adminClient;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -36,22 +39,31 @@ namespace AIR.WinForm
             userName = txtbxUserName.Text;
             userPassword = txtbxUserPassword.Text;
 
-            // Create User/Admin here
-            bool bAdmin;
+            // Create User/Admin here 
+            Admin newAdmin = new Admin{Name = "", UserName = userName, PasswordHash = userPassword};
 
-            if(rdbtnAdmin.Checked)
-                bAdmin = true;
-            else 
-                bAdmin = false;
+            if (!IsServiceAlive())
+                return;
+            // Make the call to the service
+            var res = adminClient.CreateNewAdmin(newAdmin);
 
-            var bres = API.RegisterNewUser(userName, userPassword, bAdmin);
-
-            if (bres)
+            if (res.IsSuccess)
             {
-                MessageBox.Show("New User registered.!");
+                MessageBox.Show(res.Results["0"]);
             }
             else
-                MessageBox.Show("New user not registered");
+                MessageBox.Show(res.ErrorMessages["Error"]);
+        }
+
+        private bool IsServiceAlive()
+        {
+            if (!adminClient.Ping())
+            {
+                MessageBox.Show("Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 }

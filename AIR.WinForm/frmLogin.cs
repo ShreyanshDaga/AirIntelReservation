@@ -1,5 +1,4 @@
-﻿using AIR.DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,13 +13,21 @@ namespace AIR.WinForm
     public partial class frmLogin : Form
     {
 
-        public frmLogin()
+        public event EventHandler<LoginFormEventArgs> OnLoginClose;
+
+        ReservationServiceRef.ReservationServiceClient adminClient;
+        frmNewUser formNewUser;
+        frmAdmin adminPanel;
+
+        public frmLogin(ReservationServiceRef.ReservationServiceClient adminClient)
         {
             InitializeComponent();
             this.txtbxUserName.GotFocus += txtbxUserName_GotFocus;
             this.txtbxUserPassword.GotFocus += txtbxUserPassword_GotFocus;
             this.txtbxUserName.Leave += txtbxUserName_Leave;
             this.txtbxUserPassword.Leave += txtbxUserPassword_Leave;
+
+            this.adminClient = adminClient;            
         }
 
         void txtbxUserPassword_Leave(object sender, EventArgs e)
@@ -47,15 +54,22 @@ namespace AIR.WinForm
 
         private void btnNewUser_Click(object sender, EventArgs e)
         {
-            frmNewUser formNewUser = new frmNewUser();
+            this.formNewUser = new frmNewUser(this.adminClient);
 
-            formNewUser.MdiParent = this.MdiParent;            
-            formNewUser.Show();
+            this.formNewUser.FormClosed += formNewUser_FormClosed;
+            this.formNewUser.MdiParent = this.MdiParent;
+            this.formNewUser.Show();
+        }
 
+        void formNewUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.formNewUser = null;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             string userName, userPassword;
 
             lblLoginErrorMessage.Text = "Signing in...";
@@ -65,28 +79,58 @@ namespace AIR.WinForm
             userName = txtbxUserName.Text;
             userPassword = txtbxUserPassword.Text;
 
-            if (rdbtnAdmin.Checked)
-            {
-                if(!API.AdminSignIn(userName, userPassword))
-                {
-                    lblLoginErrorMessage.Text = "Error: Incorrect username/password!";                    
-                    lblLoginErrorMessage.ForeColor = Color.Red;
-                }
+            if (!IsServiceAlive())
+                return;
+            // Call the service            
+            var res = adminClient.AdminLogin(userName, userPassword);
 
-                frmAdmin admin = new frmAdmin(API.GetLogginAdmin());
-                admin.MdiParent = this.MdiParent;
-                admin.Show();
-                this.Close();
+            this.Cursor = Cursors.Default;
+
+            if(!res.IsSuccess)
+            {
+                lblLoginErrorMessage.Text = "Error: Incorrect username/password!";                    
+                lblLoginErrorMessage.ForeColor = Color.Red;
             }
 
-            if (rdbtnUser.Checked)
-            {
-                if (!API.UserSignIn(userName, userPassword))
-                {
-                    lblLoginErrorMessage.Text = "Error: Incorrect username/password!";
-                    lblLoginErrorMessage.ForeColor = Color.Red;
-                }
-            }
+            if (!IsServiceAlive())
+                return;
+
+            
+            var currentAdmin = adminClient.GetAdminByUserName(userName);
+            adminPanel = new frmAdmin(adminClient, currentAdmin);
+            adminPanel.MdiParent = this.MdiParent;
+
+            // Trigger the login event
+            var eventargs = new LoginFormEventArgs { adminPanel = adminPanel, loggedInAdmin = currentAdmin };
+            this.OnLoginClose(this, eventargs);
+            this.Close();
         }
+
+        private bool IsServiceAlive()
+        {
+            try
+            {
+                if (!this.adminClient.Ping())
+                {
+                    MessageBox.Show("WCF Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Cursor = Cursors.Default;
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Incase service goes down before the ping is tested
+                MessageBox.Show("WCF Service is no longer running.!\nPlease start the service in order to continue!", "WCF Service error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Cursor = Cursors.Default;
+                return false;
+            }
+
+            return true;
+        }
+
+        public frmAdmin GetAdminPanel()
+        {
+            return this.adminPanel;
+        }        
     }
 }

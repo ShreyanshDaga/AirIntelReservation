@@ -30,15 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmin));
             this.grpbxPersonalDetails = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtbxAdminOldPwd = new System.Windows.Forms.TextBox();
+            this.txtbxAdminNewPwd = new System.Windows.Forms.TextBox();
             this.btnSaveDetails = new System.Windows.Forms.Button();
             this.btnEditAdminDetails = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.txtbxAdminUName = new System.Windows.Forms.TextBox();
-            this.txtbxAdminName = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.tbctMainPanel = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnRefreshAircrafts = new System.Windows.Forms.Button();
             this.lstvwAircrafts = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -63,6 +66,7 @@
             this.txtbxNewAircraftName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnRefreshFlights = new System.Windows.Forms.Button();
             this.lstvwFlights = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -71,6 +75,12 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpbxAddNewFlight = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtbxNewFLightFirstFare = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtbxNewFlightBusinessFare = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -89,23 +99,9 @@
             this.txtbxNewFlightFrom = new System.Windows.Forms.TextBox();
             this.txtbxNewFlightNumber = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.picbxLogo = new System.Windows.Forms.PictureBox();
-            this.txtbxAdminNewPwd = new System.Windows.Forms.TextBox();
-            this.txtbxAdminOldPwd = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtbxNewFlightBusinessFare = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.txtbxNewFLightFirstFare = new System.Windows.Forms.TextBox();
             this.btnSignOut = new System.Windows.Forms.Button();
             this.lbluserName = new System.Windows.Forms.Label();
-            this.btnRefreshFlights = new System.Windows.Forms.Button();
-            this.btnRefreshAircrafts = new System.Windows.Forms.Button();
             this.grpbxPersonalDetails.SuspendLayout();
             this.tbctMainPanel.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -124,9 +120,7 @@
             this.grpbxPersonalDetails.Controls.Add(this.btnSaveDetails);
             this.grpbxPersonalDetails.Controls.Add(this.btnEditAdminDetails);
             this.grpbxPersonalDetails.Controls.Add(this.label21);
-            this.grpbxPersonalDetails.Controls.Add(this.label20);
             this.grpbxPersonalDetails.Controls.Add(this.txtbxAdminUName);
-            this.grpbxPersonalDetails.Controls.Add(this.txtbxAdminName);
             this.grpbxPersonalDetails.Controls.Add(this.label19);
             this.grpbxPersonalDetails.Location = new System.Drawing.Point(12, 239);
             this.grpbxPersonalDetails.Name = "grpbxPersonalDetails";
@@ -134,6 +128,42 @@
             this.grpbxPersonalDetails.TabIndex = 0;
             this.grpbxPersonalDetails.TabStop = false;
             this.grpbxPersonalDetails.Text = "Personal Details";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(22, 186);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(72, 13);
+            this.label24.TabIndex = 12;
+            this.label24.Text = "Old Password";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(16, 100);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(78, 13);
+            this.label22.TabIndex = 10;
+            this.label22.Text = "New Password";
+            // 
+            // txtbxAdminOldPwd
+            // 
+            this.txtbxAdminOldPwd.Enabled = false;
+            this.txtbxAdminOldPwd.Location = new System.Drawing.Point(109, 182);
+            this.txtbxAdminOldPwd.Name = "txtbxAdminOldPwd";
+            this.txtbxAdminOldPwd.Size = new System.Drawing.Size(110, 20);
+            this.txtbxAdminOldPwd.TabIndex = 9;
+            this.txtbxAdminOldPwd.UseSystemPasswordChar = true;
+            // 
+            // txtbxAdminNewPwd
+            // 
+            this.txtbxAdminNewPwd.Enabled = false;
+            this.txtbxAdminNewPwd.Location = new System.Drawing.Point(109, 96);
+            this.txtbxAdminNewPwd.Name = "txtbxAdminNewPwd";
+            this.txtbxAdminNewPwd.Size = new System.Drawing.Size(110, 20);
+            this.txtbxAdminNewPwd.TabIndex = 7;
+            this.txtbxAdminNewPwd.UseSystemPasswordChar = true;
             // 
             // btnSaveDetails
             // 
@@ -159,36 +189,19 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(39, 93);
+            this.label21.Location = new System.Drawing.Point(39, 74);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(55, 13);
             this.label21.TabIndex = 4;
             this.label21.Text = "Username";
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(59, 67);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(35, 13);
-            this.label20.TabIndex = 3;
-            this.label20.Text = "Name";
-            // 
             // txtbxAdminUName
             // 
             this.txtbxAdminUName.Enabled = false;
-            this.txtbxAdminUName.Location = new System.Drawing.Point(109, 89);
+            this.txtbxAdminUName.Location = new System.Drawing.Point(109, 70);
             this.txtbxAdminUName.Name = "txtbxAdminUName";
             this.txtbxAdminUName.Size = new System.Drawing.Size(110, 20);
             this.txtbxAdminUName.TabIndex = 2;
-            // 
-            // txtbxAdminName
-            // 
-            this.txtbxAdminName.Enabled = false;
-            this.txtbxAdminName.Location = new System.Drawing.Point(109, 63);
-            this.txtbxAdminName.Name = "txtbxAdminName";
-            this.txtbxAdminName.Size = new System.Drawing.Size(110, 20);
-            this.txtbxAdminName.TabIndex = 2;
             // 
             // label19
             // 
@@ -204,8 +217,6 @@
             // 
             this.tbctMainPanel.Controls.Add(this.tabPage1);
             this.tbctMainPanel.Controls.Add(this.tabPage2);
-            this.tbctMainPanel.Controls.Add(this.tabPage3);
-            this.tbctMainPanel.Controls.Add(this.tabPage4);
             this.tbctMainPanel.Location = new System.Drawing.Point(243, 51);
             this.tbctMainPanel.Name = "tbctMainPanel";
             this.tbctMainPanel.SelectedIndex = 0;
@@ -224,6 +235,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Aircrafts";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnRefreshAircrafts
+            // 
+            this.btnRefreshAircrafts.Location = new System.Drawing.Point(261, 352);
+            this.btnRefreshAircrafts.Name = "btnRefreshAircrafts";
+            this.btnRefreshAircrafts.Size = new System.Drawing.Size(110, 45);
+            this.btnRefreshAircrafts.TabIndex = 2;
+            this.btnRefreshAircrafts.Text = "Refresh List";
+            this.btnRefreshAircrafts.UseVisualStyleBackColor = true;
+            this.btnRefreshAircrafts.Click += new System.EventHandler(this.btnRefreshAircrafts_Click);
             // 
             // lstvwAircrafts
             // 
@@ -447,6 +468,16 @@
             this.tabPage2.Text = "Flights";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnRefreshFlights
+            // 
+            this.btnRefreshFlights.Location = new System.Drawing.Point(257, 353);
+            this.btnRefreshFlights.Name = "btnRefreshFlights";
+            this.btnRefreshFlights.Size = new System.Drawing.Size(88, 44);
+            this.btnRefreshFlights.TabIndex = 2;
+            this.btnRefreshFlights.Text = "Refresh List";
+            this.btnRefreshFlights.UseVisualStyleBackColor = true;
+            this.btnRefreshFlights.Click += new System.EventHandler(this.btnRefreshFlights_Click);
+            // 
             // lstvwFlights
             // 
             this.lstvwFlights.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -533,6 +564,56 @@
             this.grpbxAddNewFlight.TabIndex = 0;
             this.grpbxAddNewFlight.TabStop = false;
             this.grpbxAddNewFlight.Text = "Add New Flight";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(176, 311);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(13, 13);
+            this.label26.TabIndex = 23;
+            this.label26.Text = "$";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(27, 311);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(50, 13);
+            this.label27.TabIndex = 22;
+            this.label27.Text = "First Fare";
+            // 
+            // txtbxNewFLightFirstFare
+            // 
+            this.txtbxNewFLightFirstFare.Location = new System.Drawing.Point(96, 307);
+            this.txtbxNewFLightFirstFare.Name = "txtbxNewFLightFirstFare";
+            this.txtbxNewFLightFirstFare.Size = new System.Drawing.Size(75, 20);
+            this.txtbxNewFLightFirstFare.TabIndex = 21;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(176, 285);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(13, 13);
+            this.label23.TabIndex = 20;
+            this.label23.Text = "$";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(4, 285);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(73, 13);
+            this.label25.TabIndex = 19;
+            this.label25.Text = "Business Fare";
+            // 
+            // txtbxNewFlightBusinessFare
+            // 
+            this.txtbxNewFlightBusinessFare.Location = new System.Drawing.Point(96, 281);
+            this.txtbxNewFlightBusinessFare.Name = "txtbxNewFlightBusinessFare";
+            this.txtbxNewFlightBusinessFare.Size = new System.Drawing.Size(75, 20);
+            this.txtbxNewFlightBusinessFare.TabIndex = 18;
             // 
             // label18
             // 
@@ -690,26 +771,6 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Add New Flight";
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(704, 409);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Bookings";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(716, 409);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Reports";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
             // picbxLogo
             // 
             this.picbxLogo.Image = ((System.Drawing.Image)(resources.GetObject("picbxLogo.Image")));
@@ -719,92 +780,6 @@
             this.picbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.picbxLogo.TabIndex = 3;
             this.picbxLogo.TabStop = false;
-            // 
-            // txtbxAdminNewPwd
-            // 
-            this.txtbxAdminNewPwd.Enabled = false;
-            this.txtbxAdminNewPwd.Location = new System.Drawing.Point(109, 115);
-            this.txtbxAdminNewPwd.Name = "txtbxAdminNewPwd";
-            this.txtbxAdminNewPwd.Size = new System.Drawing.Size(110, 20);
-            this.txtbxAdminNewPwd.TabIndex = 7;
-            this.txtbxAdminNewPwd.UseSystemPasswordChar = true;
-            // 
-            // txtbxAdminOldPwd
-            // 
-            this.txtbxAdminOldPwd.Enabled = false;
-            this.txtbxAdminOldPwd.Location = new System.Drawing.Point(109, 182);
-            this.txtbxAdminOldPwd.Name = "txtbxAdminOldPwd";
-            this.txtbxAdminOldPwd.Size = new System.Drawing.Size(110, 20);
-            this.txtbxAdminOldPwd.TabIndex = 9;
-            this.txtbxAdminOldPwd.UseSystemPasswordChar = true;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(16, 119);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(78, 13);
-            this.label22.TabIndex = 10;
-            this.label22.Text = "New Password";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(22, 186);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(72, 13);
-            this.label24.TabIndex = 12;
-            this.label24.Text = "Old Password";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(176, 285);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(13, 13);
-            this.label23.TabIndex = 20;
-            this.label23.Text = "$";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(4, 285);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(73, 13);
-            this.label25.TabIndex = 19;
-            this.label25.Text = "Business Fare";
-            // 
-            // txtbxNewFlightBusinessFare
-            // 
-            this.txtbxNewFlightBusinessFare.Location = new System.Drawing.Point(96, 281);
-            this.txtbxNewFlightBusinessFare.Name = "txtbxNewFlightBusinessFare";
-            this.txtbxNewFlightBusinessFare.Size = new System.Drawing.Size(75, 20);
-            this.txtbxNewFlightBusinessFare.TabIndex = 18;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(176, 311);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(13, 13);
-            this.label26.TabIndex = 23;
-            this.label26.Text = "$";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(27, 311);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(50, 13);
-            this.label27.TabIndex = 22;
-            this.label27.Text = "First Fare";
-            // 
-            // txtbxNewFLightFirstFare
-            // 
-            this.txtbxNewFLightFirstFare.Location = new System.Drawing.Point(96, 307);
-            this.txtbxNewFLightFirstFare.Name = "txtbxNewFLightFirstFare";
-            this.txtbxNewFLightFirstFare.Size = new System.Drawing.Size(75, 20);
-            this.txtbxNewFLightFirstFare.TabIndex = 21;
             // 
             // btnSignOut
             // 
@@ -824,26 +799,6 @@
             this.lbluserName.Size = new System.Drawing.Size(43, 13);
             this.lbluserName.TabIndex = 5;
             this.lbluserName.Text = "Hello:   ";
-            // 
-            // btnRefreshFlights
-            // 
-            this.btnRefreshFlights.Location = new System.Drawing.Point(257, 353);
-            this.btnRefreshFlights.Name = "btnRefreshFlights";
-            this.btnRefreshFlights.Size = new System.Drawing.Size(88, 44);
-            this.btnRefreshFlights.TabIndex = 2;
-            this.btnRefreshFlights.Text = "Refresh List";
-            this.btnRefreshFlights.UseVisualStyleBackColor = true;
-            this.btnRefreshFlights.Click += new System.EventHandler(this.btnRefreshFlights_Click);
-            // 
-            // btnRefreshAircrafts
-            // 
-            this.btnRefreshAircrafts.Location = new System.Drawing.Point(261, 352);
-            this.btnRefreshAircrafts.Name = "btnRefreshAircrafts";
-            this.btnRefreshAircrafts.Size = new System.Drawing.Size(110, 45);
-            this.btnRefreshAircrafts.TabIndex = 2;
-            this.btnRefreshAircrafts.Text = "Refresh List";
-            this.btnRefreshAircrafts.UseVisualStyleBackColor = true;
-            this.btnRefreshAircrafts.Click += new System.EventHandler(this.btnRefreshAircrafts_Click);
             // 
             // frmAdmin
             // 
@@ -882,8 +837,6 @@
         private System.Windows.Forms.TabControl tbctMainPanel;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.PictureBox picbxLogo;
         private System.Windows.Forms.GroupBox grpbxAddNewAircraft;
         private System.Windows.Forms.Label label1;
@@ -935,10 +888,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox txtbxAdminName;
         private System.Windows.Forms.TextBox txtbxAdminUName;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button btnEditAdminDetails;
         private System.Windows.Forms.Button btnSaveDetails;
         private System.Windows.Forms.TextBox txtbxAdminOldPwd;

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="029b33db-af1d-49d0-bede-8abd65d29760" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9999/AirIntelReservationService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ReservationService1.wsdl" MetadataType="Wsdl" ID="729a81b4-2888-436f-be3b-5d853b10c1fc" SourceId="1" SourceUrl="http://localhost:9999/AirIntelReservationService?wsdl" />
+    <MetadataFile FileName="AirIntelReservationService1.disco" MetadataType="Disco" ID="b3845d08-71fb-4a89-a88f-f11d2a38a85f" SourceId="1" SourceUrl="http://localhost:9999/AirIntelReservationService?disco" />
+    <MetadataFile FileName="AirIntelReservationService4.xsd" MetadataType="Schema" ID="bb1ae43e-846c-48dc-8587-e70a21196ec0" SourceId="1" SourceUrl="http://localhost:9999/AirIntelReservationService?xsd=xsd3" />
+    <MetadataFile FileName="AirIntelReservationService41.xsd" MetadataType="Schema" ID="c357c347-984a-42aa-8c2a-a8b69b63f8f6" SourceId="1" SourceUrl="http://localhost:9999/AirIntelReservationService?xsd=xsd2" />
+    <MetadataFile FileName="AirIntelReservationService42.xsd" MetadataType="Schema" ID="3cf844b5-bb35-45cf-bfde-7395035f4a3d" SourceId="1" SourceUrl="http://localhost:9999/AirIntelReservationService?xsd=xsd1" />
+    <MetadataFile FileName="AirIntelReservationService43.xsd" MetadataType="Schema" ID="fcbf421b-d7d7-44b5-b7b7-9572ffea2b52" SourceId="1" SourceUrl="http://localhost:9999/AirIntelReservationService?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

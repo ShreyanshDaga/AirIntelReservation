@@ -30,8 +30,7 @@ namespace AIR.DAL.Internal
         public DBContext(string strConString)
             : base(strConString)
         {
-            // Create DB with some connection string
-
+            // ctor with ConnectionString
         }
     }
 }

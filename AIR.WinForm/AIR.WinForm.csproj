@@ -9,9 +9,25 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AIR.WinForm</RootNamespace>
     <AssemblyName>AIR.WinForm</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,16 +49,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,12 +69,6 @@
     </Compile>
     <Compile Include="frmAdmin.Designer.cs">
       <DependentUpon>frmAdmin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmAircraftDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmAircraftDetail.Designer.cs">
-      <DependentUpon>frmAircraftDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFlightDetail.cs">
       <SubType>Form</SubType>
@@ -89,14 +94,13 @@
     <Compile Include="frmNewUser.Designer.cs">
       <DependentUpon>frmNewUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUser.Designer.cs">
-      <DependentUpon>frmUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ReservationServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,8 +124,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
+    <None Include="Properties\DataSources\AIR.Entities.Admin.datasource" />
+    <None Include="Properties\DataSources\AIR.Entities.Aircraft.datasource" />
+    <None Include="Properties\DataSources\AIR.Entities.APIResult.datasource" />
+    <None Include="Properties\DataSources\AIR.Entities.Booking.datasource" />
+    <None Include="Properties\DataSources\AIR.Entities.Flight.datasource" />
+    <None Include="Properties\DataSources\AIR.Entities.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,19 +141,68 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService41.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService42.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService43.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationServiceRef\ReservationService1.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AIR.DAL\AIR.DAL.csproj">
-      <Project>{eaccf02f-5479-4df7-baa9-4eed10411032}</Project>
-      <Name>AIR.DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AIR.Entities\AIR.Entities.csproj">
       <Project>{82544272-e918-4bf8-9553-8437f3bb8292}</Project>
       <Name>AIR.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ReservationServiceRef\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationServiceRef\AirIntelReservationService1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

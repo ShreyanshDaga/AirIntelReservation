@@ -34,8 +34,6 @@
             this.txtbxUserName = new System.Windows.Forms.TextBox();
             this.txtbxUserPassword = new System.Windows.Forms.TextBox();
             this.txtbxUserPassConf = new System.Windows.Forms.TextBox();
-            this.rdbtnUser = new System.Windows.Forms.RadioButton();
-            this.rdbtnAdmin = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,11 +63,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Monaco", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(54, 28);
+            this.label1.Location = new System.Drawing.Point(84, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(262, 24);
+            this.label1.Size = new System.Drawing.Size(202, 24);
             this.label1.TabIndex = 2;
-            this.label1.Text = "New User/System Admin";
+            this.label1.Text = "New System Admin";
             // 
             // txtbxUserName
             // 
@@ -94,36 +92,14 @@
             this.txtbxUserPassConf.TabIndex = 5;
             this.txtbxUserPassConf.UseSystemPasswordChar = true;
             // 
-            // rdbtnUser
-            // 
-            this.rdbtnUser.AutoSize = true;
-            this.rdbtnUser.Location = new System.Drawing.Point(207, 64);
-            this.rdbtnUser.Name = "rdbtnUser";
-            this.rdbtnUser.Size = new System.Drawing.Size(47, 17);
-            this.rdbtnUser.TabIndex = 6;
-            this.rdbtnUser.Text = "User";
-            this.rdbtnUser.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnAdmin
-            // 
-            this.rdbtnAdmin.AutoSize = true;
-            this.rdbtnAdmin.Checked = true;
-            this.rdbtnAdmin.Location = new System.Drawing.Point(116, 64);
-            this.rdbtnAdmin.Name = "rdbtnAdmin";
-            this.rdbtnAdmin.Size = new System.Drawing.Size(85, 17);
-            this.rdbtnAdmin.TabIndex = 7;
-            this.rdbtnAdmin.TabStop = true;
-            this.rdbtnAdmin.Text = "Administrator";
-            this.rdbtnAdmin.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(93, 118);
+            this.label2.Location = new System.Drawing.Point(61, 118);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.Size = new System.Drawing.Size(92, 13);
             this.label2.TabIndex = 8;
-            this.label2.Text = "User Name";
+            this.label2.Text = "Admin User Name";
             // 
             // label3
             // 
@@ -151,8 +127,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.rdbtnAdmin);
-            this.Controls.Add(this.rdbtnUser);
             this.Controls.Add(this.txtbxUserPassConf);
             this.Controls.Add(this.txtbxUserPassword);
             this.Controls.Add(this.txtbxUserName);
@@ -177,8 +151,6 @@
         private System.Windows.Forms.TextBox txtbxUserName;
         private System.Windows.Forms.TextBox txtbxUserPassword;
         private System.Windows.Forms.TextBox txtbxUserPassConf;
-        private System.Windows.Forms.RadioButton rdbtnUser;
-        private System.Windows.Forms.RadioButton rdbtnAdmin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

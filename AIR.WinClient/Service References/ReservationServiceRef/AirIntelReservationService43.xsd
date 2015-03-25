@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9999/AirIntelReservationService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AIR.Entities" />
+  <xs:import schemaLocation="http://localhost:9999/AirIntelReservationService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="Ping">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PingResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="newAdmin" nillable="true" type="q1:Admin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="CreateNewAdminResult" nillable="true" type="q2:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="adminUserName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="adminPassword" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="AdminLoginResult" nillable="true" type="q3:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminLogout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iAdminId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminLogoutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="AdminLogoutResult" nillable="true" type="q4:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="updateAdmin" nillable="true" type="q5:Admin" />
+        <xs:element minOccurs="0" name="iAdminId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="UpdateAdminResult" nillable="true" type="q6:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdminByUserName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="adminUserName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdminByUserNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAdminByUserNameResult" nillable="true" type="q7:Admin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoggedInAdmin">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoggedInAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetLoggedInAdminResult" nillable="true" type="q8:Admin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="newUser" nillable="true" type="q9:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="CreateNewUserResult" nillable="true" type="q10:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userPassword" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="UserLoginResult" nillable="true" type="q11:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserLogout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iUserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserLogoutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="UserLogoutResult" nillable="true" type="q12:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="updateUser" nillable="true" type="q13:User" />
+        <xs:element minOccurs="0" name="iUserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="UpdateUserResult" nillable="true" type="q14:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserIdByEmailAddress">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userEmail" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserIdByEmailAddressResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserIdByEmailAddressResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoggedInUser">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoggedInUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetLoggedInUserResult" nillable="true" type="q15:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewAircraft">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="newAircraft" nillable="true" type="q16:Aircraft" />
+        <xs:element minOccurs="0" name="iAdminId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewAircraftResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="CreateNewAircraftResult" nillable="true" type="q17:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAircraft">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iAircraftId" type="xs:int" />
+        <xs:element minOccurs="0" name="iAdminId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAircraftResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="RemoveAircraftResult" nillable="true" type="q18:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAircraftDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iAircraft" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAircraftDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAircraftDetailsResult" nillable="true" type="q19:Aircraft" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAircrafts">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAircraftsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAllAircraftsResult" nillable="true" type="q20:ArrayOfAircraft" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewFlight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="newFlight" nillable="true" type="q21:Flight" />
+        <xs:element minOccurs="0" name="iAdminId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateNewFlightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="CreateNewFlightResult" nillable="true" type="q22:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveFlight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iFlightId" type="xs:int" />
+        <xs:element minOccurs="0" name="iAdminId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveFlightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="RemoveFlightResult" nillable="true" type="q23:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFlightDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iFlightId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFlightDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetFlightDetailsResult" nillable="true" type="q24:Flight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllFlights">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllFlightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAllFlightsResult" nillable="true" type="q25:ArrayOfFlight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFlightsBetweenAirports">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strTo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strFrom" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFlightsBetweenAirportsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetFlightsBetweenAirportsResult" nillable="true" type="q26:ArrayOfFlight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNewBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="newBooking" nillable="true" type="q27:Booking" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNewBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="AddNewBookingResult" nillable="true" type="q28:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="booking" nillable="true" type="q29:Booking" />
+        <xs:element minOccurs="0" name="iBookingId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="ChangeBookingResult" nillable="true" type="q30:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iBookingId" type="xs:int" />
+        <xs:element minOccurs="0" name="iUserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="CancelBookingResult" nillable="true" type="q31:APIResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBookingDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iBookingId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBookingDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetBookingDetailsResult" nillable="true" type="q32:Booking" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllBookingsForUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iUserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllBookingsForUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/AIR.Entities" minOccurs="0" name="GetAllBookingsForUserResult" nillable="true" type="q33:ArrayOfBooking" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSeatsForFlight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iFlightId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSeatsForFlightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllSeatsForFlightResult" nillable="true" type="q34:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsSeatAvailable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="seatNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iFlightId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsSeatAvailableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsSeatAvailableResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
