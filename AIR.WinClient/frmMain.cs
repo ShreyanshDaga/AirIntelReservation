@@ -92,12 +92,12 @@ namespace AIR.WinClient
 
             grpbxFlightDetails.Enabled = true;
 
-            this.lblSelFlightNumbe.Text = selectedFlight.Number;
-            this.lblSelFlightFrom.Text = selectedFlight.Source;
-            this.lblSelFlightTo.Text = selectedFlight.Destination;
-            this.lblSelFlightArr.Text = selectedFlight.Arrival.ToString();
-            this.lblSelFlightDep.Text = selectedFlight.Departure.ToString();
-            this.lblAircraftType.Text = selectedFlight.Aircraft.Name;
+            this.lblSelFlightNumbe.Text = "Flight #: " + selectedFlight.Number;
+            this.lblSelFlightFrom.Text = "From: " + selectedFlight.Source;
+            this.lblSelFlightTo.Text = "To: " + selectedFlight.Destination;
+            this.lblSelFlightArr.Text = "Arrival: " + selectedFlight.Arrival.ToString();
+            this.lblSelFlightDep.Text = "Departure: " + selectedFlight.Departure.ToString();
+            this.lblAircraftType.Text = "Aircraft Type: " + selectedFlight.Aircraft.Name;
 
             this.txtbxTotalFare.Text = selectedFlight.EconomyFare.ToString();
 

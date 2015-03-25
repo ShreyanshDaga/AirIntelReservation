@@ -90,6 +90,7 @@ namespace AIR.WinForm
             {
                 lblLoginErrorMessage.Text = "Error: Incorrect username/password!";                    
                 lblLoginErrorMessage.ForeColor = Color.Red;
+                return;
             }
 
             if (!IsServiceAlive())
@@ -97,6 +98,13 @@ namespace AIR.WinForm
 
             
             var currentAdmin = adminClient.GetAdminByUserName(userName);
+            if(currentAdmin == null)
+            {
+                lblLoginErrorMessage.Text = "Error: Incorrect username/password!";
+                lblLoginErrorMessage.ForeColor = Color.Red;
+                return;
+            }
+
             adminPanel = new frmAdmin(adminClient, currentAdmin);
             adminPanel.MdiParent = this.MdiParent;
 

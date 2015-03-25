@@ -10,14 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AIR.WinForm
-{
-
-    public class LoginFormEventArgs : EventArgs
-    {
-        public frmAdmin adminPanel { get; set; }
-        public Admin loggedInAdmin { get; set; }
-    }
-    
+{        
     public partial class frmMain : Form
     {
         frmLogin loginForm;
@@ -117,6 +110,7 @@ namespace AIR.WinForm
             // If instance is not running
             this.Cursor = Cursors.Default;
             loginForm = new frmLogin(this.adminClient);
+            loginForm.OnLoginClose += loginForm_OnLoginClose;
             loginForm.FormClosed += loginForm_FormClosed;
             loginForm.MdiParent = this;
             loginForm.Show();
@@ -142,5 +136,11 @@ namespace AIR.WinForm
 
             return true;
         }
+    }
+
+    public class LoginFormEventArgs : EventArgs
+    {
+        public frmAdmin adminPanel { get; set; }
+        public Admin loggedInAdmin { get; set; }
     }
 }

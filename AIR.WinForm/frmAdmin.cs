@@ -125,7 +125,23 @@ namespace AIR.WinForm
                 return;
 
             // Save Changes here            
+            Admin updateAdmin = new Admin { Name = txtbxAdminUName.Text, UserName = txtbxAdminUName.Text, PasswordHash = txtbxAdminNewPwd.Text };
+
+            if (!IsServiceAlive())
+                return;
+            var res = adminClient.UpdateAdmin(updateAdmin, loggedinAdmin.Id);
+            if(res.IsSuccess)
+            {
+                MessageBox.Show("Admin details updated", "Edit Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error updateing admin details", "Edit Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             txtbxAdminUName.Enabled = false;
+            txtbxAdminOldPwd.Clear();
+            txtbxAdminNewPwd.Clear();
             txtbxAdminNewPwd.Enabled = false;
             txtbxAdminOldPwd.Enabled = false;
 
